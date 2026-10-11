@@ -175,3 +175,15 @@ dd{margin:0;max-width:70ch}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
+
+/* ---------- Bahas UTS ---------- */
+.hl{display:flex;justify-content:space-between;margin:4px 14px 0;font:.75rem var(--mono);color:#52667d}
+.mdl{margin:8px 0 18px}
+.mdl svg{width:100%;height:auto;max-width:640px;display:block}
+.mdl .bx{fill:var(--panel2);stroke:var(--g);stroke-width:1.5}
+.mdl .bx.i{stroke:var(--a)}.mdl .bx.c{stroke:var(--r)}
+.mdl .t1{font:700 15px var(--mono);fill:var(--tx)}
+.mdl .t2{font:12px var(--mono);fill:var(--mute)}
+.mdl .ln{stroke:var(--mute);stroke-width:1.6}
+.mdl .ahp{fill:var(--mute)}
+.mdl figcaption{font-size:.85rem;color:var(--mute);margin-top:6px}
