@@ -36,6 +36,17 @@ const COURSES = [
     keywords: 'keuangan rasio npv wacc modal kerja bab buku van horne',
     spines: 14, // Bab 1-14
   },
+  {
+    id: 'manajemen-operasi',
+    theme: 'industrial',
+    kicker: 'Operations Management',
+    title: 'Manajemen Operasi',
+    desc: 'Pendamping Bab 1-7 dan Suplemen 5-7 buku Operations Management (Heizer, Render, Munson), dari lini produksi sampai latihan soal.',
+    href: 'ManajemenOperasi/index.html',   // <- sesuaikan
+    tags: ['Laboratorium', 'Lembar rumus', 'Istilah', 'Latihan'],
+    keywords: 'operasi produksi operations management heizer render munson rumus istilah bab suplemen',
+    hexes: 7, // Bab 1-7
+  },
   // { id:'...', theme:'...', kicker:'...', title:'...', desc:'...', href:'...', tags:[...] },
 ];
 
@@ -74,6 +85,16 @@ const PREVIEWS = {
       <div class="exl" aria-hidden="true"><span>Ex Libris</span><span class="seal">&#167;</span></div>
       <div class="shelf" aria-hidden="true">${spines}</div>`;
   },
+  industrial(c) {
+    const n = c.hexes || 6;
+    let hx = '';
+    for (let i = 0; i < n; i++) hx += `<span class="hx" style="--i:${i}">${i + 1}</span>`;
+    return `
+      <div class="belt-wrap" aria-hidden="true">
+        <div class="hexrow">${hx}</div>
+        <div class="belt"></div>
+      </div>`;
+  },
   default(c) {
     return `<div class="gen" aria-hidden="true">${esc(c.title.charAt(0))}</div>`;
   },
@@ -86,7 +107,7 @@ function cardHTML(c) {
   const kicker = theme === 'library' ? '' : `<div class="c-kicker">${esc(c.kicker || '')}</div>`;
   const kickerLib = theme === 'library' ? `<div class="c-kicker">${esc(c.kicker && c.kicker !== 'Ex Libris' ? c.kicker : 'Perpustakaan')}</div>` : '';
   const chips = (c.tags || []).map(t => `<span class="chip">${esc(t)}</span>`).join('');
-  const openTxt = theme === 'terminal' ? 'buka --lab' : theme === 'library' ? 'Buka perpustakaan' : 'Buka';
+  const openTxt = theme === 'terminal' ? 'buka --lab' : theme === 'library' ? 'Buka perpustakaan' : theme === 'industrial' ? 'Masuk lini produksi' : 'Buka';
   const arrow = theme === 'library' ? '&rarr;' : '&rarr;';
   return `
     <a class="card t-${theme}" href="${esc(c.href)}" data-id="${esc(c.id)}" aria-label="Buka ${esc(c.title)}">
