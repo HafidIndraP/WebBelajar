@@ -363,6 +363,2298 @@ const TUT = [
 ];
 
 /* ---------- PEMILIH UJI ---------- */
+/* ---------- BAHAS UTS (data dihasilkan dari analisis Data_Latihan_UTS.sav) ---------- */
+const UTS = [
+ {
+  "id": "rancang",
+  "t": "Rancang Variabel & Siapkan Data",
+  "path": [
+   "File",
+   "Open",
+   "Data"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "diagram": true,
+  "goal": "Menentukan peran tiap variabel (antecedent, consequence, intervening, control), memastikan 5 variabel × 5 indikator = 25 parameter, dan menyiapkan data 350 responden di SPSS.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka Variable View",
+    "Klik tab **Variable View** di kiri bawah. Satu baris = satu variabel; periksa kolom Type (Numeric), Label, Values, dan Measure."
+   ],
+   [
+    "Periksa isi Data View",
+    "Klik tab **Data View**. Pastikan ada 350 baris (responden) dan tiap butir berisi angka 1 sampai 10."
+   ],
+   [
+    "Cek variabel total",
+    "Kolom TotalCE, TotalFOMO, TotalPP, TotalSAT, dan TotalRI sudah tersedia. Jika belum, buat lewat `Transform › Compute Variable`: isi Target Variable dengan nama total, lalu pada Numeric Expression pakai fungsi **SUM** untuk kelima butir variabel itu."
+   ],
+   [
+    "Simpan",
+    "`File › Save`. Mulai sekarang semua analisis memakai file ini."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Peta peran variabel",
+    "h": [
+     "Variabel",
+     "Peran",
+     "Indikator",
+     "Kolom total",
+     "Asal kolom di data dosen"
+    ],
+    "r": [
+     [
+      "Celebrity Endorse (CE)",
+      "Antecedent",
+      "CE1 - CE5",
+      "TotalCE",
+      "ESQ1-5 (TotalESE)"
+     ],
+     [
+      "Fear of Missing Out (FOMO)",
+      "Antecedent",
+      "FOMO1 - FOMO5",
+      "TotalFOMO",
+      "PV1-5 (TotalFOMO)"
+     ],
+     [
+      "Perceived Price (PP)",
+      "Antecedent",
+      "PP1 - PP5",
+      "TotalPP",
+      "CS1-5 (TotalPD)"
+     ],
+     [
+      "Customer Satisfaction (SAT)",
+      "Intervening",
+      "SAT1 - SAT5",
+      "TotalSAT",
+      "Tidak ada; disimulasikan"
+     ],
+     [
+      "Repurchase Intention (RI)",
+      "Consequence",
+      "RI1 - RI5",
+      "TotalRI",
+      "ELY1-5 (TotalPI)"
+     ],
+     [
+      "Gender",
+      "Control",
+      "1 kolom",
+      "-",
+      "Tidak ada; disimulasikan"
+     ],
+     [
+      "Usia",
+      "Control (kovariat)",
+      "1 kolom",
+      "-",
+      "Tidak ada; disimulasikan"
+     ],
+     [
+      "Frekuensi belanja online",
+      "Control (kelompok)",
+      "1 kolom",
+      "-",
+      "Tidak ada; disimulasikan"
+     ]
+    ]
+   },
+   {
+    "t": "Variable View (cuplikan)",
+    "h": [
+     "Name",
+     "Type",
+     "Label",
+     "Values",
+     "Measure"
+    ],
+    "r": [
+     [
+      "Resp",
+      "Numeric",
+      "Nomor responden",
+      "None",
+      "Scale"
+     ],
+     [
+      "CE1",
+      "Numeric",
+      "Selebriti pendukung produk ini kredibel",
+      "1 = Sangat Tidak Setuju ... 10 = Sangat Setuju",
+      "Ordinal"
+     ],
+     [
+      "TotalCE",
+      "Numeric",
+      "Total Celebrity Endorse",
+      "None",
+      "Scale"
+     ],
+     [
+      "Gender",
+      "Numeric",
+      "Jenis kelamin",
+      "1 = Laki-laki, 2 = Perempuan",
+      "Nominal"
+     ],
+     [
+      "Usia",
+      "Numeric",
+      "Usia (tahun)",
+      "None",
+      "Scale"
+     ],
+     [
+      "Frekuensi",
+      "Numeric",
+      "Frekuensi belanja online per bulan",
+      "1 = 1-2 kali, 2 = 3-5 kali, 3 = Lebih dari 5 kali",
+      "Ordinal"
+     ]
+    ],
+    "n": "Total 35 variabel: Resp, 25 butir, 5 total, Gender, Usia, Frekuensi, dan Asal_Data."
+   }
+  ],
+  "read": [
+   [
+    "Antecedent (penyebab)",
+    "Variabel yang mendahului dan memengaruhi variabel lain. Pada diagram dosen: Celebrity Endorse, Fear of Missing Out, dan Perceived Price."
+   ],
+   [
+    "Consequence (akibat)",
+    "Variabel yang dipengaruhi, yaitu hasil akhir model: Repurchase Intention."
+   ],
+   [
+    "Intervening (perantara)",
+    "Variabel yang berada di tengah jalur antecedent ke consequence. Diagram dosen belum memilikinya; kita tambahkan Customer Satisfaction agar lengkap sebagai variabel kelima."
+   ],
+   [
+    "Control (kendali)",
+    "Variabel yang tidak menjadi inti hipotesis tetapi dikendalikan atau dibandingkan: Gender, Usia, dan Frekuensi belanja online. Di soal ini mereka menjadi pembanding kelompok (t-test, ANOVA, MANOVA) dan kovariat (ANCOVA)."
+   ],
+   [
+    "25 parameter",
+    "Lima variabel × lima indikator = 25 butir pertanyaan. Diagram dosen baru memuat empat variabel (20 indikator), karena itu variabel perantara ditambahkan."
+   ],
+   [
+    "350 responden",
+    "File latihan berisi 350 baris: 222 responden dari data dosen dan 128 responden tambahan hasil simulasi (kolom Asal_Data memisahkannya)."
+   ]
+  ],
+  "concl": "Model akhir: **CE, FOMO, PP (antecedent) → SAT (intervening) → RI (consequence)**, dengan Gender, Usia, dan Frekuensi belanja sebagai variabel kontrol.",
+  "tip": "Isi butir pada file asli dosen (aplikasi e-grocery, kolom ESQ, PV, CS, ELY) tidak cocok dengan nama variabel di diagram, jadi kolomnya dipetakan berdasarkan urutan dan dinamai ulang. Data demografi dan variabel SAT tidak ada di file dosen, jadi disimulasikan. Itu aman untuk latihan, tetapi jangan dipakai sebagai data penelitian sungguhan.",
+  "uts": 1
+ },
+ {
+  "id": "deskriptif-uts",
+  "t": "Mean, Median, dan Rata-rata",
+  "path": [
+   "Analyze",
+   "Descriptive Statistics",
+   "Frequencies"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Menghitung ukuran pemusatan (mean atau rata-rata, median) dan sebaran tiap variabel dari 350 responden.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › Descriptive Statistics › Frequencies`."
+   ],
+   [
+    "Pilih variabel",
+    "Pindahkan TotalCE, TotalFOMO, TotalPP, TotalSAT, dan TotalRI ke kotak Variable(s)."
+   ],
+   [
+    "Matikan tabel frekuensi",
+    "Hapus centang **Display frequency tables** supaya output tidak penuh daftar frekuensi."
+   ],
+   [
+    "Pilih statistik",
+    "Klik **Statistics**, centang Mean, Median, Mode, Std. deviation, Minimum, dan Maximum. Continue."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Statistics",
+    "h": [
+     "",
+     "TotalCE",
+     "TotalFOMO",
+     "TotalPP",
+     "TotalSAT",
+     "TotalRI"
+    ],
+    "r": [
+     [
+      "N Valid",
+      "350",
+      "350",
+      "350",
+      "350",
+      "350"
+     ],
+     [
+      "Missing",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "Mean",
+      "{{39,69}}",
+      "{{39,77}}",
+      "{{39,90}}",
+      "{{40,01}}",
+      "{{39,55}}"
+     ],
+     [
+      "Median",
+      "{{40,00}}",
+      "{{39,50}}",
+      "{{40,00}}",
+      "{{40,00}}",
+      "{{40,00}}"
+     ],
+     [
+      "Mode",
+      "42",
+      "38",
+      "40",
+      "43",
+      "40"
+     ],
+     [
+      "Std. Deviation",
+      "4,325",
+      "4,457",
+      "4,454",
+      "4,195",
+      "4,519"
+     ],
+     [
+      "Minimum",
+      "26",
+      "25",
+      "26",
+      "25",
+      "28"
+     ],
+     [
+      "Maximum",
+      "49",
+      "50",
+      "50",
+      "50",
+      "50"
+     ]
+    ],
+    "n": null
+   }
+  ],
+  "read": [
+   [
+    "N Valid dan Missing",
+    "Semua 350 responden terisi lengkap, tidak ada data hilang."
+   ],
+   [
+    "Mean (rata-rata)",
+    "Rata-rata kelima variabel nyaris sama, sekitar 39,55 sampai 40,01 dari rentang total 5 sampai 50 (lima butir dengan skor 1 sampai 10). Artinya responden cenderung setuju."
+   ],
+   [
+    "Median",
+    "Nilai tengahnya 39,5 sampai 40,0, hampir sama dengan mean. Mean dan median yang berdekatan menandakan sebaran yang kurang lebih simetris."
+   ],
+   [
+    "Mode",
+    "Nilai yang paling sering muncul; bisa lebih dari satu, dan SPSS hanya menampilkan yang terkecil."
+   ],
+   [
+    "Std. Deviation, Minimum, Maximum",
+    "Simpangan baku sekitar 4,2 sampai 4,5. Skor terendah 25 dan tertinggi 50, jadi jawaban responden cukup beragam."
+   ]
+  ],
+  "concl": "Tendensi sentral keempat variabel hampir identik: rata-rata sekitar **40** dan median **40** dengan sebaran yang mirip.",
+  "tip": "“Average” pada perintah dosen sama dengan mean. Jika ingin rata-rata per butir (bukan total), pakai `Analyze › Descriptive Statistics › Descriptives` pada 25 butirnya.",
+  "uts": 2
+ },
+ {
+  "id": "normalitas-uts",
+  "t": "Distribusi Data (Normalitas)",
+  "path": [
+   "Analyze",
+   "Descriptive Statistics",
+   "Explore"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Memeriksa apakah tiap variabel berdistribusi normal, lewat uji Kolmogorov-Smirnov, Shapiro-Wilk, skewness, kurtosis, dan histogram.",
+  "hyp": "H0: data berdistribusi normal. HA: data tidak berdistribusi normal.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › Descriptive Statistics › Explore`."
+   ],
+   [
+    "Pilih variabel",
+    "Pindahkan kelima variabel total ke kotak Dependent List."
+   ],
+   [
+    "Atur tampilan",
+    "Pada Display pilih **Plots** saja."
+   ],
+   [
+    "Atur plot",
+    "Klik **Plots**, centang **Histogram** dan **Normality plots with tests**. Continue."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Tests of Normality",
+    "h": [
+     "",
+     "K-S Statistic",
+     "K-S df",
+     "K-S Sig.",
+     "Shapiro-Wilk Statistic",
+     "S-W df",
+     "S-W Sig."
+    ],
+    "r": [
+     [
+      "TotalCE",
+      ",079",
+      "350",
+      "{{,000}}",
+      ",987",
+      "350",
+      "{{,004}}"
+     ],
+     [
+      "TotalFOMO",
+      ",068",
+      "350",
+      "{{,000}}",
+      ",990",
+      "350",
+      "{{,017}}"
+     ],
+     [
+      "TotalPP",
+      ",074",
+      "350",
+      "{{,000}}",
+      ",990",
+      "350",
+      "{{,021}}"
+     ],
+     [
+      "TotalSAT",
+      ",071",
+      "350",
+      "{{,000}}",
+      ",988",
+      "350",
+      "{{,007}}"
+     ],
+     [
+      "TotalRI",
+      ",060",
+      "350",
+      "{{,005}}",
+      ",989",
+      "350",
+      "{{,010}}"
+     ]
+    ],
+    "n": "Kolmogorov-Smirnov memakai Lilliefors Significance Correction. Digit terakhir nilai sig bisa berbeda tipis di SPSS-mu."
+   },
+   {
+    "t": "Skewness dan Kurtosis (dari tabel Descriptives)",
+    "h": [
+     "",
+     "Skewness",
+     "Std. Error",
+     "Kurtosis",
+     "Std. Error"
+    ],
+    "r": [
+     [
+      "TotalCE",
+      "-,266",
+      ",130",
+      "-,104",
+      ",260"
+     ],
+     [
+      "TotalFOMO",
+      "-,043",
+      ",130",
+      "-,275",
+      ",260"
+     ],
+     [
+      "TotalPP",
+      "-,180",
+      ",130",
+      "-,196",
+      ",260"
+     ],
+     [
+      "TotalSAT",
+      "-,282",
+      ",130",
+      "-,027",
+      ",260"
+     ],
+     [
+      "TotalRI",
+      ",099",
+      ",130",
+      "-,241",
+      ",260"
+     ]
+    ]
+   },
+   {
+    "t": "Histogram TotalRI (sebaran asli data latihan)",
+    "chart": [
+     0,
+     3,
+     15,
+     32,
+     38,
+     80,
+     69,
+     100,
+     65,
+     42,
+     25,
+     23
+    ],
+    "lab": [
+     "26-27",
+     "28-29",
+     "30-31",
+     "32-33",
+     "34-35",
+     "36-37",
+     "38-39",
+     "40-41",
+     "42-43",
+     "44-45",
+     "46-47",
+     "48-50"
+    ],
+    "n": "Sumbu mendatar: rentang skor total. Batang tertinggi di tengah dan menurun di kedua sisi."
+   }
+  ],
+  "read": [
+   [
+    "Uji formal",
+    "Sig Kolmogorov-Smirnov dan Shapiro-Wilk semuanya di bawah 0,05, jadi H0 ditolak: secara uji formal data tidak normal sempurna."
+   ],
+   [
+    "Skewness dan kurtosis",
+    "Skewness berkisar -,28 sampai ,10 dan kurtosis -,28 sampai -,03. Keduanya dekat dengan 0, yang menandakan bentuk mendekati lonceng."
+   ],
+   [
+    "Histogram",
+    "Batang tertinggi berada di tengah dan menurun ke kedua sisi, bentuk lonceng yang cukup simetris."
+   ],
+   [
+    "Mengapa berbeda",
+    "Dengan 350 responden, uji formal sangat peka sehingga penyimpangan kecil pun ditolak. Karena itu bentuk grafik, skewness, dan kurtosis perlu dibaca bersama."
+   ]
+  ],
+  "concl": "Data **tidak normal secara uji formal**, tetapi bentuknya **mendekati normal**. Uji t dan ANOVA bersifat robust terhadap penyimpangan sekecil ini, sehingga analisis parametrik dapat dilanjutkan dengan catatan di laporan.",
+  "tip": "Di laporan tulis kedua temuannya: uji formal menolak normalitas, namun skewness, kurtosis, dan histogram mendukung kenormalan. Menyembunyikan salah satunya akan melemahkan argumenmu.",
+  "uts": 3
+ },
+ {
+  "id": "validitas-uts",
+  "t": "Uji Validitas Butir",
+  "path": [
+   "Analyze",
+   "Correlate",
+   "Bivariate"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Menguji apakah tiap butir pertanyaan valid, lewat korelasi Pearson butir dengan skor total variabelnya.",
+  "hyp": "Butir valid jika korelasinya dengan skor total signifikan (sig kurang dari 0,05) dan r hitung lebih besar dari r tabel.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › Correlate › Bivariate`."
+   ],
+   [
+    "Isi variabel (variabel pertama)",
+    "Masukkan CE1 sampai CE5 dan **TotalCE** ke kotak Variables."
+   ],
+   [
+    "Atur opsi",
+    "Centang **Pearson**, pilih **Two-tailed**, centang **Flag significant correlations**."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ],
+   [
+    "Ulangi untuk variabel lain",
+    "Ulangi langkah 3 sampai 5 untuk FOMO (dengan TotalFOMO), PP, SAT, dan RI. Total ada lima kali running."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Korelasi butir dengan skor total (ringkasan dari lima kali running, N = 350)",
+    "h": [
+     "Butir",
+     "Pearson r",
+     "Sig. (2-tailed)",
+     "r tabel (5%, N = 350)",
+     "Keputusan"
+    ],
+    "r": [
+     [
+      "CE1",
+      ",821",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "CE2",
+      ",824",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "CE3",
+      ",834",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "CE4",
+      ",791",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "CE5",
+      ",847",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "FOMO1",
+      ",862",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "FOMO2",
+      ",863",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "FOMO3",
+      ",844",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "FOMO4",
+      ",839",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "FOMO5",
+      ",845",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "PP1",
+      ",846",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "PP2",
+      ",818",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "PP3",
+      ",854",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "PP4",
+      ",870",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "PP5",
+      ",816",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "SAT1",
+      ",842",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "SAT2",
+      ",846",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "SAT3",
+      ",775",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "SAT4",
+      ",806",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "SAT5",
+      ",820",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "RI1",
+      ",886",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "RI2",
+      ",890",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "RI3",
+      ",855",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "RI4",
+      ",888",
+      ",000",
+      ",105",
+      "Valid"
+     ],
+     [
+      "RI5",
+      ",889",
+      ",000",
+      ",105",
+      "Valid"
+     ]
+    ],
+    "n": "r tabel diambil dari tabel nilai kritis r pada df = 348 dan taraf 5% (dua sisi)."
+   }
+  ],
+  "read": [
+   [
+    "Pearson r",
+    "Semua butir berkorelasi ,775 sampai ,890 dengan skor total variabelnya."
+   ],
+   [
+    "Sig. (2-tailed)",
+    "Seluruhnya 0,000, jauh di bawah 0,05."
+   ],
+   [
+    "Bandingkan dengan r tabel",
+    "Semua r hitung jauh lebih besar dari r tabel (,105). Aturan: butir valid jika r hitung memenuhi r tabel."
+   ],
+   [
+    "Kategori Guilford",
+    "23 butir masuk sangat tinggi (di atas 0,80) dan 2 butir masuk tinggi (0,60 sampai 0,80)."
+   ]
+  ],
+  "concl": "Seluruh **25 butir valid**, tidak ada yang perlu dibuang.",
+  "tip": "Korelasi butir dengan total cenderung tinggi karena butir itu sendiri ikut membentuk total. Pembandingnya yang lebih ketat adalah Corrected Item-Total Correlation di analisis reliabilitas.",
+  "uts": 4
+ },
+ {
+  "id": "reliabilitas-uts",
+  "t": "Uji Reliabilitas (Cronbach's Alpha)",
+  "path": [
+   "Analyze",
+   "Scale",
+   "Reliability Analysis"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Menguji konsistensi internal kelima variabel, masing-masing dengan lima butir.",
+  "hyp": "Variabel reliabel jika Cronbach's alpha di atas 0,70 (Nunnally, 1994).",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › Scale › Reliability Analysis`."
+   ],
+   [
+    "Isi item (variabel pertama)",
+    "Masukkan CE1 sampai CE5 ke kotak Items. Pastikan Model = **Alpha**."
+   ],
+   [
+    "Atur statistik",
+    "Klik **Statistics**, centang Item, Scale, dan Scale if item deleted. Continue."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ],
+   [
+    "Ulangi untuk variabel lain",
+    "Ulangi untuk FOMO, PP, SAT, dan RI. Total lima kali running."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Reliability Statistics (contoh: Celebrity Endorse)",
+    "h": [
+     "Cronbach's Alpha",
+     "Alpha Based on Standardized Items",
+     "N of Items"
+    ],
+    "r": [
+     [
+      "{{,881}}",
+      ",881",
+      "5"
+     ]
+    ]
+   },
+   {
+    "t": "Item-Total Statistics (Celebrity Endorse)",
+    "h": [
+     "",
+     "Scale Mean if Item Deleted",
+     "Scale Variance if Item Deleted",
+     "Corrected Item-Total Correlation",
+     "Squared Multiple Correlation",
+     "Cronbach's Alpha if Item Deleted"
+    ],
+    "r": [
+     [
+      "CE1",
+      "31,74",
+      "12,438",
+      ",715",
+      ",528",
+      "{{,856}}"
+     ],
+     [
+      "CE2",
+      "31,75",
+      "12,266",
+      ",715",
+      ",512",
+      "{{,856}}"
+     ],
+     [
+      "CE3",
+      "31,74",
+      "12,113",
+      ",727",
+      ",538",
+      "{{,853}}"
+     ],
+     [
+      "CE4",
+      "31,74",
+      "12,848",
+      ",674",
+      ",458",
+      "{{,865}}"
+     ],
+     [
+      "CE5",
+      "31,78",
+      "11,977",
+      ",747",
+      ",571",
+      "{{,848}}"
+     ]
+    ]
+   },
+   {
+    "t": "Ringkasan alpha kelima variabel (hasil lima kali running)",
+    "h": [
+     "Variabel",
+     "Cronbach's Alpha",
+     "N of Items",
+     "Keputusan"
+    ],
+    "r": [
+     [
+      "Celebrity Endorse (CE)",
+      "{{,881}}",
+      "5",
+      "Reliabel"
+     ],
+     [
+      "Fear of Missing Out (FOMO)",
+      "{{,904}}",
+      "5",
+      "Reliabel"
+     ],
+     [
+      "Perceived Price (PP)",
+      "{{,896}}",
+      "5",
+      "Reliabel"
+     ],
+     [
+      "Customer Satisfaction (SAT)",
+      "{{,876}}",
+      "5",
+      "Reliabel"
+     ],
+     [
+      "Repurchase Intention (RI)",
+      "{{,928}}",
+      "5",
+      "Reliabel"
+     ]
+    ]
+   }
+  ],
+  "read": [
+   [
+    "Reliability Statistics",
+    "Alpha Celebrity Endorse = ,881, lebih besar dari 0,70."
+   ],
+   [
+    "Alpha if Item Deleted",
+    "Jika satu butir dibuang, alpha turun menjadi ,848 sampai ,865 (semuanya di bawah ,881). Tidak ada butir yang perlu dibuang."
+   ],
+   [
+    "Corrected Item-Total",
+    "Korelasi tiap butir dengan sisa butir lain berkisar ,674 sampai ,747, cukup kuat."
+   ],
+   [
+    "Ringkasan lima variabel",
+    "Alpha kelima variabel berkisar ,876 sampai ,928, seluruhnya di atas 0,70."
+   ]
+  ],
+  "concl": "Kelima variabel **reliabel**. Instrumen konsisten untuk dipakai pada analisis berikutnya.",
+  "tip": "Selalu baca kolom Alpha if Item Deleted: bila ada butir yang jika dibuang membuat alpha naik, butir itu patut dicurigai dan boleh dipertimbangkan untuk dibuang.",
+  "uts": 5
+ },
+ {
+  "id": "faktor-uts",
+  "t": "Analisis Faktor (Validitas Konstruk)",
+  "path": [
+   "Analyze",
+   "Dimension Reduction",
+   "Factor"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Memeriksa apakah 25 butir mengelompok menjadi lima faktor sesuai kelima variabelnya (validitas konstruk).",
+  "hyp": "Harapan: tiap lima butir sebuah variabel berkumpul pada satu faktor yang sama.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › Dimension Reduction › Factor` (di SPSS lama menunya bernama Data Reduction)."
+   ],
+   [
+    "Isi variabel",
+    "Masukkan seluruh 25 butir (CE1 sampai RI5) ke kotak Variables. Jangan masukkan kolom Total."
+   ],
+   [
+    "Minta KMO dan Bartlett",
+    "Klik **Descriptives**, centang **KMO and Bartlett's test of sphericity**. Continue."
+   ],
+   [
+    "Atur rotasi",
+    "Klik **Rotation**, pilih **Varimax**, centang **Rotated solution**. Continue."
+   ],
+   [
+    "Rapikan tampilan",
+    "Klik **Options**, centang **Sorted by size** dan **Suppress small coefficients** dengan nilai absolut 0,40. Continue."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ]
+  ],
+  "out": [
+   {
+    "t": "KMO and Bartlett's Test",
+    "h": [
+     "Ukuran",
+     "",
+     "Nilai"
+    ],
+    "r": [
+     [
+      "Kaiser-Meyer-Olkin Measure of Sampling Adequacy",
+      "",
+      "{{,934}}"
+     ],
+     [
+      "Bartlett's Test of Sphericity",
+      "Approx. Chi-Square",
+      "5902,304"
+     ],
+     [
+      "",
+      "df",
+      "300"
+     ],
+     [
+      "",
+      "Sig.",
+      "{{,000}}"
+     ]
+    ]
+   },
+   {
+    "t": "Total Variance Explained (enam komponen pertama)",
+    "h": [
+     "Component",
+     "Eigenvalue Total",
+     "% of Variance",
+     "Cumulative %",
+     "Rotation Total",
+     "Rotation % Var.",
+     "Rotation Cum. %"
+    ],
+    "r": [
+     [
+      "1",
+      "{{10,116}}",
+      "40,464",
+      "40,464",
+      "3,971",
+      "15,884",
+      "15,884"
+     ],
+     [
+      "2",
+      "{{3,317}}",
+      "13,270",
+      "53,734",
+      "3,732",
+      "14,927",
+      "30,812"
+     ],
+     [
+      "3",
+      "{{1,887}}",
+      "7,550",
+      "61,284",
+      "3,576",
+      "14,304",
+      "45,116"
+     ],
+     [
+      "4",
+      "{{1,602}}",
+      "6,408",
+      "67,692",
+      "3,469",
+      "13,875",
+      "58,991"
+     ],
+     [
+      "5",
+      "{{1,006}}",
+      "4,023",
+      "71,714",
+      "3,181",
+      "12,723",
+      "71,714"
+     ],
+     [
+      "6",
+      ",550",
+      "2,201",
+      "73,915",
+      "",
+      "",
+      ""
+     ]
+    ],
+    "n": "Kolom Extraction identik dengan Initial sehingga tidak ditampilkan."
+   },
+   {
+    "t": "Rotated Component Matrix (Varimax, nilai di bawah 0,40 disembunyikan)",
+    "h": [
+     "",
+     "Component 1",
+     "Component 2",
+     "Component 3",
+     "Component 4",
+     "Component 5"
+    ],
+    "r": [
+     [
+      "CE1",
+      "",
+      "",
+      "{{,744}}",
+      "",
+      ""
+     ],
+     [
+      "CE2",
+      "",
+      "",
+      "{{,783}}",
+      "",
+      ""
+     ],
+     [
+      "CE3",
+      "",
+      "",
+      "{{,736}}",
+      "",
+      ""
+     ],
+     [
+      "CE4",
+      "",
+      "",
+      "{{,698}}",
+      "",
+      ""
+     ],
+     [
+      "CE5",
+      "",
+      "",
+      "{{,747}}",
+      "",
+      ""
+     ],
+     [
+      "FOMO1",
+      "",
+      "",
+      "",
+      "",
+      "{{,730}}"
+     ],
+     [
+      "FOMO2",
+      "",
+      "",
+      "",
+      "",
+      "{{,718}}"
+     ],
+     [
+      "FOMO3",
+      "",
+      "",
+      "",
+      "",
+      "{{,739}}"
+     ],
+     [
+      "FOMO4",
+      "",
+      "",
+      "",
+      "",
+      "{{,681}}"
+     ],
+     [
+      "FOMO5",
+      "",
+      "",
+      "",
+      "",
+      "{{,652}}"
+     ],
+     [
+      "PP1",
+      "",
+      "{{,779}}",
+      "",
+      "",
+      ""
+     ],
+     [
+      "PP2",
+      "",
+      "{{,782}}",
+      "",
+      "",
+      ""
+     ],
+     [
+      "PP3",
+      "",
+      "{{,802}}",
+      "",
+      "",
+      ""
+     ],
+     [
+      "PP4",
+      "",
+      "{{,781}}",
+      "",
+      "",
+      ""
+     ],
+     [
+      "PP5",
+      "",
+      "{{,706}}",
+      "",
+      "",
+      ""
+     ],
+     [
+      "SAT1",
+      "",
+      "",
+      "",
+      "{{,773}}",
+      ""
+     ],
+     [
+      "SAT2",
+      "",
+      "",
+      "",
+      "{{,809}}",
+      ""
+     ],
+     [
+      "SAT3",
+      "",
+      "",
+      "",
+      "{{,742}}",
+      ""
+     ],
+     [
+      "SAT4",
+      "",
+      "",
+      "",
+      "{{,738}}",
+      ""
+     ],
+     [
+      "SAT5",
+      "",
+      "",
+      "",
+      "{{,781}}",
+      ""
+     ],
+     [
+      "RI1",
+      "{{,835}}",
+      "",
+      "",
+      "",
+      ""
+     ],
+     [
+      "RI2",
+      "{{,863}}",
+      "",
+      "",
+      "",
+      ""
+     ],
+     [
+      "RI3",
+      "{{,828}}",
+      "",
+      "",
+      "",
+      ""
+     ],
+     [
+      "RI4",
+      "{{,860}}",
+      "",
+      "",
+      "",
+      ""
+     ],
+     [
+      "RI5",
+      "{{,832}}",
+      "",
+      "",
+      "",
+      ""
+     ]
+    ],
+    "n": "Nomor dan urutan komponen di SPSS-mu bisa berbeda dari tabel ini; yang penting adalah pengelompokan butirnya."
+   }
+  ],
+  "read": [
+   [
+    "KMO dan Bartlett",
+    "KMO = ,934, jauh di atas syarat 0,50. Bartlett signifikan (0,000). Data layak dianalisis faktor."
+   ],
+   [
+    "Total Variance Explained",
+    "Lima komponen punya eigenvalue di atas 1 (10,116, 3,317, 1,887, 1,602, 1,006), jadi terbentuk lima faktor. Bersama-sama menjelaskan 71,714% variasi."
+   ],
+   [
+    "Rotated Component Matrix",
+    "Tiap lima butir sebuah variabel berkumpul pada satu komponen yang sama (Component 1 = RI; Component 2 = PP; Component 3 = CE; Component 4 = SAT; Component 5 = FOMO). Loading utamanya berkisar ,65 sampai ,86."
+   ],
+   [
+    "Cross loading",
+    "Tidak ada butir yang memuat 0,40 atau lebih pada komponen lain (yang tertinggi ,38), jadi kelima konstruk terpisah dengan jelas."
+   ]
+  ],
+  "concl": "**Validitas konstruk terpenuhi**: kelima variabel membentuk lima faktor yang jelas dan setiap butir berada pada faktor yang semestinya.",
+  "tip": "Eigenvalue komponen kelima (1,006) hanya tipis di atas 1. Jika dosen meminta jumlah faktor ditetapkan sesuai model, pilih Extraction › Fixed number of factors = 5. Perlu diingat, PCA + Varimax ini bersifat eksploratori; CFA sejati memakai SEM (AMOS atau SmartPLS).",
+  "uts": 6
+ },
+ {
+  "id": "ttest-uts",
+  "t": "T-test (Beda Dua Kelompok)",
+  "path": [
+   "Analyze",
+   "Compare Means",
+   "Independent-Samples T Test"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Apakah rata-rata Repurchase Intention (TotalRI) berbeda antara responden laki-laki dan perempuan?",
+  "hyp": "Levene H0: varians kedua kelompok sama. Uji-t H0: rata-rata TotalRI laki-laki sama dengan perempuan.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › Compare Means › Independent-Samples T Test`. Dipakai karena laki-laki dan perempuan adalah dua kelompok responden yang berbeda."
+   ],
+   [
+    "Isi variabel",
+    "TotalRI ke **Test Variable(s)**, Gender ke **Grouping Variable**."
+   ],
+   [
+    "Definisikan kelompok",
+    "Klik **Define Groups**: Group 1 = `1`, Group 2 = `2`. Continue."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Group Statistics",
+    "h": [
+     "Gender",
+     "N",
+     "Mean",
+     "Std. Deviation",
+     "Std. Error Mean"
+    ],
+    "r": [
+     [
+      "Laki-laki",
+      "166",
+      "39,69",
+      "4,619",
+      ",358"
+     ],
+     [
+      "Perempuan",
+      "184",
+      "39,42",
+      "4,436",
+      ",327"
+     ]
+    ]
+   },
+   {
+    "t": "Independent Samples Test (TotalRI)",
+    "h": [
+     "",
+     "Levene F",
+     "Levene Sig.",
+     "t",
+     "df",
+     "Sig. (2-tailed)",
+     "Mean Difference",
+     "Std. Error Diff.",
+     "95% CI Lower",
+     "95% CI Upper"
+    ],
+    "r": [
+     [
+      "Equal variances assumed",
+      ",259",
+      "{{,611}}",
+      ",554",
+      "348",
+      "{{,580}}",
+      ",268",
+      ",484",
+      "-,684",
+      "1,221"
+     ],
+     [
+      "Equal variances not assumed",
+      "",
+      "",
+      ",553",
+      "340,977",
+      ",581",
+      ",268",
+      ",485",
+      "-,686",
+      "1,223"
+     ]
+    ]
+   }
+  ],
+  "read": [
+   [
+    "Group Statistics",
+    "Rata-rata TotalRI laki-laki 39,69 dan perempuan 39,42. Selisihnya sangat kecil."
+   ],
+   [
+    "Levene (langkah 1)",
+    "Sig ,611 lebih besar dari 0,05, jadi varians sama. Pakai baris **Equal variances assumed**."
+   ],
+   [
+    "Uji-t (langkah 2)",
+    "t = ,554 dengan sig ,580 (dua sisi), lebih besar dari 0,05, jadi H0 tidak ditolak."
+   ],
+   [
+    "Mean Difference dan CI",
+    "Selisih rata-rata ,268. Interval kepercayaan 95% (-,684 sampai 1,221) memuat 0, konsisten dengan hasil tidak signifikan."
+   ]
+  ],
+  "concl": "**Tidak ada perbedaan signifikan** Repurchase Intention antara laki-laki dan perempuan.",
+  "tip": "Hasil tidak signifikan bukan kegagalan analisis. Itu temuan: gender tidak membedakan niat beli ulang, sehingga aman diperlakukan sebagai variabel kontrol.",
+  "uts": 7
+ },
+ {
+  "id": "anova-uts",
+  "t": "ANOVA (Beda Tiga Kelompok) + Post Hoc",
+  "path": [
+   "Analyze",
+   "General Linear Model",
+   "Univariate"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Apakah rata-rata Repurchase Intention (TotalRI) berbeda menurut frekuensi belanja online (1-2 kali, 3-5 kali, lebih dari 5 kali per bulan)?",
+  "hyp": "H0: rata-rata TotalRI sama pada ketiga kelompok frekuensi.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › General Linear Model › Univariate`."
+   ],
+   [
+    "Isi variabel",
+    "TotalRI ke **Dependent Variable**, Frekuensi ke **Fixed Factor(s)**."
+   ],
+   [
+    "Atur Options",
+    "Klik **Options**, centang **Descriptive statistics** dan **Homogeneity tests**. Continue."
+   ],
+   [
+    "Minta post hoc",
+    "Klik **Post Hoc**, pindahkan Frekuensi ke Post Hoc Tests for, centang **Tukey**. Continue."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Descriptive Statistics (TotalRI)",
+    "h": [
+     "Frekuensi",
+     "Mean",
+     "Std. Deviation",
+     "N"
+    ],
+    "r": [
+     [
+      "1-2 kali",
+      "37,410",
+      "3,968",
+      "105"
+     ],
+     [
+      "3-5 kali",
+      "39,243",
+      "4,075",
+      "140"
+     ],
+     [
+      "Lebih dari 5 kali",
+      "42,086",
+      "4,399",
+      "105"
+     ],
+     [
+      "Total",
+      "39,546",
+      "4,519",
+      "350"
+     ]
+    ]
+   },
+   {
+    "t": "Levene's Test of Equality of Error Variances",
+    "h": [
+     "F",
+     "df1",
+     "df2",
+     "Sig."
+    ],
+    "r": [
+     [
+      ",773",
+      "2",
+      "347",
+      "{{,462}}"
+     ]
+    ]
+   },
+   {
+    "t": "Tests of Between-Subjects Effects (TotalRI)",
+    "h": [
+     "Source",
+     "Type III Sum of Squares",
+     "df",
+     "Mean Square",
+     "F",
+     "Sig."
+    ],
+    "r": [
+     [
+      "Corrected Model",
+      "1169,407ᵃ",
+      "2",
+      "584,703",
+      "34,057",
+      ",000"
+     ],
+     [
+      "Intercept",
+      "538315,346",
+      "1",
+      "538315,346",
+      "31355,393",
+      ",000"
+     ],
+     [
+      "Frekuensi",
+      "1169,407",
+      "2",
+      "584,703",
+      "{{34,057}}",
+      "{{,000}}"
+     ],
+     [
+      "Error",
+      "5957,362",
+      "347",
+      "17,168",
+      "",
+      ""
+     ],
+     [
+      "Total",
+      "554479,000",
+      "350",
+      "",
+      "",
+      ""
+     ],
+     [
+      "Corrected Total",
+      "7126,769",
+      "349",
+      "",
+      "",
+      ""
+     ]
+    ],
+    "n": "a. R Squared = ,164 (Adjusted R Squared = ,159)"
+   },
+   {
+    "t": "Multiple Comparisons (Tukey HSD)",
+    "h": [
+     "(I) Frekuensi",
+     "(J) Frekuensi",
+     "Mean Difference (I-J)",
+     "Std. Error",
+     "Sig.",
+     "95% CI Lower",
+     "95% CI Upper"
+    ],
+    "r": [
+     [
+      "1-2 kali",
+      "3-5 kali",
+      "{{1,833*}}",
+      ",535",
+      ",002",
+      ",574",
+      "3,092"
+     ],
+     [
+      "1-2 kali",
+      "Lebih dari 5 kali",
+      "{{4,676*}}",
+      ",572",
+      ",000",
+      "3,330",
+      "6,022"
+     ],
+     [
+      "3-5 kali",
+      "Lebih dari 5 kali",
+      "{{2,843*}}",
+      ",535",
+      ",000",
+      "1,584",
+      "4,102"
+     ],
+     [
+      "3-5 kali",
+      "1-2 kali",
+      "-1,833*",
+      ",535",
+      ",002",
+      "-3,092",
+      "-,574"
+     ],
+     [
+      "Lebih dari 5 kali",
+      "1-2 kali",
+      "-4,676*",
+      ",572",
+      ",000",
+      "-6,022",
+      "-3,330"
+     ],
+     [
+      "Lebih dari 5 kali",
+      "3-5 kali",
+      "-2,843*",
+      ",535",
+      ",000",
+      "-4,102",
+      "-1,584"
+     ]
+    ],
+    "n": "*. Beda rata-rata signifikan pada tingkat 0,05."
+   },
+   {
+    "t": "Homogeneous Subsets (Tukey HSD)",
+    "h": [
+     "Frekuensi",
+     "N",
+     "Subset 1",
+     "Subset 2",
+     "Subset 3"
+    ],
+    "r": [
+     [
+      "1-2 kali",
+      "105",
+      "37,410",
+      "",
+      ""
+     ],
+     [
+      "3-5 kali",
+      "140",
+      "",
+      "39,243",
+      ""
+     ],
+     [
+      "Lebih dari 5 kali",
+      "105",
+      "",
+      "",
+      "42,086"
+     ]
+    ]
+   }
+  ],
+  "read": [
+   [
+    "Descriptive Statistics",
+    "Rata-rata TotalRI naik seiring frekuensi belanja: 37,41, 39,24, dan 42,09."
+   ],
+   [
+    "Levene",
+    "Sig ,462 lebih besar dari 0,05: varians homogen, asumsi ANOVA terpenuhi."
+   ],
+   [
+    "Tests of Between-Subjects",
+    "Pada baris **Frekuensi** F = 34,057 dengan sig 0,000, jadi H0 ditolak. Baris Intercept boleh diabaikan."
+   ],
+   [
+    "R Squared",
+    "Adjusted R Squared ,159: frekuensi belanja menjelaskan sekitar 15,9% variasi niat beli ulang."
+   ],
+   [
+    "Post hoc (Tukey)",
+    "Ketiga pasangan kelompok berbeda signifikan (semua sig di bawah 0,05)."
+   ],
+   [
+    "Homogeneous Subsets",
+    "Setiap kelompok berada di subset sendiri, artinya tidak ada dua kelompok yang rata-ratanya sama."
+   ]
+  ],
+  "concl": "Repurchase Intention **berbeda signifikan menurut frekuensi belanja**; makin sering berbelanja, makin tinggi niat beli ulangnya.",
+  "tip": "ANOVA hanya menjawab apakah ada yang berbeda. Pasangan mana yang berbeda baru terjawab di tabel Tukey, jadi jangan berhenti di tabel F.",
+  "uts": 8
+ },
+ {
+  "id": "ancova-uts",
+  "t": "ANCOVA (ANOVA + Variabel Kontrol)",
+  "path": [
+   "Analyze",
+   "General Linear Model",
+   "Univariate"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Apakah Repurchase Intention (TotalRI) tetap berbeda menurut frekuensi belanja setelah pengaruh Usia (kovariat) dikendalikan?",
+  "hyp": "H0: setelah Usia dikendalikan, rata-rata TotalRI sama pada ketiga kelompok frekuensi.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › General Linear Model › Univariate`."
+   ],
+   [
+    "Isi variabel",
+    "TotalRI ke **Dependent Variable**, Frekuensi ke **Fixed Factor(s)**, **Usia ke Covariate(s)**."
+   ],
+   [
+    "Uji asumsi kesejajaran lereng (run pertama)",
+    "Klik **Model**, pilih **Custom**, lalu masukkan Frekuensi, Usia, dan interaksi Frekuensi*Usia (pilih keduanya, ubah Build Term ke Interaction). Klik OK dan baca baris interaksinya."
+   ],
+   [
+    "Model akhir (run kedua)",
+    "Kembali ke **Model**, pilih **Full factorial** atau Custom tanpa interaksi. Pastikan Type III."
+   ],
+   [
+    "Minta rata-rata terkoreksi",
+    "Klik **Options**: pindahkan Frekuensi ke Display Means for, centang **Compare main effects** dengan penyesuaian **Bonferroni**, centang **Homogeneity tests**. Continue."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Uji kesejajaran lereng (model dengan interaksi)",
+    "h": [
+     "Source",
+     "Type III Sum of Squares",
+     "df",
+     "Mean Square",
+     "F",
+     "Sig."
+    ],
+    "r": [
+     [
+      "Frekuensi",
+      "5,707",
+      "2",
+      "2,854",
+      ",185",
+      ",831"
+     ],
+     [
+      "Usia",
+      "588,613",
+      "1",
+      "588,613",
+      "38,187",
+      ",000"
+     ],
+     [
+      "Frekuensi * Usia",
+      "24,099",
+      "2",
+      "12,049",
+      "{{,782}}",
+      "{{,458}}"
+     ],
+     [
+      "Error",
+      "5302,334",
+      "344",
+      "15,414",
+      "",
+      ""
+     ]
+    ]
+   },
+   {
+    "t": "Levene's Test of Equality of Error Variances",
+    "h": [
+     "F",
+     "df1",
+     "df2",
+     "Sig."
+    ],
+    "r": [
+     [
+      ",773",
+      "2",
+      "347",
+      "{{,462}}"
+     ]
+    ]
+   },
+   {
+    "t": "Tests of Between-Subjects Effects (model ANCOVA)",
+    "h": [
+     "Source",
+     "Type III Sum of Squares",
+     "df",
+     "Mean Square",
+     "F",
+     "Sig."
+    ],
+    "r": [
+     [
+      "Corrected Model",
+      "1738,960ᵃ",
+      "3",
+      "579,653",
+      "37,654",
+      ",000"
+     ],
+     [
+      "Intercept",
+      "16394,325",
+      "1",
+      "16394,325",
+      "1064,960",
+      ",000"
+     ],
+     [
+      "Usia",
+      "630,929",
+      "1",
+      "630,929",
+      "{{40,985}}",
+      "{{,000}}"
+     ],
+     [
+      "Frekuensi",
+      "1108,031",
+      "2",
+      "554,015",
+      "{{35,988}}",
+      "{{,000}}"
+     ],
+     [
+      "Error",
+      "5326,433",
+      "346",
+      "15,394",
+      "",
+      ""
+     ],
+     [
+      "Total",
+      "554479,000",
+      "350",
+      "",
+      "",
+      ""
+     ],
+     [
+      "Corrected Total",
+      "7065,393",
+      "349",
+      "",
+      "",
+      ""
+     ]
+    ],
+    "n": "a. R Squared = ,253 (Adjusted R Squared = ,246)"
+   },
+   {
+    "t": "Estimated Marginal Means: Frekuensi (rata-rata terkoreksi)",
+    "h": [
+     "Frekuensi",
+     "Mean",
+     "Std. Error",
+     "95% CI Lower",
+     "95% CI Upper"
+    ],
+    "r": [
+     [
+      "1-2 kali",
+      "37,519",
+      ",383",
+      "36,765",
+      "38,273"
+     ],
+     [
+      "3-5 kali",
+      "39,186",
+      ",332",
+      "38,533",
+      "39,838"
+     ],
+     [
+      "Lebih dari 5 kali",
+      "42,053",
+      ",383",
+      "41,299",
+      "42,806"
+     ]
+    ],
+    "n": "Covariates appearing in the model are evaluated at: Usia = 26,02."
+   },
+   {
+    "t": "Pairwise Comparisons (Bonferroni)",
+    "h": [
+     "(I) Frekuensi",
+     "(J) Frekuensi",
+     "Mean Difference (I-J)",
+     "Std. Error",
+     "Sig.",
+     "95% CI Lower",
+     "95% CI Upper"
+    ],
+    "r": [
+     [
+      "1-2 kali",
+      "3-5 kali",
+      "-1,667*",
+      ",507",
+      ",003",
+      "-2,887",
+      "-,447"
+     ],
+     [
+      "1-2 kali",
+      "Lebih dari 5 kali",
+      "-4,534*",
+      ",542",
+      ",000",
+      "-5,838",
+      "-3,230"
+     ],
+     [
+      "3-5 kali",
+      "Lebih dari 5 kali",
+      "-2,867*",
+      ",507",
+      ",000",
+      "-4,085",
+      "-1,648"
+     ],
+     [
+      "3-5 kali",
+      "1-2 kali",
+      "1,667*",
+      ",507",
+      ",003",
+      ",447",
+      "2,887"
+     ],
+     [
+      "Lebih dari 5 kali",
+      "1-2 kali",
+      "4,534*",
+      ",542",
+      ",000",
+      "3,230",
+      "5,838"
+     ],
+     [
+      "Lebih dari 5 kali",
+      "3-5 kali",
+      "2,867*",
+      ",507",
+      ",000",
+      "1,648",
+      "4,085"
+     ]
+    ],
+    "n": "*. Beda rata-rata signifikan pada tingkat 0,05. Penyesuaian: Bonferroni."
+   }
+  ],
+  "read": [
+   [
+    "Asumsi kesejajaran lereng",
+    "Baris interaksi Frekuensi * Usia punya sig ,458, lebih besar dari 0,05. Hubungan Usia dengan TotalRI sejajar di ketiga kelompok, asumsi terpenuhi, ANCOVA boleh dilanjutkan."
+   ],
+   [
+    "Levene",
+    "Sig ,462 lebih besar dari 0,05: varians homogen."
+   ],
+   [
+    "Usia (kovariat)",
+    "F = 40,985, sig 0,000: Usia memang berpengaruh pada niat beli ulang, jadi mengendalikannya masuk akal."
+   ],
+   [
+    "Frekuensi",
+    "F = 35,988, sig 0,000: setelah Usia dikendalikan, kelompok frekuensi tetap berbeda. Pada ANOVA F-nya 34,057."
+   ],
+   [
+    "Rata-rata terkoreksi",
+    "Rata-rata disesuaikan pada Usia = 26,02: 37,52, 39,19, dan 42,05, polanya sama dengan ANOVA."
+   ],
+   [
+    "Pairwise (Bonferroni)",
+    "Seluruh pasangan kelompok berbeda signifikan (sig di bawah 0,05)."
+   ],
+   [
+    "R Squared",
+    "Adjusted R Squared ,246, naik dari ,159 pada ANOVA karena Usia ikut menjelaskan variasi."
+   ]
+  ],
+  "concl": "Perbedaan Repurchase Intention menurut frekuensi belanja **tetap signifikan setelah Usia dikontrol**.",
+  "tip": "Jika interaksi Frekuensi * Usia signifikan, ANCOVA tidak tepat karena lereng tiap kelompok berbeda. Selalu cek asumsi ini sebelum membaca hasil utamanya.",
+  "uts": 9
+ },
+ {
+  "id": "manova-uts",
+  "t": "MANOVA (Beda pada Dua Outcome)",
+  "path": [
+   "Analyze",
+   "General Linear Model",
+   "Multivariate"
+  ],
+  "file": "Data_Latihan_UTS.sav",
+  "goal": "Apakah ketiga kelompok frekuensi belanja berbeda pada Repurchase Intention (TotalRI) dan Customer Satisfaction (TotalSAT) secara bersamaan?",
+  "hyp": "H0: vektor rata-rata TotalRI dan TotalSAT sama pada ketiga kelompok frekuensi.",
+  "steps": [
+   [
+    "Buka datanya",
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+   ],
+   [
+    "Buka menu",
+    "`Analyze › General Linear Model › Multivariate`."
+   ],
+   [
+    "Isi variabel",
+    "TotalRI dan TotalSAT ke **Dependent Variables**, Frekuensi ke **Fixed Factor(s)**."
+   ],
+   [
+    "Atur Options",
+    "Klik **Options**, centang **Descriptive statistics** dan **Homogeneity tests** (ini memunculkan Box's M dan Levene). Continue."
+   ],
+   [
+    "Jalankan",
+    "Klik **OK**."
+   ]
+  ],
+  "out": [
+   {
+    "t": "Box's Test of Equality of Covariance Matrices",
+    "h": [
+     "Box's M",
+     "F",
+     "df1",
+     "df2",
+     "Sig."
+    ],
+    "r": [
+     [
+      "4,311",
+      ",712",
+      "6",
+      "2082129,927",
+      "{{,640}}"
+     ]
+    ]
+   },
+   {
+    "t": "Multivariate Tests (efek Frekuensi)",
+    "h": [
+     "Effect",
+     "Value",
+     "F",
+     "Hypothesis df",
+     "Error df",
+     "Sig."
+    ],
+    "r": [
+     [
+      "Pillai's Trace",
+      ",167",
+      "15,826",
+      "4",
+      "694",
+      "{{,000}}"
+     ],
+     [
+      "Wilks' Lambda",
+      ",833",
+      "16,519",
+      "4",
+      "692",
+      "{{,000}}"
+     ],
+     [
+      "Hotelling's Trace",
+      ",200",
+      "17,243",
+      "4",
+      "414,162",
+      "{{,000}}"
+     ],
+     [
+      "Roy's Largest Root ᵇ",
+      ",197",
+      "34,131",
+      "2",
+      "347",
+      "{{,000}}"
+     ]
+    ],
+    "n": "b. Statistik ini adalah batas atas F yang menghasilkan batas bawah signifikansi."
+   },
+   {
+    "t": "Levene's Test of Equality of Error Variances",
+    "h": [
+     "",
+     "F",
+     "df1",
+     "df2",
+     "Sig."
+    ],
+    "r": [
+     [
+      "TotalRI",
+      ",773",
+      "2",
+      "347",
+      "{{,462}}"
+     ],
+     [
+      "TotalSAT",
+      ",955",
+      "2",
+      "347",
+      "{{,386}}"
+     ]
+    ]
+   },
+   {
+    "t": "Tests of Between-Subjects Effects",
+    "h": [
+     "Source",
+     "Dependent Variable",
+     "Type III Sum of Squares",
+     "df",
+     "Mean Square",
+     "F",
+     "Sig."
+    ],
+    "r": [
+     [
+      "Corrected Model",
+      "TotalRI",
+      "1169,407ᵃ",
+      "2",
+      "584,703",
+      "34,057",
+      ",000"
+     ],
+     [
+      "Intercept",
+      "",
+      "538315,346",
+      "1",
+      "538315,346",
+      "31355,393",
+      ",000"
+     ],
+     [
+      "Frekuensi",
+      "",
+      "1169,407",
+      "2",
+      "584,703",
+      "{{34,057}}",
+      "{{,000}}"
+     ],
+     [
+      "Error",
+      "",
+      "5957,362",
+      "347",
+      "17,168",
+      "",
+      ""
+     ],
+     [
+      "Corrected Model",
+      "TotalSAT",
+      "270,498ᶜ",
+      "2",
+      "135,249",
+      "7,994",
+      ",000"
+     ],
+     [
+      "Intercept",
+      "",
+      "551215,432",
+      "1",
+      "551215,432",
+      "32581,983",
+      ",000"
+     ],
+     [
+      "Frekuensi",
+      "",
+      "270,498",
+      "2",
+      "135,249",
+      "{{7,994}}",
+      "{{,000}}"
+     ],
+     [
+      "Error",
+      "",
+      "5870,476",
+      "347",
+      "16,918",
+      "",
+      ""
+     ]
+    ],
+    "n": "a. R Squared = ,164 (Adjusted R Squared = ,159); c. R Squared = ,044 (Adjusted R Squared = ,039)"
+   }
+  ],
+  "read": [
+   [
+    "Box's M",
+    "Sig ,640 lebih besar dari 0,05: matriks kovarians homogen, asumsi MANOVA terpenuhi."
+   ],
+   [
+    "Levene",
+    "Sig kedua variabel (,462 dan ,386) di atas 0,05: varians tiap outcome homogen."
+   ],
+   [
+    "Multivariate Tests",
+    "Wilks' Lambda = ,833, F = 16,519, sig 0,000. Keempat statistik sama-sama signifikan, jadi ketiga kelompok berbeda pada gabungan TotalRI dan TotalSAT. Pillai's Trace dipilih bila asumsi kurang terpenuhi, Wilks' Lambda paling umum dilaporkan."
+   ],
+   [
+    "Between-Subjects (TotalRI)",
+    "F = 34,057, sig 0,000: berbeda signifikan."
+   ],
+   [
+    "Between-Subjects (TotalSAT)",
+    "F = 7,994, sig 0,000: juga berbeda signifikan, tetapi pengaruhnya lebih kecil (Adjusted R Squared ,039 dibanding ,159 untuk TotalRI)."
+   ]
+  ],
+  "concl": "Kelompok frekuensi belanja **berbeda signifikan pada kedua outcome sekaligus** (Repurchase Intention dan Customer Satisfaction).",
+  "tip": "Baca MANOVA berurutan: asumsi, uji multivariat, baru uji univariat. Uji univariat hanya bermakna bila uji multivariatnya signifikan. Bila ingin tahu pasangan kelompok yang beda, tambahkan Post Hoc seperti pada ANOVA.",
+  "uts": 10
+ }
+];
+const ALL = TUT.concat(UTS);
+
 const TREE = {q:"Apakah variabelmu bisa dibagi menjadi variabel bebas (penyebab) dan terikat (akibat)?", o:[
  ["Ya, ada bebas dan terikat", {q:"Skala variabel terikat (DV)?", o:[
    ["Metrik (interval atau rasio)", {q:"Berapa variabel terikatnya?", o:[
@@ -422,7 +2714,8 @@ const RUN = {};            // status eksekusi tutorial: "l" (memuat) atau "d" (s
 let Q = {i:0,s:0,a:null};  // status kuis
 let W = [];                // jalur pemilih uji
 const M = document.getElementById("M");
-const tutOf = id => TUT.find(t => t.id === id);
+const tutOf = id => ALL.find(t => t.id === id);
+const base = t => t.uts ? "#/uts/" : "#/spss/";
 const toggle = (arr,v,key) => { const i = arr.indexOf(v); i<0 ? arr.push(v) : arr.splice(i,1); store.set(key,arr); };
 const path = p => `<div class="path">${p.map((x,i)=>`${i?'<span class="sep" aria-hidden="true">&#8250;</span>':''}<kbd>${esc(x)}</kbd>`).join("")}</div>`;
 
@@ -432,7 +2725,7 @@ const table = o => `<div class="tw"><table class="dt"><thead><tr>${o.h.map(x=>`<
 const glossary = g => `<dl>${g.map(x=>`<dt>${esc(x[0])}</dt><dd>${fmt(x[1])}</dd>`).join("")}</dl>`;
 
 function outTable(o){
-  if(o.chart) return `<figure class="out"><figcaption>${esc(o.t)}</figcaption><div class="hist" role="img" aria-label="Histogram miring ke kanan">${o.chart.map(h=>`<span style="height:${h}%"></span>`).join("")}</div>${o.n?`<div class="nt">${fmt(o.n)}</div>`:""}</figure>`;
+  if(o.chart) return `<figure class="out"><figcaption>${esc(o.t)}</figcaption><div class="hist" role="img" aria-label="${esc(o.t)}">${o.chart.map((h,k)=>`<span style="height:${h}%"${o.lab?` data-l="${esc(o.lab[k]||"")}"`:""}></span>`).join("")}</div>${o.lab?`<div class="hl"><span>${esc(o.lab[0])}</span><span>${esc(o.lab[o.lab.length-1])}</span></div>`:""}${o.n?`<div class="nt">${fmt(o.n)}</div>`:""}</figure>`;
   return `<figure class="out"><figcaption>${esc(o.t)}</figcaption><div class="tw"><table class="ot"><thead><tr>${o.h.map(x=>`<th>${fmt(x)}</th>`).join("")}</tr></thead><tbody>${o.r.map(r=>`<tr>${r.map((c,i)=>i?`<td>${fmt(c)}</td>`:`<th scope="row">${fmt(c)}</th>`).join("")}</tr>`).join("")}</tbody></table></div>${o.n?`<div class="nt">${fmt(o.n)}</div>`:""}</figure>`;
 }
 
@@ -450,8 +2743,8 @@ function outHTML(t){
 
 /* ---------- HALAMAN ---------- */
 function home(){
-  const total = CH.length + TUT.length, d = doneCh.length + doneT.length, pct = Math.round(d/total*100);
-  let h = win("boot.log", `<p class="boot">$ ./lab-spss --start\n<span class="ok">[ok]</span> ${CH.length} modul dimuat\n<span class="ok">[ok]</span> ${TUT.length} tutorial SPSS dimuat\n<span class="ok">[ok]</span> ${QS.length} soal latihan dimuat</p>
+  const total = CH.length + ALL.length, d = doneCh.length + doneT.length, pct = Math.round(d/total*100);
+  let h = win("boot.log", `<p class="boot">$ ./lab-spss --start\n<span class="ok">[ok]</span> ${CH.length} modul dimuat\n<span class="ok">[ok]</span> ${TUT.length} tutorial SPSS dimuat\n<span class="ok">[ok]</span> ${UTS.length} langkah Bahas UTS dimuat\n<span class="ok">[ok]</span> ${QS.length} soal latihan dimuat</p>
   <h1>Belajar analisis data, langkah demi langkah di SPSS.</h1>
   <p class="lead">Pilih modul untuk memahami konsepnya, lalu buka tutorial SPSS untuk mempraktikkan menu, melihat output, dan memahami pembahasannya.</p>
   <div class="meter"><span>progres</span><div class="track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><div class="fill" style="width:${pct}%"></div></div><span>${d}/${total}</span></div>`);
@@ -461,9 +2754,10 @@ function home(){
         return `<a class="card ${dn?"done":""}" href="#/ch/${c.n}"><span class="code">modul_0${c.n}</span>${dn?'<span class="badge">&#10003; selesai</span>':""}<b>${esc(c.t)}</b><p>${esc(c.lead)}</p><span class="meta">${c.tu.length?`<span class="tag">${c.tu.length} tutorial SPSS</span>`:'<span class="tag">konsep</span>'}</span></a>`}).join("") + `</div>`;
   });
   h += `<div class="sec">tutorial-spss/ <small>praktik langsung</small></div><div class="grid">` + TUT.map(t=>cardT(t)).join("") + `</div>`;
+  h += `<div class="sec">bahas-uts/ <small>cara mengerjakan perintah UTS</small></div><div class="grid">` + UTS.map(t=>cardT(t)).join("") + `</div>`;
   return h;
 }
-const cardT = t => `<a class="card ${doneT.includes(t.id)?"done":""}" href="#/spss/${t.id}"><span class="code">modul_0${t.ch}</span>${doneT.includes(t.id)?'<span class="badge">&#10003; selesai</span>':""}<b>${esc(t.t)}</b><p>${t.path.map(esc).join(" &#8250; ")}</p><span class="meta"><span class="tag">${esc(t.file)}</span></span></a>`;
+const cardT = t => `<a class="card ${doneT.includes(t.id)?"done":""}" href="${base(t)}${t.id}"><span class="code">${t.uts?"uts_"+String(UTS.indexOf(t)+1).padStart(2,"0"):"modul_0"+t.ch}</span>${doneT.includes(t.id)?'<span class="badge">&#10003; selesai</span>':""}<b>${esc(t.t)}</b><p>${t.path.map(esc).join(" &#8250; ")}</p><span class="meta"><span class="tag">${esc(t.file)}</span></span></a>`;
 
 function chapter(n){
   const c = CH[n-1]; if(!c) return home();
@@ -488,15 +2782,16 @@ function tutIndex(){
 
 function tutorial(id){
   const t = tutOf(id); if(!t) return tutIndex();
-  const i = TUT.indexOf(t), sd = stepsDone[id] || [];
-  let b = `<p><a class="back" href="#/spss">&#8592; semua tutorial</a> <span class="mute">/ </span><a class="back" href="#/ch/${t.ch}">modul_0${t.ch}</a></p>
+  const L = t.uts ? UTS : TUT, i = L.indexOf(t), sd = stepsDone[id] || [];
+  const hd = t.uts ? `<p><a class="back" href="#/uts">&#8592; Bahas UTS</a> <span class="mute">/ langkah ${i+1} dari ${L.length}</span></p>` : `<p><a class="back" href="#/spss">&#8592; semua tutorial</a> <span class="mute">/ </span><a class="back" href="#/ch/${t.ch}">modul_0${t.ch}</a></p>`;
+  let b = hd + `
   <h2>${esc(t.t)}</h2>
   <div class="callout goal"><span class="lb">Yang ingin dijawab</span>${fmt(t.goal)}${t.hyp?`<br><span class="mute">${fmt(t.hyp)}</span>`:""}</div>
-  <h3>Menu SPSS</h3>${path(t.path)}<span class="file">${esc(t.file)}</span>
+  ${t.diagram?diagram():""}<h3>Menu SPSS</h3>${path(t.path)}<span class="file">${esc(t.file)}</span>${t.uts?` <a class="btn" href="${esc(t.file)}" download>&#8595; unduh data latihan</a>`:""}
   <h3>Langkah pengerjaan</h3><p class="hint">Centang tiap langkah sambil kamu praktik.</p>
   <ol class="steps">${t.steps.map((s,k)=>`<li><label><input type="checkbox" data-step="${k}" data-id="${id}" ${sd.includes(k)?"checked":""}><span class="n" aria-hidden="true"></span><span class="tx"><b>${fmt(s[0])}</b><small>${fmt(s[1])}</small></span></label></li>`).join("")}</ol>
   <div id="out" data-id="${id}" aria-live="polite">${outHTML(t)}</div>
-  <div class="row"><span>${i>0?`<a href="#/spss/${TUT[i-1].id}">&#8592; ${esc(TUT[i-1].t)}</a>`:""}</span><span>${i<TUT.length-1?`<a href="#/spss/${TUT[i+1].id}">${esc(TUT[i+1].t)} &#8594;</a>`:""}</span></div>`;
+  <div class="row"><span>${i>0?`<a href="${base(t)}${L[i-1].id}">&#8592; ${esc(L[i-1].t)}</a>`:""}</span><span>${i<L.length-1?`<a href="${base(t)}${L[i+1].id}">${esc(L[i+1].t)} &#8594;</a>`:""}</span></div>`;
   return win(`${t.id}.sps`, b);
 }
 
@@ -526,11 +2821,33 @@ function quiz(){
 }
 
 /* ---------- ROUTER ---------- */
+
+function diagram(){
+  const bx=(x,y,w,t1,t2,c)=>`<g><rect x="${x}" y="${y}" width="${w}" height="54" rx="6" class="bx ${c}"/><text x="${x+w/2}" y="${y+23}" text-anchor="middle" class="t1">${t1}</text><text x="${x+w/2}" y="${y+41}" text-anchor="middle" class="t2">${t2}</text></g>`;
+  const ar=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="ln" marker-end="url(#ah)"/>`;
+  return `<h3>Model penelitian</h3><figure class="mdl"><svg viewBox="0 0 640 250" role="img" aria-label="Model: CE, FOMO, dan PP memengaruhi SAT, lalu SAT memengaruhi RI. Usia dan Gender adalah variabel kontrol.">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ahp"/></marker></defs>
+  ${bx(10,12,150,"CE","antecedent","a")}${bx(10,98,150,"FOMO","antecedent","a")}${bx(10,184,150,"PP","antecedent","a")}
+  ${bx(245,98,150,"SAT","intervening","i")}${bx(480,98,150,"RI","consequence","c")}
+  ${ar(160,39,245,115)}${ar(160,125,245,125)}${ar(160,211,245,135)}${ar(395,125,480,125)}
+  <text x="560" y="40" text-anchor="middle" class="t2">variabel kontrol</text><text x="560" y="58" text-anchor="middle" class="t2">Usia, Gender</text>${ar(560,66,560,98)}
+  </svg><figcaption>Tiap variabel diukur dengan 5 indikator, jadi 5 variabel x 5 indikator = 25 butir.</figcaption></figure>`;
+}
+
+function utsIndex(){
+  let b = `<h2>Bahas UTS</h2><p class="lead">Urutan pengerjaan perintah UTS di SPSS: rancang variabel, olah deskriptif, uji kualitas instrumen, lalu uji beda. Semua langkah memakai satu file data latihan (350 responden, 25 butir).</p>
+  <div class="callout tip"><span class="lb">Soal data dosen</span>Data dari dosen hanya untuk latihan, jadi file latihan di sini disusun ulang (222 baris dari file dosen, sisanya simulasi) supaya syarat 350 sampel dan semua uji bisa dipraktikkan. Angka outputnya dihitung sungguhan, tapi digit terakhir bisa sedikit beda dari SPSS.</div>
+  <p><a class="btn pri" href="Data_Latihan_UTS.sav" download>&#8595; Unduh Data_Latihan_UTS.sav</a></p>
+  <div class="grid">${UTS.map(t=>cardT(t)).join("")}</div>`;
+  return win("bahas-uts/", b);
+}
+
 function render(){
   const [, r, a] = location.hash.slice(1).split("/");
   let h, title = "Lab SPSS";
   if(r==="ch"){ h = chapter(+a); const c=CH[a-1]; if(c) title = c.t; }
   else if(r==="spss"){ h = a ? tutorial(a) : tutIndex(); const t=tutOf(a); title = t ? t.t : "Tutorial SPSS"; }
+  else if(r==="uts"){ const t=a&&tutOf(a); h = t&&t.uts ? tutorial(a) : utsIndex(); title = t&&t.uts ? t.t : "Bahas UTS"; }
   else if(r==="pilih"){ h = pilih(); title = "Pilih uji"; }
   else if(r==="latihan"){ h = quiz(); title = "Latihan"; }
   else h = home();
