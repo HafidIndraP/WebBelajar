@@ -194,6 +194,49 @@ a{color:inherit}
 .t-industrial .c-open{font:700 20px 'Barlow Condensed','Arial Narrow',sans-serif;color:var(--navy);letter-spacing:.02em}
 .t-industrial .c-arrow{color:var(--blue);font-weight:700}
 
+/* ======== TEMA: office (Sistem Informasi Manajemen) ======== */
+.t-office{
+  --ofc-bg:#dde1da;--ofc-panel:#f6f7f3;--ofc-ink:#142030;--ofc-night:#17263a;--ofc-win:#ffd978;--ofc-dim:#2d4360;
+  --o1:#2f6fd0;--o2:#e0781c;--o3:#8a55d6;--o4:#d23f3f;--o5:#0f8f89;--o6:#d4a20a;--o7:#43a047;
+  background:var(--ofc-bg);color:var(--ofc-ink);
+  border:1px solid #b3bcb1;border-radius:2px 18px 2px 18px;
+  border-bottom:5px solid transparent;
+  border-image:linear-gradient(90deg,var(--o1) 0 14.28%,var(--o2) 0 28.56%,var(--o3) 0 42.84%,var(--o4) 0 57.12%,var(--o5) 0 71.4%,var(--o6) 0 85.68%,var(--o7) 0) 0 0 1 0;
+  box-shadow:0 14px 30px -14px rgba(0,0,0,.6);
+  font-family:'Literata',Georgia,serif;
+}
+.t-office:hover{box-shadow:0 22px 40px -14px rgba(0,0,0,.75),0 0 0 2px var(--o1)}
+.t-office .bld{
+  display:grid;gap:4px;margin:18px 18px 0;padding-bottom:8px;position:relative;
+  grid-template-columns:1fr 1fr 1fr 1fr 44px;
+  grid-template-areas:"roof roof roof roof r7" "r3 r3 r3 r4 r7" "r2 r2 r2 r2 r7" "r1 r1 r1 r1 r7" "r5 r5 r6 r6 r7";
+}
+.t-office .bld::after{content:"";position:absolute;left:-4px;right:-4px;bottom:0;height:6px;background:var(--ofc-ink)}
+.t-office .roof{grid-area:roof;height:26px;position:relative;border-bottom:4px solid var(--ofc-ink);display:block}
+.t-office .tank{position:absolute;left:12%;bottom:0;width:34px;height:17px;background:var(--ofc-ink);border-radius:4px 4px 0 0}
+.t-office .ant{position:absolute;right:14%;bottom:0;width:3px;height:25px;background:var(--ofc-ink)}
+.t-office .ant::before{content:"";position:absolute;top:5px;left:-7px;width:17px;height:3px;background:var(--ofc-ink)}
+.t-office .rm{
+  --c:var(--o1);display:flex;align-items:center;gap:5px;min-height:26px;padding:3px 8px;
+  background:var(--ofc-night);border-top:3px solid var(--c);overflow:hidden;
+}
+.t-office .rm.c1{--c:var(--o1)}.t-office .rm.c2{--c:var(--o2)}.t-office .rm.c3{--c:var(--o3)}.t-office .rm.c4{--c:var(--o4)}
+.t-office .rm.c5{--c:var(--o5)}.t-office .rm.c6{--c:var(--o6)}.t-office .rm.c7{--c:var(--o7)}
+.t-office .rm b{font:800 15px/1 'Bricolage Grotesque','Segoe UI',sans-serif;color:var(--c);margin-right:auto}
+.t-office .rm i{width:10px;height:7px;border-radius:1px;background:var(--ofc-dim);transition:background .25s,box-shadow .25s}
+.t-office .rm.lit i{background:var(--ofc-win);box-shadow:0 0 8px #ffd97888}
+.t-office:hover .rm i{background:var(--ofc-win);box-shadow:0 0 8px #ffd97888}
+.t-office:hover .rm:nth-child(odd) i{transition-delay:.12s}
+.t-office .rm.shaft{flex-direction:column;justify-content:center;padding:6px 2px}
+.t-office .rm.shaft b{margin:0}
+.t-office .c-kicker{font:600 11px 'Bricolage Grotesque','Segoe UI',sans-serif;color:#4c5a67;letter-spacing:.1em}
+.t-office .c-title{font:800 26px/1.05 'Bricolage Grotesque','Segoe UI',sans-serif;letter-spacing:-.02em;color:var(--ofc-ink)}
+.t-office .c-desc{color:#3b4a58;font-size:15px;line-height:1.55}
+.t-office .chip{font:600 12.5px 'Bricolage Grotesque','Segoe UI',sans-serif;background:var(--ofc-ink);color:#fff;border-radius:999px;padding:2px 11px}
+.t-office .c-foot{border-top:1px solid #b3bcb1}
+.t-office .c-open{font:700 16px 'Bricolage Grotesque','Segoe UI',sans-serif;color:var(--ofc-ink)}
+.t-office .c-arrow{color:var(--o1);font-weight:700}
+
 /* ======== Kartu bawaan (tema baru belum dibuat) ======== */
 .t-default .c-kicker{color:var(--au);font-family:var(--mono)}
 .t-default .c-title{font-family:var(--serif)}
