@@ -47,6 +47,17 @@ const COURSES = [
     keywords: 'operasi produksi operations management heizer render munson rumus istilah bab suplemen',
     hexes: 7, // Bab 1-7
   },
+  {
+    id: 'sistem-informasi-manajemen',
+    theme: 'office',
+    kicker: 'Management Information Systems',
+    title: 'Sistem Informasi Manajemen',
+    desc: 'Pendamping Bab 1-7 buku MIS: Managing the Digital Firm (Laudon & Laudon). Tiap bab adalah ruangan di sebuah gedung kantor.',
+    href: 'SistemInformasiManajemen/index.html',   // <- sesuaikan
+    tags: ['Gedung bab', 'Lab', 'Kamus', 'Bandingkan', 'Latihan'],
+    keywords: 'sistem informasi manajemen sim mis laudon it perusahaan porter jaringan database cloud etika kamus',
+    rooms: 7, // Bab 1-7
+  },
   // { id:'...', theme:'...', kicker:'...', title:'...', desc:'...', href:'...', tags:[...] },
 ];
 
@@ -95,6 +106,17 @@ const PREVIEWS = {
         <div class="belt"></div>
       </div>`;
   },
+  office(c) {
+    // Penampang gedung: lantai 3 (bab 3,4), lantai 2 (bab 2), lantai dasar (bab 1),
+    // basement (bab 5,6), dan saluran kabel (bab 7) di sisi kanan. Bab 1-4 = bisnis, 5-7 = teknologi.
+    const lit = [1, 2, 4, 5, 7]; // jendela menyala sebagai hiasan
+    const rm = (n, cls) => `<span class="rm c${n}${lit.includes(n) ? ' lit' : ''} ${cls || ''}" style="grid-area:r${n}"><b>${n}</b><i></i><i></i><i></i></span>`;
+    return `
+      <div class="bld" aria-hidden="true">
+        <span class="roof"><u class="tank"></u><u class="ant"></u></span>
+        ${rm(3)}${rm(4)}${rm(2)}${rm(1)}${rm(5)}${rm(6)}${rm(7, 'shaft')}
+      </div>`;
+  },
   default(c) {
     return `<div class="gen" aria-hidden="true">${esc(c.title.charAt(0))}</div>`;
   },
@@ -107,7 +129,7 @@ function cardHTML(c) {
   const kicker = theme === 'library' ? '' : `<div class="c-kicker">${esc(c.kicker || '')}</div>`;
   const kickerLib = theme === 'library' ? `<div class="c-kicker">${esc(c.kicker && c.kicker !== 'Ex Libris' ? c.kicker : 'Perpustakaan')}</div>` : '';
   const chips = (c.tags || []).map(t => `<span class="chip">${esc(t)}</span>`).join('');
-  const openTxt = theme === 'terminal' ? 'buka --lab' : theme === 'library' ? 'Buka perpustakaan' : theme === 'industrial' ? 'Masuk lini produksi' : 'Buka';
+  const openTxt = theme === 'terminal' ? 'buka --lab' : theme === 'library' ? 'Buka perpustakaan' : theme === 'industrial' ? 'Masuk lini produksi' : theme === 'office' ? 'Masuk gedung' : 'Buka';
   const arrow = theme === 'library' ? '&rarr;' : '&rarr;';
   return `
     <a class="card t-${theme}" href="${esc(c.href)}" data-id="${esc(c.id)}" aria-label="Buka ${esc(c.title)}">
