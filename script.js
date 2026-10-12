@@ -58,6 +58,17 @@ const COURSES = [
     keywords: 'sistem informasi manajemen sim mis laudon it perusahaan porter jaringan database cloud etika kamus',
     rooms: 7, // Bab 1-7
   },
+  {
+    id: 'keamanan-siber',
+    theme: 'cyber',
+    kicker: 'PEBD6016 · Cyber Security',
+    title: 'Keamanan Siber',
+    desc: 'Pendamping Pertemuan 1-7: ringkasan, glosarium, peta hukum, lab keputusan, dan latihan UTS yang melatih cara menganalisis, bukan menghafal.',
+    href: 'KeamananSiber/index.html',   // <- sesuaikan
+    tags: ['Lab', 'Glosarium', 'Hukum', 'Latihan UTS'],
+    keywords: 'keamanan siber cyber security uu ite hukum etika grey hat enkripsi phishing privasi pebd6016 playbook kasus',
+    mods: 7, // Pertemuan 1-7
+  },
   // { id:'...', theme:'...', kicker:'...', title:'...', desc:'...', href:'...', tags:[...] },
 ];
 
@@ -117,6 +128,18 @@ const PREVIEWS = {
         ${rm(3)}${rm(4)}${rm(2)}${rm(1)}${rm(5)}${rm(6)}${rm(7, 'shaft')}
       </div>`;
   },
+  cyber(c) {
+    const n = c.mods || 7;
+    let p = '';
+    for (let i = 1; i <= n; i++) p += `<span class="pm" style="--i:${i}">P${i}</span>`;
+    return `
+      <div class="cy" aria-hidden="true">
+        <span class="sweep"></span>
+        <svg class="shield" viewBox="0 0 24 24"><path d="M12 2l8.5 5v10L12 22l-8.5-5V7z"/><path class="mk" d="M12 8v5m0 3v.01"/><path class="ok" d="M8.5 12.2l2.4 2.4 4.6-5"/></svg>
+        <div class="cy-txt"><b>CYBERSHIELD</b><small class="st"><i class="s1">SCANNING</i><i class="s2">SECURE</i></small></div>
+      </div>
+      <div class="pms" aria-hidden="true">${p}</div>`;
+  },
   default(c) {
     return `<div class="gen" aria-hidden="true">${esc(c.title.charAt(0))}</div>`;
   },
@@ -129,7 +152,7 @@ function cardHTML(c) {
   const kicker = theme === 'library' ? '' : `<div class="c-kicker">${esc(c.kicker || '')}</div>`;
   const kickerLib = theme === 'library' ? `<div class="c-kicker">${esc(c.kicker && c.kicker !== 'Ex Libris' ? c.kicker : 'Perpustakaan')}</div>` : '';
   const chips = (c.tags || []).map(t => `<span class="chip">${esc(t)}</span>`).join('');
-  const openTxt = theme === 'terminal' ? 'buka --lab' : theme === 'library' ? 'Buka perpustakaan' : theme === 'industrial' ? 'Masuk lini produksi' : theme === 'office' ? 'Masuk gedung' : 'Buka';
+  const openTxt = theme === 'terminal' ? 'buka --lab' : theme === 'library' ? 'Buka perpustakaan' : theme === 'industrial' ? 'Masuk lini produksi' : theme === 'office' ? 'Masuk gedung' : theme === 'cyber' ? 'akses --modul' : 'Buka';
   const arrow = theme === 'library' ? '&rarr;' : '&rarr;';
   return `
     <a class="card t-${theme}" href="${esc(c.href)}" data-id="${esc(c.id)}" aria-label="Buka ${esc(c.title)}">
