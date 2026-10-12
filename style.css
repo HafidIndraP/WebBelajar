@@ -237,6 +237,54 @@ a{color:inherit}
 .t-office .c-open{font:700 16px 'Bricolage Grotesque','Segoe UI',sans-serif;color:var(--ofc-ink)}
 .t-office .c-arrow{color:var(--o1);font-weight:700}
 
+/* ======== TEMA: cyber (Keamanan Siber) ======== */
+.t-cyber{
+  --cy:#22d3ee;--cg:#4ade80;--cv:#a78bfa;--cam:#fbbf24;--cpanel:#0e1620;--cline:#1f3042;
+  background:
+    linear-gradient(rgba(34,211,238,.05) 1px,transparent 1px) 0 0/22px 22px,
+    linear-gradient(90deg,rgba(34,211,238,.05) 1px,transparent 1px) 0 0/22px 22px,
+    var(--cpanel);
+  border:1px solid var(--cline);color:#d9e5f0;font-family:var(--sans);
+  box-shadow:0 18px 40px -22px rgba(34,211,238,.35);
+}
+.t-cyber::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;z-index:2;background:linear-gradient(90deg,var(--cy),var(--cv) 60%,transparent)}
+.t-cyber:hover{border-color:var(--cy);box-shadow:0 0 0 1px var(--cy),0 22px 50px -18px rgba(34,211,238,.5)}
+.t-cyber .cy{position:relative;display:flex;align-items:center;gap:14px;margin:18px 18px 0;padding:14px 16px;background:#060a0f;border:1px solid var(--cline);border-radius:10px;overflow:hidden}
+.t-cyber .sweep{position:absolute;top:0;bottom:0;width:60px;left:-60px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.22),transparent);animation:sweep 3.4s linear infinite}
+@keyframes sweep{to{left:100%}}
+.t-cyber .shield{flex:none;width:46px;height:46px;fill:rgba(34,211,238,.12);stroke:var(--cy);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s,fill .3s}
+.t-cyber .shield .ok{display:none;fill:none;stroke:var(--cg)}
+.t-cyber .shield .mk{stroke:var(--cam)}
+.t-cyber .cy-txt{display:grid;gap:3px;position:relative}
+.t-cyber .cy-txt b{font:700 15px var(--mono);letter-spacing:.1em;color:var(--cy)}
+.t-cyber .st{position:relative;height:14px;font:600 10.5px var(--mono);letter-spacing:.08em}
+.t-cyber .st i{position:absolute;left:0;top:0;font-style:normal;white-space:nowrap}
+.t-cyber .st .s1{color:var(--cam);animation:blink 1.2s steps(2,start) infinite}
+.t-cyber .st .s2{color:var(--cg);opacity:0}
+.t-cyber:hover .shield{stroke:var(--cg);fill:rgba(74,222,128,.12)}
+.t-cyber:hover .shield .mk{display:none}
+.t-cyber:hover .shield .ok{display:block}
+.t-cyber:hover .st .s1{animation:none;opacity:0}
+.t-cyber:hover .st .s2{opacity:1}
+.t-cyber .pms{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:10px 18px 0}
+.t-cyber .pm{
+  text-align:center;font:700 11px/1 var(--mono);padding:8px 0;border-radius:6px;
+  color:var(--cv);background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.3);
+  transition:color .2s,background .2s,border-color .2s;
+}
+.t-cyber:hover .pm{color:var(--cg);background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.45);transition-delay:calc(var(--i)*55ms)}
+.t-cyber .c-kicker{font-family:var(--mono);color:var(--cy)}
+.t-cyber .c-kicker::before{content:"[ "}
+.t-cyber .c-kicker::after{content:" ]"}
+.t-cyber .c-title{font-family:var(--mono);font-weight:700;color:#fff;font-size:22px;letter-spacing:-.01em}
+.t-cyber .c-desc{color:#8fa5ba}
+.t-cyber .chip{font-family:var(--mono);color:var(--cam);border:1px solid rgba(251,191,36,.4);background:rgba(251,191,36,.07);border-radius:6px}
+.t-cyber .c-foot{border-top:1px solid var(--cline)}
+.t-cyber .c-open{font-family:var(--mono);color:var(--cy)}
+.t-cyber .c-open::before{content:"> "}
+.t-cyber .c-arrow{color:var(--cy)}
+@media(max-width:380px){.t-cyber .pm{font-size:10px;padding:7px 0}.t-cyber .cy{gap:10px;padding:12px}}
+
 /* ======== Kartu bawaan (tema baru belum dibuat) ======== */
 .t-default .c-kicker{color:var(--au);font-family:var(--mono)}
 .t-default .c-title{font-family:var(--serif)}
