@@ -187,3 +187,9 @@ dd{margin:0;max-width:70ch}
 .mdl .ln{stroke:var(--mute);stroke-width:1.6}
 .mdl .ahp{fill:var(--mute)}
 .mdl figcaption{font-size:.85rem;color:var(--mute);margin-top:6px}
+
+.callout p{margin:.4em 0;max-width:72ch}
+.callout.rule{border-left-color:var(--p)}
+.callout.rule .lb{color:var(--p)}
+.callout.interp{border-left-color:var(--c)}
+.callout.interp .lb{color:var(--c)}
