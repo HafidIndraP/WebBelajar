@@ -3,7 +3,7 @@ const G = [
   // P1
   { t: "Infrastruktur kepercayaan", p: 1, d: "Cara pandang bahwa keamanan bukan pusat biaya, melainkan modal yang membuat pelanggan mau bertransaksi.", c: "Lawan dari anggapan 'keamanan itu pemborosan'." },
   { t: "Tiga dimensi dampak", p: 1, d: "Kepercayaan, reputasi, finansial: tiga ukuran dampak insiden pada bisnis.", c: "Tokopedia 2020 menampilkan ketiganya sekaligus." },
-  { t: "Ransomware PDNS 2024", p: 1, d: "Serangan varian Brain Cipher (pengembangan LockBit 3.0) pada Pusat Data Nasional Sementara 2 di Surabaya: 282 instansi terganggu, tebusan Rp131 M, tanpa backup.", c: "Pelajaran: tata kelola dan anggaran buruk, bukan serangan canggih." },
+  { t: "Ransomware PDNS 2024", p: 1, d: "Serangan varian Brain Cipher (pengembangan LockBit 3.0) pada Pusat Data Nasional Sementara 2 di Surabaya: 282 instansi terganggu, tebusan Rp131 M, tanpa backup (slide: 0 backup; laporan BSSN: hanya ±2% yang dicadangkan).", c: "Pelajaran: tata kelola dan anggaran buruk, bukan serangan canggih." },
   { t: "Threat landscape", p: 1, d: "Gambaran siapa penyerangnya, apa yang diincar, dan seberapa sering serangan terjadi.", c: "±944 ribu akun bocor di Indonesia pada kuartal III 2025." },
   { t: "Dark web", p: 1, d: "Tempat data hasil kebocoran sering diperjualbelikan.", c: "Data Tokopedia 2020 diperjualbelikan di sini." },
   { t: "Tujuan mata kuliah", p: 1, d: "Bukan untuk menjadi hacker, melainkan menganalisis risiko siber sebagai risiko bisnis dan mengambil keputusan yang bertanggung jawab di titik temu bisnis, hukum, dan etika.", c: "Terutama saat hukum belum sepenuhnya mengatur." },
@@ -78,6 +78,7 @@ const G = [
   { t: "UU ITE Pasal 30", p: 5, d: "Akses tanpa izin melanggar hukum di Indonesia; grey hat pun bisa dipidana.", c: "" },
   { t: "Penjahat terorganisir", p: 5, d: "Aktor ancaman bermotif uang: ransomware, penipuan, jual-beli data.", c: "" },
   { t: "Kunci white vs black", p: 5, d: "Bedanya bukan keahlian teknis, melainkan ada-tidaknya izin. Niat baik saja tidak menghapus pelanggaran izin.", c: "" },
+  { t: "Kasus App A", p: 5, d: "Dompet digital menerima email dari orang asing yang melaporkan celah (ubah satu angka di URL, lihat transaksi pengguna lain) dan bertanya soal bug bounty.", c: "Pelapor bergerak di area grey hat." },
   { t: "Kebijakan responsible disclosure", p: 5, d: "Aturan main bila seseorang menemukan celah: saluran lapor, komitmen perusahaan, larangan bagi pelapor, imbalan atau pengakuan, rujukan etis dan hukum.", c: "Dinilai dari keseimbangan hak kedua pihak." },
   // P6
   { t: "Privasi", p: 6, d: "Kendali seseorang atas informasi mengenai dirinya, bukan sekadar menyembunyikan sesuatu.", c: "" },
