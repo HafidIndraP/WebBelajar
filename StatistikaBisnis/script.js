@@ -379,7 +379,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka Variable View",
@@ -391,11 +391,15 @@ const UTS = [
    ],
    [
     "Cek variabel total",
-    "Kolom TotalCE, TotalFOMO, TotalPP, TotalSAT, dan TotalRI sudah tersedia. Jika belum, buat lewat `Transform › Compute Variable`: isi Target Variable dengan nama total, lalu pada Numeric Expression pakai fungsi **SUM** untuk kelima butir variabel itu."
+    "Kolom TotalCE, TotalFOMO, TotalPP, TotalSAT, dan TotalRI sudah tersedia di data latihan. Jika belum, buat lewat `Transform › Compute Variable`: isi **Target Variable** dengan nama total (misalnya TotalCE), lalu pada **Numeric Expression** ketik `SUM(CE1 TO CE5)`. Klik **OK**. Ulangi untuk FOMO, PP, SAT, dan RI. `TO` memakai urutan kolom di Variable View; bila urutannya berbeda, tulis kelimanya satu per satu: `SUM(CE1,CE2,CE3,CE4,CE5)`. Setelah itu atur Measure kolom total menjadi **Scale**."
    ],
    [
-    "Simpan",
+    "Simpan data",
     "`File › Save`. Mulai sekarang semua analisis memakai file ini."
+   ],
+   [
+    "Simpan output tiap analisis",
+    "Hasil analisis muncul di jendela terpisah bernama **Output Viewer**. Simpan dengan `File › Save As` (berekstensi .spv) agar tabelnya bisa dibuka lagi saat menyusun laporan."
    ]
   ],
   "out": [
@@ -552,11 +556,36 @@ const UTS = [
   "concl": "Model akhir: **CE, FOMO, PP (antecedent) → SAT (intervening) → RI (consequence)**, dengan Gender, Usia, dan Frekuensi belanja sebagai variabel kontrol.",
   "tip": "Isi butir pada file asli dosen (aplikasi e-grocery, kolom ESQ, PV, CS, ELY) tidak cocok dengan nama variabel di diagram, jadi kolomnya dipetakan berdasarkan urutan dan dinamai ulang. Data demografi dan variabel SAT tidak ada di file dosen, jadi disimulasikan. Itu aman untuk latihan, tetapi jangan dipakai sebagai data penelitian sungguhan. Satu hal lagi: label nilai 3 sampai 5 di file (Kurang Setuju, Agak Tidak Setuju, Sedikit Tidak Setuju) urutannya kurang rapi. Abaikan labelnya dan baca angka 1 sampai 10 sebagai makin besar makin setuju.",
   "interp": [
-     "Peran variabel menentukan alur analisis: CE, FOMO, dan PP diposisikan sebagai penyebab (antecedent) yang diduga memengaruhi Customer Satisfaction (intervening), dan kepuasan itu diduga memengaruhi Repurchase Intention (consequence).",
-     "Gender, Usia, dan Frekuensi belanja online bukan inti hipotesis. Ketiganya dipakai untuk membandingkan kelompok dan mengendalikan pengaruh luar pada langkah 7 sampai 10.",
-     "Untuk laporan, tulis: “Model penelitian terdiri atas lima variabel dengan masing-masing lima indikator (25 butir), diukur pada skala 1 sampai 10 dari 350 responden.” Perlu dicatat, langkah-langkah di sini menguji kualitas instrumen dan perbedaan kelompok. Pengaruh antar variabel (CE, FOMO, PP → SAT → RI) belum diuji."
+   "Peran variabel menentukan alur analisis: CE, FOMO, dan PP diposisikan sebagai penyebab (antecedent) yang diduga memengaruhi Customer Satisfaction (intervening), dan kepuasan itu diduga memengaruhi Repurchase Intention (consequence).",
+   "Gender, Usia, dan Frekuensi belanja online bukan inti hipotesis. Ketiganya dipakai untuk membandingkan kelompok dan mengendalikan pengaruh luar pada langkah 7 sampai 10.",
+   "Untuk laporan, tulis: “Model penelitian terdiri atas lima variabel dengan masing-masing lima indikator (25 butir), diukur pada skala 1 sampai 10 dari 350 responden.” Perlu dicatat, langkah-langkah di sini menguji kualitas instrumen dan perbedaan kelompok. Pengaruh antar variabel (CE, FOMO, PP → SAT → RI) belum diuji."
   ],
-  "uts": 1
+  "uts": 1,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Peta peran variabel (tabel di atas)",
+     "**Ya**",
+     "Dibuat dan diketik sendiri di Word; bukan output SPSS"
+    ],
+    [
+     "Variable View",
+     "Opsional",
+     "Screenshot cuplikan Variable View sebagai lampiran instrumen"
+    ],
+    [
+     "Output Viewer",
+     "Tidak ada",
+     "Langkah ini belum menghasilkan tabel output"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "deskriptif-uts",
@@ -571,7 +600,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -579,27 +608,27 @@ const UTS = [
    ],
    [
     "Pilih variabel",
-    "Pindahkan TotalCE, TotalFOMO, TotalPP, TotalSAT, dan TotalRI ke kotak Variable(s)."
+    "Pindahkan TotalCE, TotalFOMO, TotalPP, TotalSAT, dan TotalRI ke kotak **Variable(s)**. Jika kotak variabel masih berisi isian dari analisis sebelumnya, klik **Reset** dulu."
    ],
    [
     "Matikan tabel frekuensi",
-    "Hapus centang **Display frequency tables** supaya output tidak penuh daftar frekuensi."
+    "Hapus centang **Display frequency tables** (di kiri bawah) supaya output tidak penuh daftar frekuensi."
    ],
    [
     "Pilih statistik",
-    "Klik **Statistics**, centang Mean, Median, Mode, Std. deviation, Minimum, dan Maximum. Continue."
+    "Klik **Statistics**. Di *Central Tendency* centang **Mean**, **Median**, dan **Mode**; di *Dispersion* centang **Std. deviation**, **Minimum**, dan **Maximum**. Klik **Continue**."
    ],
    [
     "Jalankan",
-    "Klik **OK**."
+    "Klik **OK**. Muncul satu tabel **Statistics** berisi kelima variabel."
    ],
    [
     "Profil responden",
-    "Ulangi `Analyze › Descriptive Statistics › Frequencies` dengan Gender dan Frekuensi (kali ini biarkan **Display frequency tables** tercentang), lalu `Descriptives` untuk Usia."
+    "Ulangi `Analyze › Descriptive Statistics › Frequencies`, klik **Reset**, lalu pindahkan Gender dan Frekuensi ke Variable(s). Kali ini biarkan **Display frequency tables** tercentang dan tidak perlu membuka Statistics. Klik **OK**. Lalu buka `Analyze › Descriptive Statistics › Descriptives`, pindahkan Usia ke Variable(s) (pilihan di Options biarkan default: Mean, Std. deviation, Minimum, Maximum), klik **OK**."
    ],
    [
     "Kategorikan rata-rata",
-    "Bagi mean tiap variabel total dengan 5 untuk mendapat rata-rata per butir, lalu cocokkan dengan kelas pada Aturan keputusan di atas."
+    "Bagi mean tiap variabel total dengan 5 untuk mendapat rata-rata per butir, lalu cocokkan dengan kelas pada Aturan keputusan di atas. Tabel kategorinya dibuat sendiri di Word."
    ]
   ],
   "out": [
@@ -683,26 +712,91 @@ const UTS = [
    },
    {
     "t": "Profil responden (Frequencies dan Descriptives)",
-    "h": ["Variabel", "Kategori", "Frekuensi", "Persen"],
+    "h": [
+     "Variabel",
+     "Kategori",
+     "Frekuensi",
+     "Persen"
+    ],
     "r": [
-     ["Gender", "Laki-laki", "166", "47,4"],
-     ["", "Perempuan", "184", "52,6"],
-     ["Frekuensi belanja", "1-2 kali", "105", "30,0"],
-     ["", "3-5 kali", "140", "40,0"],
-     ["", "Lebih dari 5 kali", "105", "30,0"],
-     ["Usia (tahun)", "Mean 26,02; Median 26; SD 5,49", "Min 17", "Max 43"]
+     [
+      "Gender",
+      "Laki-laki",
+      "166",
+      "47,4"
+     ],
+     [
+      "",
+      "Perempuan",
+      "184",
+      "52,6"
+     ],
+     [
+      "Frekuensi belanja",
+      "1-2 kali",
+      "105",
+      "30,0"
+     ],
+     [
+      "",
+      "3-5 kali",
+      "140",
+      "40,0"
+     ],
+     [
+      "",
+      "Lebih dari 5 kali",
+      "105",
+      "30,0"
+     ],
+     [
+      "Usia (tahun)",
+      "Mean 26,02; Median 26; SD 5,49",
+      "Min 17",
+      "Max 43"
+     ]
     ],
     "n": null
    },
    {
     "t": "Rata-rata per butir dan kategorinya (skala 1-10)",
-    "h": ["Variabel", "Mean total", "Mean per butir", "Kategori"],
+    "h": [
+     "Variabel",
+     "Mean total",
+     "Mean per butir",
+     "Kategori"
+    ],
     "r": [
-     ["TotalCE", "39,69", "7,94", "Tinggi"],
-     ["TotalFOMO", "39,77", "7,95", "Tinggi"],
-     ["TotalPP", "39,90", "7,98", "Tinggi"],
-     ["TotalSAT", "40,01", "8,00", "Tinggi"],
-     ["TotalRI", "39,55", "7,91", "Tinggi"]
+     [
+      "TotalCE",
+      "39,69",
+      "7,94",
+      "Tinggi"
+     ],
+     [
+      "TotalFOMO",
+      "39,77",
+      "7,95",
+      "Tinggi"
+     ],
+     [
+      "TotalPP",
+      "39,90",
+      "7,98",
+      "Tinggi"
+     ],
+     [
+      "TotalSAT",
+      "40,01",
+      "8,00",
+      "Tinggi"
+     ],
+     [
+      "TotalRI",
+      "39,55",
+      "7,91",
+      "Tinggi"
+     ]
     ],
     "n": "Mean per butir = mean total dibagi 5. Kelas: 1,0-2,8 sangat rendah; 2,9-4,6 rendah; 4,7-6,4 sedang; 6,5-8,2 tinggi; 8,3-10 sangat tinggi."
    }
@@ -733,11 +827,46 @@ const UTS = [
   "tip": "“Average” pada perintah dosen sama dengan mean. Jika ingin rata-rata per butir (bukan total), pakai `Analyze › Descriptive Statistics › Descriptives` pada 25 butirnya.",
   "rule": "Skala 1-10 dibagi 5 kelas dengan lebar (10 − 1) / 5 = 1,8: 1,0-2,8 sangat rendah; 2,9-4,6 rendah; 4,7-6,4 sedang; 6,5-8,2 tinggi; 8,3-10 sangat tinggi. Rata-rata per butir = rata-rata total ÷ 5.",
   "interp": [
-     "Responden terdiri atas 166 laki-laki (47,4%) dan 184 perempuan (52,6%). Frekuensi belanja online 1-2 kali sebesar 30,0%, 3-5 kali 40,0%, dan lebih dari 5 kali 30,0%. Usia rata-rata 26,02 tahun (rentang 17 sampai 43).",
-     "Rata-rata per butir kelima variabel berada di 7,91 sampai 8,00, masuk kategori **tinggi**. Artinya responden rata-rata setuju terhadap pernyataan di semua variabel, dan tidak ada variabel yang menonjol dibanding yang lain.",
-     "Mean (39,5 sampai 40,0) hampir sama dengan median dan simpangan baku 4,2 sampai 4,5 tergolong sedang, jadi jawaban responden terpusat di sekitar nilai tinggi dengan sebaran yang wajar."
+   "Responden terdiri atas 166 laki-laki (47,4%) dan 184 perempuan (52,6%). Frekuensi belanja online 1-2 kali sebesar 30,0%, 3-5 kali 40,0%, dan lebih dari 5 kali 30,0%. Usia rata-rata 26,02 tahun (rentang 17 sampai 43).",
+   "Rata-rata per butir kelima variabel berada di 7,91 sampai 8,00, masuk kategori **tinggi**. Artinya responden rata-rata setuju terhadap pernyataan di semua variabel, dan tidak ada variabel yang menonjol dibanding yang lain.",
+   "Mean (39,5 sampai 40,0) hampir sama dengan median dan simpangan baku 4,2 sampai 4,5 tergolong sedang, jadi jawaban responden terpusat di sekitar nilai tinggi dengan sebaran yang wajar."
   ],
-  "uts": 2
+  "uts": 2,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Statistics (Frequencies kelima variabel total)",
+     "**Ya**",
+     "Mean, median, modus, simpangan baku, minimum, maksimum"
+    ],
+    [
+     "Frequency Table Gender dan Frekuensi",
+     "**Ya**",
+     "Profil responden: Frequency dan Percent"
+    ],
+    [
+     "Descriptive Statistics (Usia)",
+     "**Ya**",
+     "Rentang, rata-rata, dan simpangan baku usia"
+    ],
+    [
+     "Rata-rata per butir dan kategorinya",
+     "**Ya**",
+     "Dihitung sendiri dari mean ÷ 5 (bukan output SPSS langsung)"
+    ],
+    [
+     "Statistics untuk Gender dan Frekuensi (N Valid dan Missing)",
+     "Lewati",
+     "Cukup tulis N = 350"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "normalitas-uts",
@@ -753,7 +882,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -761,19 +890,27 @@ const UTS = [
    ],
    [
     "Pilih variabel",
-    "Pindahkan kelima variabel total ke kotak Dependent List."
+    "Pindahkan kelima variabel total ke kotak **Dependent List**. Kotak Factor List dan Label Cases by dikosongkan. Jika kotak variabel masih berisi isian dari analisis sebelumnya, klik **Reset** dulu."
    ],
    [
     "Atur tampilan",
-    "Pada Display pilih **Plots** saja."
+    "Pada **Display** pilih **Both**, bukan Plots saja. Skewness dan kurtosis hanya ada di tabel Descriptives, dan tabel itu tidak muncul bila Display = Plots."
    ],
    [
     "Atur plot",
-    "Klik **Plots**, centang **Histogram** dan **Normality plots with tests**. Continue."
+    "Klik **Plots**. Pada *Boxplots* pilih **None**. Pada *Descriptive* centang **Histogram** dan hapus centang **Stem-and-leaf**. Centang **Normality plots with tests**. Klik **Continue**."
    ],
    [
     "Jalankan",
     "Klik **OK**."
+   ],
+   [
+    "Hitung rasio z",
+    "Dari tabel **Descriptives** tiap variabel, bagi Skewness dengan Std. Error-nya dan Kurtosis dengan Std. Error-nya. Nilai di antara -1,96 dan 1,96 dianggap normal pada taraf 5%."
+   ],
+   [
+    "Baca uji formal",
+    "Pada tabel **Tests of Normality** lihat kolom Sig. Kolmogorov-Smirnov (dengan Lilliefors) dan Shapiro-Wilk. Sig > 0,05 berarti normal."
    ]
   ],
   "out": [
@@ -886,13 +1023,43 @@ const UTS = [
    },
    {
     "t": "Rasio z skewness dan kurtosis (nilai dibagi Std. Error)",
-    "h": ["", "z Skewness", "z Kurtosis", "Dalam ±1,96?"],
+    "h": [
+     "",
+     "z Skewness",
+     "z Kurtosis",
+     "Dalam ±1,96?"
+    ],
     "r": [
-     ["TotalCE", "-2,04", "-0,40", "Skewness sedikit di luar"],
-     ["TotalFOMO", "-0,33", "-1,06", "Ya"],
-     ["TotalPP", "-1,38", "-0,75", "Ya"],
-     ["TotalSAT", "-2,16", "-0,10", "Skewness sedikit di luar"],
-     ["TotalRI", "0,76", "-0,93", "Ya"]
+     [
+      "TotalCE",
+      "-2,04",
+      "-0,40",
+      "Skewness sedikit di luar"
+     ],
+     [
+      "TotalFOMO",
+      "-0,33",
+      "-1,06",
+      "Ya"
+     ],
+     [
+      "TotalPP",
+      "-1,38",
+      "-0,75",
+      "Ya"
+     ],
+     [
+      "TotalSAT",
+      "-2,16",
+      "-0,10",
+      "Skewness sedikit di luar"
+     ],
+     [
+      "TotalRI",
+      "0,76",
+      "-0,93",
+      "Ya"
+     ]
     ],
     "n": "SPSS tidak menampilkan kolom ini; hitung sendiri: skewness (atau kurtosis) dibagi Std. Error-nya (,130 untuk skewness; ,260 untuk kurtosis)."
    },
@@ -951,12 +1118,47 @@ const UTS = [
   "tip": "Di laporan tulis kedua temuannya: uji formal menolak normalitas, namun skewness, kurtosis, dan histogram mendukung kenormalan. Menyembunyikan salah satunya akan melemahkan argumenmu.",
   "rule": "Uji formal: sig > 0,05 berarti H0 diterima (data normal). Skewness dan kurtosis dibagi Std. Error; |z| < 1,96 dianggap normal pada taraf 5%. Pada sampel besar banyak peneliti cukup memakai batas skewness dan kurtosis antara −2 dan +2 (George & Mallery) bersama histogram.",
   "interp": [
-     "Kolmogorov-Smirnov dan Shapiro-Wilk menolak normalitas pada kelima variabel (sig ,000 sampai ,021). Itu belum berarti datanya buruk: dengan N = 350 kedua uji ini menolak penyimpangan yang sangat kecil.",
-     "Skewness negatif pada CE, FOMO, PP, dan SAT berarti ekor sedikit memanjang ke nilai rendah, sedangkan mayoritas responden berskor tinggi. TotalRI justru sedikit miring ke kanan (,099). Semua skewness dan kurtosis berada di antara −2 dan +2.",
-     "Jika dibagi Std. Error, z skewness CE (−2,04) dan SAT (−2,16) sedikit melewati 1,96, sedangkan tiga variabel lain tidak. Jadi kemiringan CE dan SAT memang ada tetapi ringan, dan tidak mengubah keputusan memakai uji parametrik.",
-     "Untuk laporan, tulis: “Data mendekati distribusi normal (skewness dan kurtosis dalam rentang ±2, histogram berbentuk lonceng); analisis parametrik dilanjutkan dengan catatan kemiringan ringan pada CE dan SAT.”"
+   "Kolmogorov-Smirnov dan Shapiro-Wilk menolak normalitas pada kelima variabel (sig ,000 sampai ,021). Itu belum berarti datanya buruk: dengan N = 350 kedua uji ini menolak penyimpangan yang sangat kecil.",
+   "Skewness negatif pada CE, FOMO, PP, dan SAT berarti ekor sedikit memanjang ke nilai rendah, sedangkan mayoritas responden berskor tinggi. TotalRI justru sedikit miring ke kanan (,099). Semua skewness dan kurtosis berada di antara −2 dan +2.",
+   "Jika dibagi Std. Error, z skewness CE (−2,04) dan SAT (−2,16) sedikit melewati 1,96, sedangkan tiga variabel lain tidak. Jadi kemiringan CE dan SAT memang ada tetapi ringan, dan tidak mengubah keputusan memakai uji parametrik.",
+   "Untuk laporan, tulis: “Data mendekati distribusi normal (skewness dan kurtosis dalam rentang ±2, histogram berbentuk lonceng); analisis parametrik dilanjutkan dengan catatan kemiringan ringan pada CE dan SAT.”"
   ],
-  "uts": 3
+  "uts": 3,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Tests of Normality",
+     "**Ya**",
+     "Kolmogorov-Smirnov dan Shapiro-Wilk; kelima variabel sudah dalam satu tabel"
+    ],
+    [
+     "Descriptives (lima tabel, satu per variabel)",
+     "**Ya, sebagian**",
+     "Ambil hanya baris Skewness dan Kurtosis (Statistic dan Std. Error), gabungkan menjadi satu tabel di Word, lalu tambahkan kolom rasio z"
+    ],
+    [
+     "Histogram",
+     "Opsional",
+     "Gambar pendukung; cukup satu atau dua contoh, sisanya ke lampiran"
+    ],
+    [
+     "Normal Q-Q Plot dan Detrended Normal Q-Q Plot",
+     "Opsional",
+     "Gambar pendukung kenormalan"
+    ],
+    [
+     "Case Processing Summary",
+     "Lewati",
+     "Cukup tulis N = 350"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "validitas-uts",
@@ -972,7 +1174,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -980,19 +1182,23 @@ const UTS = [
    ],
    [
     "Isi variabel (variabel pertama)",
-    "Masukkan CE1 sampai CE5 dan **TotalCE** ke kotak Variables."
+    "Masukkan CE1 sampai CE5 dan **TotalCE** ke kotak **Variables**. Jika kotak variabel masih berisi isian dari analisis sebelumnya, klik **Reset** dulu."
    ],
    [
     "Atur opsi",
-    "Centang **Pearson**, pilih **Two-tailed**, centang **Flag significant correlations**."
+    "Pada *Correlation Coefficients* centang **Pearson**; pada *Test of Significance* pilih **Two-tailed**; centang **Flag significant correlations**. Tombol Options tidak perlu dibuka."
    ],
    [
     "Jalankan",
     "Klik **OK**."
    ],
    [
+    "Baca kolom skor total",
+    "Pada tabel **Correlations**, lihat kolom **TotalCE** saja: baris *Pearson Correlation* adalah r hitung tiap butir, dan baris *Sig. (2-tailed)* adalah signifikansinya. Bandingkan r hitung dengan r tabel 0,105 (df = N − 2 = 348, taraf 5%)."
+   ],
+   [
     "Ulangi untuk variabel lain",
-    "Ulangi langkah 3 sampai 5 untuk FOMO (dengan TotalFOMO), PP, SAT, dan RI. Total ada lima kali running."
+    "Ulangi langkah 3 sampai 6 untuk FOMO (dengan TotalFOMO), PP (TotalPP), SAT (TotalSAT), dan RI (TotalRI). Total ada lima kali running."
    ]
   ],
   "out": [
@@ -1207,10 +1413,30 @@ const UTS = [
   "tip": "Korelasi butir dengan total cenderung tinggi karena butir itu sendiri ikut membentuk total. Pembandingnya yang lebih ketat adalah Corrected Item-Total Correlation di analisis reliabilitas.",
   "rule": "Butir valid jika sig < 0,05 dan r hitung > r tabel. r tabel = 0,105 (df = N − 2 = 348, taraf 5%). Ukuran lain yang sering dipakai: r ≥ 0,30. Kekuatan hubungan (Guilford): 0,60-0,80 tinggi; 0,80-1,00 sangat tinggi.",
   "interp": [
-     "Seluruh butir punya r hitung antara ,775 (SAT3) dan ,890 (RI2), jauh di atas r tabel 0,105 dengan sig 0,000. Setiap butir bergerak searah dengan skor total variabelnya, jadi butir-butir itu benar mengukur konstruk yang sama.",
-     "Tidak ada butir yang digugurkan, sehingga 25 butir dipakai utuh pada analisis berikutnya. Untuk laporan, tulis: “Seluruh butir valid (r hitung ,775 sampai ,890 > r tabel ,105; p < 0,05).”"
+   "Seluruh butir punya r hitung antara ,775 (SAT3) dan ,890 (RI2), jauh di atas r tabel 0,105 dengan sig 0,000. Setiap butir bergerak searah dengan skor total variabelnya, jadi butir-butir itu benar mengukur konstruk yang sama.",
+   "Tidak ada butir yang digugurkan, sehingga 25 butir dipakai utuh pada analisis berikutnya. Untuk laporan, tulis: “Seluruh butir valid (r hitung ,775 sampai ,890 > r tabel ,105; p < 0,05).”"
   ],
-  "uts": 4
+  "uts": 4,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Correlations (lima tabel, satu per variabel)",
+     "**Ya, sebagian**",
+     "Dari tiap tabel ambil kolom skor total saja (misalnya TotalCE): Pearson Correlation, Sig. (2-tailed), dan N. Gabungkan kelimanya menjadi satu tabel: butir, r hitung, r tabel, Sig., keputusan"
+    ],
+    [
+     "Baris dan kolom korelasi antar butir",
+     "Lewati",
+     "Bukan bagian uji validitas butir-total"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "reliabilitas-uts",
@@ -1226,7 +1452,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -1234,19 +1460,23 @@ const UTS = [
    ],
    [
     "Isi item (variabel pertama)",
-    "Masukkan CE1 sampai CE5 ke kotak Items. Pastikan Model = **Alpha**."
+    "Masukkan CE1 sampai CE5 ke kotak **Items**. Pastikan Model = **Alpha**. Kotak Scale label boleh dikosongkan. Jika kotak variabel masih berisi isian dari analisis sebelumnya, klik **Reset** dulu."
    ],
    [
     "Atur statistik",
-    "Klik **Statistics**, centang Item, Scale, dan Scale if item deleted. Continue."
+    "Klik **Statistics**. Pada *Descriptives for* centang **Item**, **Scale**, dan **Scale if item deleted**. Pilihan lain biarkan kosong. Klik **Continue**."
    ],
    [
     "Jalankan",
     "Klik **OK**."
    ],
    [
+    "Baca tabel",
+    "Alpha ada di tabel **Reliability Statistics** (kolom Cronbach's Alpha). Corrected Item-Total Correlation dan Cronbach's Alpha if Item Deleted ada di tabel **Item-Total Statistics**; tabel ini hanya muncul karena Scale if item deleted dicentang."
+   ],
+   [
     "Ulangi untuk variabel lain",
-    "Ulangi untuk FOMO, PP, SAT, dan RI. Total lima kali running."
+    "Ulangi langkah 3 sampai 6 untuk FOMO, PP, SAT, dan RI. Total lima kali running."
    ]
   ],
   "out": [
@@ -1320,12 +1550,37 @@ const UTS = [
    },
    {
     "t": "Item-Total Statistics keempat variabel lain (ringkasan)",
-    "h": ["Variabel", "Corrected Item-Total (terendah - tertinggi)", "Alpha if Item Deleted (terendah - tertinggi)", "Butir paling lemah"],
+    "h": [
+     "Variabel",
+     "Corrected Item-Total (terendah - tertinggi)",
+     "Alpha if Item Deleted (terendah - tertinggi)",
+     "Butir paling lemah"
+    ],
     "r": [
-     ["FOMO", ",742 - ,779", ",878 - ,886", "FOMO4 (,742)"],
-     ["PP", ",704 - ,793", ",862 - ,882", "PP2 (,704)"],
-     ["SAT", ",651 - ,745", ",841 - ,863", "SAT3 (,651)"],
-     ["RI", ",769 - ,827", ",909 - ,920", "RI3 (,769)"]
+     [
+      "FOMO",
+      ",742 - ,779",
+      ",878 - ,886",
+      "FOMO4 (,742)"
+     ],
+     [
+      "PP",
+      ",704 - ,793",
+      ",862 - ,882",
+      "PP2 (,704)"
+     ],
+     [
+      "SAT",
+      ",651 - ,745",
+      ",841 - ,863",
+      "SAT3 (,651)"
+     ],
+     [
+      "RI",
+      ",769 - ,827",
+      ",909 - ,920",
+      "RI3 (,769)"
+     ]
     ],
     "n": "Untuk CE lihat tabel di atas (Corrected Item-Total ,674 - ,747; Alpha if Item Deleted ,848 - ,865). Pada keempat variabel ini juga tidak ada butir yang jika dibuang membuat alpha naik di atas alpha awalnya."
    },
@@ -1393,11 +1648,41 @@ const UTS = [
   "tip": "Selalu baca kolom Alpha if Item Deleted: bila ada butir yang jika dibuang membuat alpha naik, butir itu patut dicurigai dan boleh dipertimbangkan untuk dibuang.",
   "rule": "Variabel reliabel jika Cronbach's alpha > 0,70 (Nunnally, 1994). Periksa juga Corrected Item-Total Correlation (sebaiknya ≥ 0,30) dan Alpha if Item Deleted (tidak boleh lebih besar dari alpha awal).",
   "interp": [
-     "Alpha kelima variabel (,876 sampai ,928) jauh di atas 0,70. RI paling konsisten (,928), SAT paling rendah tetapi tetap baik (,876).",
-     "Tidak ada butir yang jika dibuang menaikkan alpha, dan Corrected Item-Total terendah (,651 pada SAT3) masih jauh di atas 0,30. Jadi kelima instrumen konsisten dan layak dipakai tanpa membuang butir.",
-     "Alpha FOMO (,904) dan RI (,928) sudah di atas 0,90. Itu masih wajar, tetapi alpha yang terlalu tinggi kadang menandakan butir-butirnya mirip satu sama lain. Untuk laporan, tulis: “Seluruh variabel reliabel (Cronbach's alpha ,876 sampai ,928 > 0,70).”"
+   "Alpha kelima variabel (,876 sampai ,928) jauh di atas 0,70. RI paling konsisten (,928), SAT paling rendah tetapi tetap baik (,876).",
+   "Tidak ada butir yang jika dibuang menaikkan alpha, dan Corrected Item-Total terendah (,651 pada SAT3) masih jauh di atas 0,30. Jadi kelima instrumen konsisten dan layak dipakai tanpa membuang butir.",
+   "Alpha FOMO (,904) dan RI (,928) sudah di atas 0,90. Itu masih wajar, tetapi alpha yang terlalu tinggi kadang menandakan butir-butirnya mirip satu sama lain. Untuk laporan, tulis: “Seluruh variabel reliabel (Cronbach's alpha ,876 sampai ,928 > 0,70).”"
   ],
-  "uts": 5
+  "uts": 5,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Reliability Statistics",
+     "**Ya**",
+     "Cronbach's Alpha dan N of Items; gabungkan kelima variabel menjadi satu tabel"
+    ],
+    [
+     "Item-Total Statistics",
+     "**Ya**",
+     "Corrected Item-Total Correlation dan Alpha if Item Deleted; kolom Scale Mean dan Scale Variance if Item Deleted boleh dihapus"
+    ],
+    [
+     "Item Statistics",
+     "Opsional",
+     "Mean dan simpangan baku tiap butir, bila diminta"
+    ],
+    [
+     "Case Processing Summary dan Scale Statistics",
+     "Lewati",
+     "Cukup tulis N = 350"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "faktor-uts",
@@ -1413,7 +1698,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -1421,23 +1706,31 @@ const UTS = [
    ],
    [
     "Isi variabel",
-    "Masukkan seluruh 25 butir (CE1 sampai RI5) ke kotak Variables. Jangan masukkan kolom Total."
+    "Masukkan seluruh 25 butir (CE1 sampai RI5) ke kotak **Variables**. Jangan masukkan kolom Total, Gender, Usia, Frekuensi, atau Asal_Data."
    ],
    [
     "Minta KMO dan Bartlett",
-    "Klik **Descriptives**, centang **KMO and Bartlett's test of sphericity**. Continue."
+    "Klik **Descriptives**, centang **KMO and Bartlett's test of sphericity**. Opsional: centang **Anti-image** untuk melihat MSA per butir. Klik **Continue**."
+   ],
+   [
+    "Atur ekstraksi",
+    "Klik **Extraction**. Method = **Principal components** (default), Analyze = **Correlation matrix**, centang **Scree plot**, dan pada *Extract* biarkan **Based on Eigenvalue** dengan *Eigenvalues greater than* = 1. Klik **Continue**."
    ],
    [
     "Atur rotasi",
-    "Klik **Rotation**, pilih **Varimax**, centang **Rotated solution**. Continue."
+    "Klik **Rotation**, pilih **Varimax**, centang **Rotated solution**. Klik **Continue**."
    ],
    [
     "Rapikan tampilan",
-    "Klik **Options**, centang **Sorted by size** dan **Suppress small coefficients** dengan nilai absolut 0,40. Continue."
+    "Klik **Options**. Missing Values = **Exclude cases listwise**. Pada *Coefficient Display Format* centang **Sorted by size** dan **Suppress small coefficients**, lalu isi *Absolute value below* dengan 0,40 (ketik `.40` atau `,40` sesuai pengaturan desimal komputer). Klik **Continue**."
    ],
    [
     "Jalankan",
     "Klik **OK**."
+   ],
+   [
+    "Baca berurutan",
+    "Baca KMO and Bartlett's Test dulu, lalu Total Variance Explained (jumlah komponen eigenvalue > 1), lalu Rotated Component Matrix (butir mengelompok ke faktor yang mana). Nomor komponen bisa berbeda dari contoh di bawah, karena SPSS mengurutkannya berdasarkan varians."
    ]
   ],
   "out": [
@@ -1777,11 +2070,56 @@ const UTS = [
   "tip": "Eigenvalue komponen kelima (1,006) hanya tipis di atas 1. Jika dosen meminta jumlah faktor ditetapkan sesuai model, pilih Extraction › Fixed number of factors = 5. Perlu diingat, PCA + Varimax ini bersifat eksploratori; CFA sejati memakai SEM (AMOS atau SmartPLS).",
   "rule": "Data layak dianalisis faktor jika KMO > 0,50 dan Bartlett sig < 0,05. Jumlah faktor = jumlah komponen dengan eigenvalue > 1. Butir valid jika loading ≥ 0,40 pada faktornya dan tidak ≥ 0,40 pada faktor lain.",
   "interp": [
-     "KMO ,934 (kategori luar biasa menurut Kaiser) dan Bartlett sig 0,000 menunjukkan korelasi antar butir cukup kuat untuk difaktorkan.",
-     "Lima faktor menjelaskan 71,7% variasi (di atas batas umum 60%), dan pengelompokan butirnya persis sama dengan lima variabel yang dirancang: butir CE bersama CE, FOMO bersama FOMO, dan seterusnya. Itu bukti validitas konstruk.",
-     "Loading utama ,65 sampai ,86 dan cross-loading tertinggi hanya ,38 (di bawah 0,40), jadi tidak ada butir yang ambigu. Butir FOMO paling dekat dengan faktor CE (cross-loading ,34 sampai ,38), jadi kedua konstruk sedikit tumpang tindih tetapi masih terpisah. Setelah rotasi, faktor RI menjelaskan variasi terbesar (15,9%) dan FOMO terkecil (12,7%)."
+   "KMO ,934 (kategori luar biasa menurut Kaiser) dan Bartlett sig 0,000 menunjukkan korelasi antar butir cukup kuat untuk difaktorkan.",
+   "Lima faktor menjelaskan 71,7% variasi (di atas batas umum 60%), dan pengelompokan butirnya persis sama dengan lima variabel yang dirancang: butir CE bersama CE, FOMO bersama FOMO, dan seterusnya. Itu bukti validitas konstruk.",
+   "Loading utama ,65 sampai ,86 dan cross-loading tertinggi hanya ,38 (di bawah 0,40), jadi tidak ada butir yang ambigu. Butir FOMO paling dekat dengan faktor CE (cross-loading ,34 sampai ,38), jadi kedua konstruk sedikit tumpang tindih tetapi masih terpisah. Setelah rotasi, faktor RI menjelaskan variasi terbesar (15,9%) dan FOMO terkecil (12,7%)."
   ],
-  "uts": 6
+  "uts": 6,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "KMO and Bartlett's Test",
+     "**Ya**",
+     "Kelayakan data: nilai KMO dan Sig. Bartlett"
+    ],
+    [
+     "Total Variance Explained",
+     "**Ya**",
+     "Eigenvalue, % of Variance, dan Cumulative %; cukup sampai enam baris pertama"
+    ],
+    [
+     "Rotated Component Matrix",
+     "**Ya**",
+     "Tabel utama validitas konstruk: loading tiap butir pada tiap faktor (sertakan catatan rotasinya)"
+    ],
+    [
+     "Scree Plot",
+     "Opsional",
+     "Gambar pendukung jumlah faktor"
+    ],
+    [
+     "Communalities",
+     "Opsional",
+     "Lampiran: seberapa baik tiap butir dijelaskan oleh faktor"
+    ],
+    [
+     "Anti-image Matrices",
+     "Opsional",
+     "Hanya diagonal bertanda a (MSA), bila dosen memintanya; patokan ≥ 0,50 per butir"
+    ],
+    [
+     "Component Matrix (tanpa rotasi) dan Component Transformation Matrix",
+     "Lewati",
+     "Tidak diperlukan untuk laporan"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "ttest-uts",
@@ -1797,7 +2135,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -1805,15 +2143,23 @@ const UTS = [
    ],
    [
     "Isi variabel",
-    "TotalRI ke **Test Variable(s)**, Gender ke **Grouping Variable**."
+    "TotalRI ke **Test Variable(s)**, Gender ke **Grouping Variable**. Di kotak Grouping Variable akan tertulis Gender(? ?)."
    ],
    [
     "Definisikan kelompok",
-    "Klik **Define Groups**: Group 1 = `1`, Group 2 = `2`. Continue."
+    "Klik **Define Groups**, pilih **Use specified values**: Group 1 = `1` (Laki-laki), Group 2 = `2` (Perempuan). Klik **Continue**."
+   ],
+   [
+    "Cek opsi",
+    "Klik **Options**: Confidence Interval Percentage = 95 dan Missing Values = **Exclude cases analysis by analysis** (default). Klik **Continue**."
    ],
    [
     "Jalankan",
     "Klik **OK**."
+   ],
+   [
+    "Baca berurutan",
+    "Lihat Sig. pada Levene's Test dulu untuk memilih baris (Equal variances assumed bila sig > 0,05), lalu baca Sig. (2-tailed) pada baris itu. Pada SPSS 27 tabel **Independent Samples Effect Sizes** (Cohen's d) ikut muncul di bawahnya. Jika tidak muncul, hitung manual: d = Mean Difference ÷ simpangan baku gabungan."
    ]
   ],
   "out": [
@@ -1907,10 +2253,35 @@ const UTS = [
   "tip": "Hasil tidak signifikan bukan kegagalan analisis. Itu temuan: gender tidak membedakan niat beli ulang, sehingga aman diperlakukan sebagai variabel kontrol.",
   "rule": "Langkah 1, Levene: sig > 0,05 berarti varians sama, pakai baris Equal variances assumed. Langkah 2, uji-t: sig (2-tailed) < 0,05 berarti rata-rata berbeda. Ukuran efek Cohen's d: 0,2 kecil; 0,5 sedang; 0,8 besar.",
   "interp": [
-     "Rata-rata niat beli ulang laki-laki (39,69) dan perempuan (39,42) hanya berselisih 0,27 poin pada rentang total 5 sampai 50. Dengan sig ,580 (> 0,05), selisih sekecil itu bisa muncul karena kebetulan sampel. Cohen's d = 0,06, jauh di bawah 0,2, sehingga selisihnya juga tidak bermakna secara praktis.",
-     "Untuk laporan, tulis: “Tidak terdapat perbedaan signifikan Repurchase Intention antara laki-laki dan perempuan, t(348) = 0,554; p = 0,580.” Gender tidak membedakan niat beli ulang, jadi tidak perlu dipisah pada analisis berikutnya."
+   "Rata-rata niat beli ulang laki-laki (39,69) dan perempuan (39,42) hanya berselisih 0,27 poin pada rentang total 5 sampai 50. Dengan sig ,580 (> 0,05), selisih sekecil itu bisa muncul karena kebetulan sampel. Cohen's d = 0,06, jauh di bawah 0,2, sehingga selisihnya juga tidak bermakna secara praktis.",
+   "Untuk laporan, tulis: “Tidak terdapat perbedaan signifikan Repurchase Intention antara laki-laki dan perempuan, t(348) = 0,554; p = 0,580.” Gender tidak membedakan niat beli ulang, jadi tidak perlu dipisah pada analisis berikutnya."
   ],
-  "uts": 7
+  "uts": 7,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Group Statistics",
+     "**Ya**",
+     "N, mean, simpangan baku, dan Std. Error Mean tiap kelompok"
+    ],
+    [
+     "Independent Samples Test",
+     "**Ya**",
+     "Levene dan uji-t; setelah dipaste, hapus baris yang tidak dipakai sesuai hasil Levene"
+    ],
+    [
+     "Independent Samples Effect Sizes",
+     "**Ya** (bila muncul)",
+     "Cohen's d sebagai ukuran efek"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "anova-uts",
@@ -1926,7 +2297,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -1934,19 +2305,31 @@ const UTS = [
    ],
    [
     "Isi variabel",
-    "TotalRI ke **Dependent Variable**, Frekuensi ke **Fixed Factor(s)**."
+    "TotalRI ke **Dependent Variable**, Frekuensi ke **Fixed Factor(s)**. Jika kotak variabel masih berisi isian dari analisis sebelumnya, klik **Reset** dulu."
+   ],
+   [
+    "Cek model",
+    "Tombol **Model** tidak perlu dibuka: biarkan **Full factorial** dan Type III (default)."
    ],
    [
     "Atur Options",
-    "Klik **Options**, centang **Descriptive statistics** dan **Homogeneity tests**. Continue."
+    "Klik **Options**. Pada *Display* centang **Descriptive statistics**, **Estimates of effect size**, dan **Homogeneity tests**. Klik **Continue**."
    ],
    [
     "Minta post hoc",
-    "Klik **Post Hoc**, pindahkan Frekuensi ke Post Hoc Tests for, centang **Tukey**. Continue."
+    "Klik **Post Hoc**, pindahkan Frekuensi ke *Post Hoc Tests for*, lalu centang **Tukey** pada *Equal Variances Assumed*. Cadangan: bila Levene signifikan (sig < 0,05), centang **Games-Howell** pada *Equal Variances Not Assumed* dan pakai tabelnya. Klik **Continue**."
+   ],
+   [
+    "Grafik (opsional)",
+    "Klik **Plots**, pindahkan Frekuensi ke **Horizontal Axis**, klik **Add**, lalu **Continue**. Hasilnya profile plot rata-rata tiap kelompok."
    ],
    [
     "Jalankan",
     "Klik **OK**."
+   ],
+   [
+    "Baca berurutan",
+    "Levene (baris *Based on Mean*), lalu Tests of Between-Subjects Effects (baris Frekuensi; kolom Partial Eta Squared sebagai ukuran efek), lalu Multiple Comparisons (Tukey)."
    ]
   ],
   "out": [
@@ -2010,7 +2393,8 @@ const UTS = [
      "df",
      "Mean Square",
      "F",
-     "Sig."
+     "Sig.",
+     "Partial Eta Squared"
     ],
     "r": [
      [
@@ -2019,7 +2403,8 @@ const UTS = [
       "2",
       "584,703",
       "34,057",
-      ",000"
+      ",000",
+      ",164"
      ],
      [
       "Intercept",
@@ -2027,7 +2412,8 @@ const UTS = [
       "1",
       "538315,346",
       "31355,393",
-      ",000"
+      ",000",
+      ",989"
      ],
      [
       "Frekuensi",
@@ -2035,13 +2421,15 @@ const UTS = [
       "2",
       "584,703",
       "{{34,057}}",
-      "{{,000}}"
+      "{{,000}}",
+      "{{,164}}"
      ],
      [
       "Error",
       "5957,362",
       "347",
       "17,168",
+      "",
       "",
       ""
      ],
@@ -2051,12 +2439,14 @@ const UTS = [
       "350",
       "",
       "",
+      "",
       ""
      ],
      [
       "Corrected Total",
       "7126,769",
       "349",
+      "",
       "",
       "",
       ""
@@ -2194,13 +2584,58 @@ const UTS = [
    ]
   ],
   "concl": "Repurchase Intention **berbeda signifikan menurut frekuensi belanja**; makin sering berbelanja, makin tinggi niat beli ulangnya.",
-  "tip": "ANOVA hanya menjawab apakah ada yang berbeda. Pasangan mana yang berbeda baru terjawab di tabel Tukey, jadi jangan berhenti di tabel F.",
+  "tip": "ANOVA hanya menjawab apakah ada yang berbeda. Pasangan mana yang berbeda baru terjawab di tabel Tukey, jadi jangan berhenti di tabel F. Jika Levene signifikan, pakai Games-Howell sebagai pengganti Tukey.",
   "rule": "Levene sig > 0,05 berarti varians homogen (asumsi terpenuhi). F dengan sig < 0,05 berarti minimal ada satu pasang kelompok yang berbeda. Lanjutkan ke Tukey: sig < 0,05 pada sebuah pasangan berarti pasangan itu berbeda. Ukuran efek eta squared: 0,01 kecil; 0,06 sedang; 0,14 besar (Cohen).",
   "interp": [
-     "Rata-rata niat beli ulang naik dari 37,41 (1-2 kali) ke 39,24 (3-5 kali) dan 42,09 (lebih dari 5 kali). Uji F (34,057; sig 0,000) menunjukkan kenaikan itu bukan kebetulan, dan Tukey memastikan ketiga pasangan berbeda: selisih terkecil 1,83 (1-2 vs 3-5 kali), terbesar 4,68 (1-2 vs lebih dari 5 kali).",
-     "Eta squared = 1169,407 / 7126,769 = ,164 (kategori besar), artinya frekuensi belanja menjelaskan sekitar 16,4% variasi niat beli ulang. Untuk laporan, tulis: “Terdapat perbedaan signifikan Repurchase Intention menurut frekuensi belanja, F(2, 347) = 34,057; p < 0,001; η² = ,164.”"
+   "Rata-rata niat beli ulang naik dari 37,41 (1-2 kali) ke 39,24 (3-5 kali) dan 42,09 (lebih dari 5 kali). Uji F (34,057; sig 0,000) menunjukkan kenaikan itu bukan kebetulan, dan Tukey memastikan ketiga pasangan berbeda: selisih terkecil 1,83 (1-2 vs 3-5 kali), terbesar 4,68 (1-2 vs lebih dari 5 kali).",
+   "Eta squared = 1169,407 / 7126,769 = ,164 (kategori besar), artinya frekuensi belanja menjelaskan sekitar 16,4% variasi niat beli ulang. Untuk laporan, tulis: “Terdapat perbedaan signifikan Repurchase Intention menurut frekuensi belanja, F(2, 347) = 34,057; p < 0,001; η² = ,164.”"
   ],
-  "uts": 8
+  "uts": 8,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Descriptive Statistics",
+     "**Ya**",
+     "N, mean, dan simpangan baku TotalRI tiap kelompok"
+    ],
+    [
+     "Levene's Test of Equality of Error Variances",
+     "**Ya**",
+     "Asumsi homogenitas; pakai baris Based on Mean"
+    ],
+    [
+     "Tests of Between-Subjects Effects",
+     "**Ya**",
+     "Uji F dan Partial Eta Squared; boleh hapus baris Intercept dan Corrected Total"
+    ],
+    [
+     "Multiple Comparisons (Tukey HSD)",
+     "**Ya**",
+     "Pasangan kelompok yang berbeda"
+    ],
+    [
+     "Homogeneous Subsets",
+     "Opsional",
+     "Ringkasan pengelompokan; Multiple Comparisons sudah cukup"
+    ],
+    [
+     "Profile Plots",
+     "Opsional",
+     "Gambar rata-rata tiap kelompok"
+    ],
+    [
+     "Between-Subjects Factors",
+     "Lewati",
+     "Cukup ambil N dari tabel Descriptive Statistics"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "ancova-uts",
@@ -2216,7 +2651,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -2224,23 +2659,31 @@ const UTS = [
    ],
    [
     "Isi variabel",
-    "TotalRI ke **Dependent Variable**, Frekuensi ke **Fixed Factor(s)**, **Usia ke Covariate(s)**."
+    "TotalRI ke **Dependent Variable**, Frekuensi ke **Fixed Factor(s)**, **Usia ke Covariate(s)**. Jika kotak variabel masih berisi isian dari analisis sebelumnya, klik **Reset** dulu."
    ],
    [
-    "Uji asumsi kesejajaran lereng (run pertama)",
-    "Klik **Model**, pilih **Custom**, lalu masukkan Frekuensi, Usia, dan interaksi Frekuensi*Usia (pilih keduanya, ubah Build Term ke Interaction). Klik OK dan baca baris interaksinya."
+    "Cek linearitas (opsional)",
+    "Buat grafik `Graphs › Legacy Dialogs › Scatter/Dot › Simple Scatter › Define`: TotalRI ke Y Axis, Usia ke X Axis, Frekuensi ke Set Markers by. Hubungan Usia dengan TotalRI sebaiknya kira-kira lurus pada tiap kelompok."
+   ],
+   [
+    "Uji kesejajaran lereng (run pertama)",
+    "Klik **Model**, pilih **Custom**. Pada *Build Term(s)* ubah menjadi **Main effects**, pilih Frekuensi lalu klik panah; pilih Usia lalu klik panah. Kemudian blok Frekuensi dan Usia sekaligus, ubah *Build Term(s)* menjadi **Interaction**, klik panah. Hasilnya tiga term: Frekuensi, Usia, dan Frekuensi*Usia. Klik **Continue**, lalu **OK**, dan baca baris Frekuensi * Usia di Tests of Between-Subjects Effects."
    ],
    [
     "Model akhir (run kedua)",
-    "Kembali ke **Model**, pilih **Full factorial** atau Custom tanpa interaksi. Pastikan Type III."
+    "Buka lagi `Analyze › General Linear Model › Univariate`, klik **Model**, pilih **Full factorial** (tanpa interaksi), pastikan Sum of squares = **Type III** dan *Include intercept in model* tercentang. Klik **Continue**."
    ],
    [
     "Minta rata-rata terkoreksi",
-    "Klik **Options**: pindahkan Frekuensi ke Display Means for, centang **Compare main effects** dengan penyesuaian **Bonferroni**, centang **Homogeneity tests**. Continue."
+    "Klik **Options**: pindahkan Frekuensi ke *Display Means for*, centang **Compare main effects**, dan pilih **Bonferroni** pada *Confidence interval adjustment*. Pada *Display* centang **Descriptive statistics**, **Estimates of effect size**, dan **Homogeneity tests**. Klik **Continue**. Tombol Post Hoc tidak dipakai karena tidak menyesuaikan kovariat."
    ],
    [
     "Jalankan",
     "Klik **OK**."
+   ],
+   [
+    "Baca berurutan",
+    "Asumsi kesejajaran lereng (run pertama), Levene, Tests of Between-Subjects Effects (baris Usia dan Frekuensi), Estimated Marginal Means (rata-rata terkoreksi pada Usia = rata-rata sampel), lalu Pairwise Comparisons."
    ]
   ],
   "out": [
@@ -2314,7 +2757,8 @@ const UTS = [
      "df",
      "Mean Square",
      "F",
-     "Sig."
+     "Sig.",
+     "Partial Eta Squared"
     ],
     "r": [
      [
@@ -2323,7 +2767,8 @@ const UTS = [
       "3",
       "600,112",
       "38,983",
-      ",000"
+      ",000",
+      ",253"
      ],
      [
       "Intercept",
@@ -2331,7 +2776,8 @@ const UTS = [
       "1",
       "16394,325",
       "1064,960",
-      ",000"
+      ",000",
+      ",755"
      ],
      [
       "Usia",
@@ -2339,7 +2785,8 @@ const UTS = [
       "1",
       "630,929",
       "{{40,985}}",
-      "{{,000}}"
+      "{{,000}}",
+      "{{,106}}"
      ],
      [
       "Frekuensi",
@@ -2347,13 +2794,15 @@ const UTS = [
       "2",
       "554,015",
       "{{35,988}}",
-      "{{,000}}"
+      "{{,000}}",
+      "{{,172}}"
      ],
      [
       "Error",
       "5326,433",
       "346",
       "15,394",
+      "",
       "",
       ""
      ],
@@ -2363,12 +2812,14 @@ const UTS = [
       "350",
       "",
       "",
+      "",
       ""
      ],
      [
       "Corrected Total",
       "7126,769",
       "349",
+      "",
       "",
       "",
       ""
@@ -2514,11 +2965,56 @@ const UTS = [
   "tip": "Jika interaksi Frekuensi * Usia signifikan, ANCOVA tidak tepat karena lereng tiap kelompok berbeda. Selalu cek asumsi ini sebelum membaca hasil utamanya.",
   "rule": "Cek dulu interaksi Frekuensi * Usia: sig > 0,05 berarti lereng sejajar dan ANCOVA boleh dilanjutkan. Lalu baca efek Frekuensi: sig < 0,05 berarti rata-rata terkoreksi berbeda. Ukuran efek partial eta squared: 0,01 kecil; 0,06 sedang; 0,14 besar.",
   "interp": [
-     "Asumsi kesejajaran lereng terpenuhi (sig ,458), jadi hasil ANCOVA bisa dipercaya. Usia memengaruhi niat beli ulang (F = 40,985; partial η² = ,106), dan korelasinya positif (r = ,31): makin tua responden, makin tinggi niat beli ulangnya.",
-     "Setelah Usia dikendalikan, efek Frekuensi tetap signifikan (F = 35,988; partial η² = ,172). Rata-rata terkoreksi (37,52; 39,19; 42,05) nyaris sama dengan rata-rata asli di ANOVA (37,41; 39,24; 42,09) karena rata-rata usia ketiga kelompok mirip (25,57; 26,25; 26,15 tahun). Jadi perbedaan antar kelompok bukan akibat perbedaan usia.",
-     "Untuk laporan, tulis: “Setelah mengendalikan Usia, terdapat perbedaan signifikan Repurchase Intention antar kelompok frekuensi, F(2, 346) = 35,988; p < 0,001; partial η² = ,172.”"
+   "Asumsi kesejajaran lereng terpenuhi (sig ,458), jadi hasil ANCOVA bisa dipercaya. Usia memengaruhi niat beli ulang (F = 40,985; partial η² = ,106), dan korelasinya positif (r = ,31): makin tua responden, makin tinggi niat beli ulangnya.",
+   "Setelah Usia dikendalikan, efek Frekuensi tetap signifikan (F = 35,988; partial η² = ,172). Rata-rata terkoreksi (37,52; 39,19; 42,05) nyaris sama dengan rata-rata asli di ANOVA (37,41; 39,24; 42,09) karena rata-rata usia ketiga kelompok mirip (25,57; 26,25; 26,15 tahun). Jadi perbedaan antar kelompok bukan akibat perbedaan usia.",
+   "Untuk laporan, tulis: “Setelah mengendalikan Usia, terdapat perbedaan signifikan Repurchase Intention antar kelompok frekuensi, F(2, 346) = 35,988; p < 0,001; partial η² = ,172.”"
   ],
-  "uts": 9
+  "uts": 9,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Run pertama: Tests of Between-Subjects Effects (model dengan interaksi)",
+     "**Ya, sebagian**",
+     "Ambil baris Frekuensi * Usia untuk menunjukkan asumsi kesejajaran lereng; sisanya boleh ke lampiran"
+    ],
+    [
+     "Levene's Test of Equality of Error Variances",
+     "**Ya**",
+     "Asumsi homogenitas varians"
+    ],
+    [
+     "Tests of Between-Subjects Effects (model akhir)",
+     "**Ya**",
+     "Efek Usia (kovariat) dan Frekuensi, beserta Partial Eta Squared"
+    ],
+    [
+     "Estimated Marginal Means: Frekuensi",
+     "**Ya**",
+     "Rata-rata terkoreksi tiap kelompok (sertakan catatan nilai Usia)"
+    ],
+    [
+     "Pairwise Comparisons",
+     "**Ya**",
+     "Perbedaan pasangan kelompok dengan penyesuaian Bonferroni"
+    ],
+    [
+     "Descriptive Statistics",
+     "Opsional",
+     "Rata-rata sebelum dikoreksi, sebagai pembanding"
+    ],
+    [
+     "Univariate Tests dan Between-Subjects Factors",
+     "Lewati",
+     "Isinya mengulang tabel di atas"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  },
  {
   "id": "manova-uts",
@@ -2534,7 +3030,7 @@ const UTS = [
   "steps": [
    [
     "Buka datanya",
-    "`File › Open › Data`, pilih Data_Latihan_UTS.sav."
+    "`File › Open › Data`, pilih Data_Latihan_UTS.sav, lalu klik **Open**. Jika file tidak terlihat, ubah *Files of type* menjadi SPSS Statistics (*.sav)."
    ],
    [
     "Buka menu",
@@ -2542,19 +3038,27 @@ const UTS = [
    ],
    [
     "Isi variabel",
-    "TotalRI dan TotalSAT ke **Dependent Variables**, Frekuensi ke **Fixed Factor(s)**."
+    "TotalRI dan TotalSAT ke **Dependent Variables**, Frekuensi ke **Fixed Factor(s)**. Jika kotak variabel masih berisi isian dari analisis sebelumnya, klik **Reset** dulu."
+   ],
+   [
+    "Cek korelasi antar outcome (opsional)",
+    "MANOVA masuk akal bila kedua outcome saling berkorelasi. Cek lewat `Analyze › Correlate › Bivariate` untuk TotalRI dan TotalSAT (di data ini r ≈ ,47)."
    ],
    [
     "Atur Options",
-    "Klik **Options**, centang **Descriptive statistics** dan **Homogeneity tests** (ini memunculkan Box's M dan Levene). Continue."
+    "Klik **Options**. Pada *Display* centang **Descriptive statistics**, **Estimates of effect size**, dan **Homogeneity tests** (ini memunculkan Box's M dan Levene). Opsional: **Residual SSCP matrix** untuk Bartlett's test of sphericity. Klik **Continue**."
    ],
    [
     "Minta post hoc",
-    "Klik **Post Hoc**, pindahkan Frekuensi ke Post Hoc Tests for, centang **Tukey**. Continue. Ini perlu untuk tahu pasangan kelompok mana yang berbeda pada tiap variabel."
+    "Klik **Post Hoc**, pindahkan Frekuensi ke *Post Hoc Tests for*, centang **Tukey** (cadangan: **Games-Howell** bila Levene signifikan). Klik **Continue**. Ini perlu untuk tahu pasangan kelompok mana yang berbeda pada tiap variabel."
    ],
    [
     "Jalankan",
     "Klik **OK**."
+   ],
+   [
+    "Baca berurutan",
+    "Box's M, Multivariate Tests (baris Frekuensi), Levene tiap variabel, Tests of Between-Subjects Effects, lalu Multiple Comparisons per variabel. Statistik multivariat: laporkan Wilks' Lambda bila Box's M tidak signifikan, dan Pillai's Trace bila Box's M signifikan atau ukuran kelompok sangat tidak seimbang."
    ]
   ],
   "out": [
@@ -2585,7 +3089,8 @@ const UTS = [
      "F",
      "Hypothesis df",
      "Error df",
-     "Sig."
+     "Sig.",
+     "Partial Eta Squared"
     ],
     "r": [
      [
@@ -2594,7 +3099,8 @@ const UTS = [
       "15,826",
       "4",
       "694",
-      "{{,000}}"
+      "{{,000}}",
+      ",084"
      ],
      [
       "Wilks' Lambda",
@@ -2602,7 +3108,8 @@ const UTS = [
       "16,519",
       "4",
       "692",
-      "{{,000}}"
+      "{{,000}}",
+      ",087"
      ],
      [
       "Hotelling's Trace",
@@ -2610,7 +3117,8 @@ const UTS = [
       "17,243",
       "4",
       "414,162",
-      "{{,000}}"
+      "{{,000}}",
+      ",091"
      ],
      [
       "Roy's Largest Root ᵇ",
@@ -2618,7 +3126,8 @@ const UTS = [
       "34,131",
       "2",
       "347",
-      "{{,000}}"
+      "{{,000}}",
+      ",164"
      ]
     ],
     "n": "b. Statistik ini adalah batas atas F yang menghasilkan batas bawah signifikansi."
@@ -2658,7 +3167,8 @@ const UTS = [
      "df",
      "Mean Square",
      "F",
-     "Sig."
+     "Sig.",
+     "Partial Eta Squared"
     ],
     "r": [
      [
@@ -2668,7 +3178,8 @@ const UTS = [
       "2",
       "584,703",
       "34,057",
-      ",000"
+      ",000",
+      ",164"
      ],
      [
       "Intercept",
@@ -2677,7 +3188,8 @@ const UTS = [
       "1",
       "538315,346",
       "31355,393",
-      ",000"
+      ",000",
+      ",989"
      ],
      [
       "Frekuensi",
@@ -2686,7 +3198,8 @@ const UTS = [
       "2",
       "584,703",
       "{{34,057}}",
-      "{{,000}}"
+      "{{,000}}",
+      "{{,164}}"
      ],
      [
       "Error",
@@ -2694,6 +3207,7 @@ const UTS = [
       "5957,362",
       "347",
       "17,168",
+      "",
       "",
       ""
      ],
@@ -2704,7 +3218,8 @@ const UTS = [
       "2",
       "135,249",
       "7,994",
-      ",000"
+      ",000",
+      ",044"
      ],
      [
       "Intercept",
@@ -2713,7 +3228,8 @@ const UTS = [
       "1",
       "551215,432",
       "32581,983",
-      ",000"
+      ",000",
+      ",989"
      ],
      [
       "Frekuensi",
@@ -2722,7 +3238,8 @@ const UTS = [
       "2",
       "135,249",
       "{{7,994}}",
-      "{{,000}}"
+      "{{,000}}",
+      "{{,044}}"
      ],
      [
       "Error",
@@ -2731,6 +3248,7 @@ const UTS = [
       "347",
       "16,918",
       "",
+      "",
       ""
      ]
     ],
@@ -2738,21 +3256,83 @@ const UTS = [
    },
    {
     "t": "Descriptive Statistics (rata-rata kedua outcome per kelompok)",
-    "h": ["Frekuensi", "N", "Mean TotalRI", "Mean TotalSAT", "SD TotalSAT"],
+    "h": [
+     "Frekuensi",
+     "N",
+     "Mean TotalRI",
+     "Mean TotalSAT",
+     "SD TotalSAT"
+    ],
     "r": [
-     ["1-2 kali", "105", "37,410", "39,200", "4,115"],
-     ["3-5 kali", "140", "39,243", "39,629", "4,345"],
-     ["Lebih dari 5 kali", "105", "42,086", "41,324", "3,779"],
-     ["Total", "350", "39,546", "40,009", "4,195"]
+     [
+      "1-2 kali",
+      "105",
+      "37,410",
+      "39,200",
+      "4,115"
+     ],
+     [
+      "3-5 kali",
+      "140",
+      "39,243",
+      "39,629",
+      "4,345"
+     ],
+     [
+      "Lebih dari 5 kali",
+      "105",
+      "42,086",
+      "41,324",
+      "3,779"
+     ],
+     [
+      "Total",
+      "350",
+      "39,546",
+      "40,009",
+      "4,195"
+     ]
     ]
    },
    {
     "t": "Multiple Comparisons Tukey HSD: TotalSAT (hanya satu arah pasangan)",
-    "h": ["(I) Frekuensi", "(J) Frekuensi", "Mean Difference (I-J)", "Std. Error", "Sig.", "95% CI Lower", "95% CI Upper"],
+    "h": [
+     "(I) Frekuensi",
+     "(J) Frekuensi",
+     "Mean Difference (I-J)",
+     "Std. Error",
+     "Sig.",
+     "95% CI Lower",
+     "95% CI Upper"
+    ],
     "r": [
-     ["1-2 kali", "3-5 kali", "-,429", ",531", "{{,699}}", "-1,679", ",821"],
-     ["1-2 kali", "Lebih dari 5 kali", "{{-2,124*}}", ",568", ",001", "-3,460", "-,788"],
-     ["3-5 kali", "Lebih dari 5 kali", "{{-1,695*}}", ",531", ",004", "-2,945", "-,445"]
+     [
+      "1-2 kali",
+      "3-5 kali",
+      "-,429",
+      ",531",
+      "{{,699}}",
+      "-1,679",
+      ",821"
+     ],
+     [
+      "1-2 kali",
+      "Lebih dari 5 kali",
+      "{{-2,124*}}",
+      ",568",
+      ",001",
+      "-3,460",
+      "-,788"
+     ],
+     [
+      "3-5 kali",
+      "Lebih dari 5 kali",
+      "{{-1,695*}}",
+      ",531",
+      ",004",
+      "-2,945",
+      "-,445"
+     ]
     ],
     "n": "*. Signifikan pada 0,05. Untuk TotalRI hasil Tukey sama dengan langkah ANOVA (ketiga pasangan berbeda)."
    }
@@ -2787,13 +3367,64 @@ const UTS = [
   "tip": "Baca MANOVA berurutan: asumsi, uji multivariat, baru uji univariat. Uji univariat hanya bermakna bila uji multivariatnya signifikan. Post hoc dibaca per variabel dependen, jadi satu kelompok bisa berbeda pada RI tetapi tidak pada SAT.",
   "rule": "Urutan baca: (1) Box's M sig > 0,05 berarti matriks kovarians homogen; (2) Multivariate Tests sig < 0,05 berarti kelompok berbeda pada gabungan variabel dependen (laporkan Wilks' Lambda, atau Pillai's Trace bila Box's M signifikan); (3) Levene tiap variabel sig > 0,05; (4) Between-Subjects Effects untuk tahu variabel mana yang berbeda; (5) post hoc untuk pasangan kelompok.",
   "interp": [
-     "Asumsi terpenuhi (Box's M sig ,640; Levene ,462 dan ,386). Wilks' Lambda ,833 (F = 16,519; sig 0,000; partial η² sekitar ,087) menunjukkan kelompok frekuensi berbeda pada gabungan RI dan SAT.",
-     "Secara terpisah, frekuensi sangat memengaruhi RI (partial η² = ,164) tetapi jauh lebih kecil pada SAT (,044). Post hoc Tukey pada SAT: kelompok lebih dari 5 kali lebih puas (41,32) dibanding 1-2 kali (39,20) dan 3-5 kali (39,63), sedangkan 1-2 vs 3-5 kali tidak berbeda (sig ,699). Jadi perbedaan pada SAT hanya dipicu kelompok lebih dari 5 kali.",
-     "Untuk laporan, tulis: “Frekuensi belanja berpengaruh signifikan secara simultan terhadap Repurchase Intention dan Customer Satisfaction, Wilks' Λ = ,833; F(4, 692) = 16,519; p < 0,001.”"
+   "Asumsi terpenuhi (Box's M sig ,640; Levene ,462 dan ,386). Wilks' Lambda ,833 (F = 16,519; sig 0,000; partial η² sekitar ,087) menunjukkan kelompok frekuensi berbeda pada gabungan RI dan SAT.",
+   "Secara terpisah, frekuensi sangat memengaruhi RI (partial η² = ,164) tetapi jauh lebih kecil pada SAT (,044). Post hoc Tukey pada SAT: kelompok lebih dari 5 kali lebih puas (41,32) dibanding 1-2 kali (39,20) dan 3-5 kali (39,63), sedangkan 1-2 vs 3-5 kali tidak berbeda (sig ,699). Jadi perbedaan pada SAT hanya dipicu kelompok lebih dari 5 kali.",
+   "Untuk laporan, tulis: “Frekuensi belanja berpengaruh signifikan secara simultan terhadap Repurchase Intention dan Customer Satisfaction, Wilks' Λ = ,833; F(4, 692) = 16,519; p < 0,001.”"
   ],
-  "uts": 10
+  "uts": 10,
+  "lapor": {
+   "h": [
+    "Tabel di output SPSS",
+    "Salin?",
+    "Dipakai untuk"
+   ],
+   "r": [
+    [
+     "Box's Test of Equality of Covariance Matrices",
+     "**Ya**",
+     "Asumsi homogenitas matriks kovarians"
+    ],
+    [
+     "Multivariate Tests",
+     "**Ya**",
+     "Pillai's Trace, Wilks' Lambda, dkk. pada baris Frekuensi; hapus baris Intercept"
+    ],
+    [
+     "Levene's Test of Equality of Error Variances",
+     "**Ya**",
+     "Homogenitas varians tiap variabel dependen"
+    ],
+    [
+     "Tests of Between-Subjects Effects",
+     "**Ya**",
+     "Uji univariat per variabel; ambil baris Frekuensi, Error, dan Partial Eta Squared"
+    ],
+    [
+     "Descriptive Statistics",
+     "**Ya**",
+     "Mean dan simpangan baku kedua outcome per kelompok"
+    ],
+    [
+     "Multiple Comparisons (Tukey HSD), satu tabel per variabel",
+     "**Ya**",
+     "Pasangan kelompok yang berbeda; salin keduanya"
+    ],
+    [
+     "Bartlett's Test of Sphericity",
+     "Opsional",
+     "Hanya bila Residual SSCP matrix dicentang"
+    ],
+    [
+     "Between-Subjects Factors dan Homogeneous Subsets",
+     "Lewati",
+     "Tidak diperlukan"
+    ]
+   ],
+   "n": "Cara menyalin: klik judul tabel di Output Viewer, tekan `Ctrl+C`, lalu paste di Word (hasilnya tabel yang bisa diedit). Untuk grafik, klik grafiknya lalu `Ctrl+C` dan paste sebagai gambar. Rapikan di Word: hapus kolom atau baris yang tidak dipakai, seragamkan desimal, dan tulis sig ,000 sebagai < ,001."
+  }
  }
 ];
+
 const ALL = TUT.concat(UTS);
 
 const TREE = {q:"Apakah variabelmu bisa dibagi menjadi variabel bebas (penyebab) dan terikat (akibat)?", o:[
@@ -2878,6 +3509,7 @@ function outHTML(t){
   return `<h3>Output SPSS</h3>${t.out.map(outTable).join("")}
   <h3>Pembahasan: cara membaca</h3><ol class="read">${t.read.map(r=>`<li><b>${fmt(r[0])}</b>${fmt(r[1])}</li>`).join("")}</ol>
   ${t.interp?`<div class="callout interp"><span class="lb">Interpretasi</span>${t.interp.map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`:""}
+  ${t.lapor?`<h3>Tabel SPSS yang dicopy untuk laporan</h3>${table(t.lapor)}${t.lapor.n?`<p class="hint">${fmt(t.lapor.n)}</p>`:""}`:""}
   <div class="callout"><span class="lb">Kesimpulan</span>${fmt(t.concl)}</div>
   ${t.tip?`<div class="callout tip"><span class="lb">Catatan</span>${fmt(t.tip)}</div>`:""}
   <button class="btn ${d?"on":"pri"}" data-a="mark-tut" data-id="${t.id}">${d?"&#10003; Tutorial selesai (klik untuk batal)":"Tandai tutorial selesai"}</button>`;
@@ -2980,6 +3612,7 @@ function diagram(){
 function utsIndex(){
   let b = `<h2>Bahas UTS</h2><p class="lead">Urutan pengerjaan perintah UTS di SPSS: rancang variabel, olah deskriptif, uji kualitas instrumen, lalu uji beda. Semua langkah memakai satu file data latihan (350 responden, 25 butir).</p>
   <div class="callout tip"><span class="lb">Soal data dosen</span>Data dari dosen hanya untuk latihan, jadi file latihan di sini disusun ulang (222 baris dari file dosen, sisanya simulasi) supaya syarat 350 sampel dan semua uji bisa dipraktikkan. Angka outputnya dihitung sungguhan, tapi digit terakhir bisa sedikit beda dari SPSS.</div>
+  <div class="callout"><span class="lb">Cara menyalin tabel SPSS ke laporan</span><p>1. Setiap analisis membuka <b>Output Viewer</b>. Klik tabel yang diperlukan (kotak akan muncul di sekelilingnya), tekan <code>Ctrl+C</code>, lalu paste di Word. Hasilnya tabel yang bisa diedit. Klik kanan › <code>Copy Special</code> bila ingin format gambar.</p><p>2. Rapikan tampilan: klik dua kali tabel di Output Viewer, lalu <code>Format › TableLooks</code> dan pilih tampilan yang sederhana (misalnya Academic). Di Word, hapus kolom atau baris yang tidak dipakai dan seragamkan jumlah desimal.</p><p>3. Untuk banyak tabel sekaligus: <code>File › Export</code>, pilih tipe Word/PowerPoint, lalu Objects to Export = Selected. Simpan juga output asli dengan <code>File › Save As</code> (.spv).</p><p>4. Jangan menyalin semuanya. Abaikan Title, Notes, Active Dataset, Case Processing Summary, dan tabel pengulang. Daftar tabel yang perlu disalin ada di bagian <b>Tabel SPSS yang dicopy untuk laporan</b> pada tiap langkah.</p></div>
   <p><a class="btn pri" href="Data_Latihan_UTS.sav" download>&#8595; Unduh Data_Latihan_UTS.sav</a></p>
   <div class="grid">${UTS.map(t=>cardT(t)).join("")}</div>`;
   return win("bahas-uts/", b);
