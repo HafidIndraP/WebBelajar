@@ -101,7 +101,7 @@ init(host){
   const rings=[2,4,6,8,10].map(k=>`<polygon points="${F.map((_,i)=>pt(i,R*k/10).map(n=>n.toFixed(1)).join(',')).join(' ')}" class="rg"/>`).join('');
   const SN=["Pesaing","Pendatang baru","Substitusi","Pemasok","Pelanggan"];const ax=F.map((f,i)=>{const p=pt(i,R),l=pt(i,R+26);return `<line x1="${C}" y1="${C}" x2="${p[0].toFixed(1)}" y2="${p[1].toFixed(1)}" class="ax"/><text x="${l[0].toFixed(1)}" y="${l[1].toFixed(1)}" text-anchor="middle" dominant-baseline="middle" class="lb">${SN[i]}</text>`}).join('');
   const avg=vs.reduce((a,b)=>a+b,0)/5,top=vs.map((x,i)=>[x,i]).sort((a,b)=>b[0]-a[0]).slice(0,2);
-  o.innerHTML=`<svg viewBox="0 0 300 300" class="radar" role="img" aria-label="Radar lima kekuatan">${rings}${ax}<polygon points="${poly}" class="pl"/></svg><p class="say">Intensitas rata-rata ${avg.toFixed(1)} dari 10. ${avg>=6.5?'Industri keras: tekanan terhadap laba tinggi.':avg>=4?'Tekanan sedang: ada ruang untuk strategi yang tepat.':'Industri relatif longgar bagi pemain yang ada.'}</p><h4>Dua tekanan terbesar dan respons SI</h4><ul>${top.map(t=>`<li><b>${F[t[1]][1]} (${t[0]})</b>: ${F[t[1]][2]}</li>`).join('')}</ul>`};
+  o.innerHTML=`<svg viewBox="-34 0 368 300" class="radar" role="img" aria-label="Radar lima kekuatan">${rings}${ax}<polygon points="${poly}" class="pl"/></svg><p class="say">Intensitas rata-rata ${avg.toFixed(1)} dari 10. ${avg>=6.5?'Industri keras: tekanan terhadap laba tinggi.':avg>=4?'Tekanan sedang: ada ruang untuk strategi yang tepat.':'Industri relatif longgar bagi pemain yang ada.'}</p><h4>Dua tekanan terbesar dan respons SI</h4><ul>${top.map(t=>`<li><b>${F[t[1]][1]} (${t[0]})</b>: ${F[t[1]][2]}</li>`).join('')}</ul>`};
  host.addEventListener('input',calc);
  host.addEventListener('click',e=>{const b=e.target.closest('[data-pr]');if(!b)return;const s=PR[+b.dataset.pr][1];for(const k in s)E('[data-k="'+k+'"]',host).value=s[k];calc()});
  calc()}};
@@ -232,7 +232,7 @@ init(host){
  const ED=[["A","R1"],["A","R2"],["R1","R3"],["R2","R3"],["R2","R4"],["R3","B"],["R4","B"]];
  const down=new Set();
  host.innerHTML=`<div class="split2"><label class="sl">Pesan: <input type="text" id="pk-msg" value="Halo dari kantor pusat" maxlength="40"></label>${sl('sz','Karakter per paket',5,2,8,1)}<button class="btn" id="pk-go">Kirim</button></div>
- <svg viewBox="0 0 640 300" class="net" role="img" aria-label="Jaringan dengan enam titik">${ED.map((e,i)=>`<line class="ln" data-e="${i}" x1="${N[e[0]][0]}" y1="${N[e[0]][1]}" x2="${N[e[1]][0]}" y2="${N[e[1]][1]}"/><line class="hit" data-e="${i}" x1="${N[e[0]][0]}" y1="${N[e[0]][1]}" x2="${N[e[1]][0]}" y2="${N[e[1]][1]}"/>`).join('')}
+ <svg viewBox="30 24 580 252" class="net" role="img" aria-label="Jaringan dengan enam titik">${ED.map((e,i)=>`<line class="ln" data-e="${i}" x1="${N[e[0]][0]}" y1="${N[e[0]][1]}" x2="${N[e[1]][0]}" y2="${N[e[1]][1]}"/><line class="hit" data-e="${i}" x1="${N[e[0]][0]}" y1="${N[e[0]][1]}" x2="${N[e[1]][0]}" y2="${N[e[1]][1]}"/>`).join('')}
  ${Object.keys(N).map(k=>`<g class="nd ${k=='A'||k=='B'?'end':''}"><circle cx="${N[k][0]}" cy="${N[k][1]}" r="${k=='A'||k=='B'?24:18}"/><text x="${N[k][0]}" y="${N[k][1]}" text-anchor="middle" dominant-baseline="central">${k}</text></g>`).join('')}<g id="pk-layer"></g></svg>
  <p class="note">Klik sebuah kabel untuk memutus atau menyambungnya. Garis putus-putus merah berarti terputus.</p><div class="out" aria-live="polite"></div>`;
  const out=E('.out',host),layer=E('#pk-layer',host);let raf=0,t0=0,pk=[],arr=[],msgTxt="";
@@ -254,7 +254,7 @@ init(host){
   const w=P.map(p=>1/Math.pow(p.length-1,3)),sw=w.reduce((a,b)=>a+b,0);
   for(let i=0,s=1;i<txt.length;i+=n,s++){let r=Math.random()*sw,k=0;while(k<P.length-1&&r>w[k]){r-=w[k];k++}
    const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('class','pkt');g.style.display='none';
-   g.innerHTML=`<rect x="-16" y="-11" width="32" height="22" rx="3"/><text x="0" y="1" text-anchor="middle" dominant-baseline="central">#${s}</text>`;layer.appendChild(g);
+   g.innerHTML=`<rect x="-20" y="-13" width="40" height="26" rx="4"/><text x="0" y="1" text-anchor="middle" dominant-baseline="central">#${s}</text>`;layer.appendChild(g);
    pk.push({seq:s,txt:txt.slice(i,i+n),path:P[k],start:(s-1)*GAP,g,done:false})}
   t0=0;show();raf=requestAnimationFrame(frame)};
  host.addEventListener('click',e=>{const h=e.target.closest('.hit');if(h){const i=+h.dataset.e;down.has(i)?down.delete(i):down.add(i);mark();return}
