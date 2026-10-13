@@ -2675,7 +2675,7 @@ const UTS = [
    ],
    [
     "Minta rata-rata terkoreksi",
-    "Klik **Options**: pindahkan Frekuensi ke *Display Means for*, centang **Compare main effects**, dan pilih **Bonferroni** pada *Confidence interval adjustment*. Pada *Display* centang **Descriptive statistics**, **Estimates of effect size**, dan **Homogeneity tests**. Klik **Continue**. Tombol Post Hoc tidak dipakai karena tidak menyesuaikan kovariat."
+    "Klik **EM Means...**: pindahkan Frekuensi ke *Display Means for*, centang **Compare main effects**, dan pilih **Bonferroni** pada *Confidence interval adjustment*. Keluar lalu klik **Options**, pada *Display* centang **Descriptive statistics**, **Estimates of effect size**, dan **Homogeneity tests**. Klik **Continue**. Tombol Post Hoc tidak dipakai karena tidak menyesuaikan kovariat."
    ],
    [
     "Jalankan",
