@@ -387,7 +387,7 @@ const UTS = [
    ],
    [
     "Periksa isi Data View",
-    "Klik tab **Data View**. Pastikan ada 350 baris (responden) dan tiap butir berisi angka 1 sampai 10."
+    "Klik tab **Data View**. Pastikan ada 350 baris (responden) dan tiap butir berisi angka dalam rentang 1 sampai 10 (nilai terkecil di data ini 4)."
    ],
    [
     "Cek variabel total",
@@ -550,7 +550,12 @@ const UTS = [
    ]
   ],
   "concl": "Model akhir: **CE, FOMO, PP (antecedent) → SAT (intervening) → RI (consequence)**, dengan Gender, Usia, dan Frekuensi belanja sebagai variabel kontrol.",
-  "tip": "Isi butir pada file asli dosen (aplikasi e-grocery, kolom ESQ, PV, CS, ELY) tidak cocok dengan nama variabel di diagram, jadi kolomnya dipetakan berdasarkan urutan dan dinamai ulang. Data demografi dan variabel SAT tidak ada di file dosen, jadi disimulasikan. Itu aman untuk latihan, tetapi jangan dipakai sebagai data penelitian sungguhan.",
+  "tip": "Isi butir pada file asli dosen (aplikasi e-grocery, kolom ESQ, PV, CS, ELY) tidak cocok dengan nama variabel di diagram, jadi kolomnya dipetakan berdasarkan urutan dan dinamai ulang. Data demografi dan variabel SAT tidak ada di file dosen, jadi disimulasikan. Itu aman untuk latihan, tetapi jangan dipakai sebagai data penelitian sungguhan. Satu hal lagi: label nilai 3 sampai 5 di file (Kurang Setuju, Agak Tidak Setuju, Sedikit Tidak Setuju) urutannya kurang rapi. Abaikan labelnya dan baca angka 1 sampai 10 sebagai makin besar makin setuju.",
+  "interp": [
+     "Peran variabel menentukan alur analisis: CE, FOMO, dan PP diposisikan sebagai penyebab (antecedent) yang diduga memengaruhi Customer Satisfaction (intervening), dan kepuasan itu diduga memengaruhi Repurchase Intention (consequence).",
+     "Gender, Usia, dan Frekuensi belanja online bukan inti hipotesis. Ketiganya dipakai untuk membandingkan kelompok dan mengendalikan pengaruh luar pada langkah 7 sampai 10.",
+     "Untuk laporan, tulis: “Model penelitian terdiri atas lima variabel dengan masing-masing lima indikator (25 butir), diukur pada skala 1 sampai 10 dari 350 responden.” Perlu dicatat, langkah-langkah di sini menguji kualitas instrumen dan perbedaan kelompok. Pengaruh antar variabel (CE, FOMO, PP → SAT → RI) belum diuji."
+  ],
   "uts": 1
  },
  {
@@ -587,6 +592,14 @@ const UTS = [
    [
     "Jalankan",
     "Klik **OK**."
+   ],
+   [
+    "Profil responden",
+    "Ulangi `Analyze › Descriptive Statistics › Frequencies` dengan Gender dan Frekuensi (kali ini biarkan **Display frequency tables** tercentang), lalu `Descriptives` untuk Usia."
+   ],
+   [
+    "Kategorikan rata-rata",
+    "Bagi mean tiap variabel total dengan 5 untuk mendapat rata-rata per butir, lalu cocokkan dengan kelas pada Aturan keputusan di atas."
    ]
   ],
   "out": [
@@ -667,6 +680,31 @@ const UTS = [
      ]
     ],
     "n": null
+   },
+   {
+    "t": "Profil responden (Frequencies dan Descriptives)",
+    "h": ["Variabel", "Kategori", "Frekuensi", "Persen"],
+    "r": [
+     ["Gender", "Laki-laki", "166", "47,4"],
+     ["", "Perempuan", "184", "52,6"],
+     ["Frekuensi belanja", "1-2 kali", "105", "30,0"],
+     ["", "3-5 kali", "140", "40,0"],
+     ["", "Lebih dari 5 kali", "105", "30,0"],
+     ["Usia (tahun)", "Mean 26,02; Median 26; SD 5,49", "Min 17", "Max 43"]
+    ],
+    "n": null
+   },
+   {
+    "t": "Rata-rata per butir dan kategorinya (skala 1-10)",
+    "h": ["Variabel", "Mean total", "Mean per butir", "Kategori"],
+    "r": [
+     ["TotalCE", "39,69", "7,94", "Tinggi"],
+     ["TotalFOMO", "39,77", "7,95", "Tinggi"],
+     ["TotalPP", "39,90", "7,98", "Tinggi"],
+     ["TotalSAT", "40,01", "8,00", "Tinggi"],
+     ["TotalRI", "39,55", "7,91", "Tinggi"]
+    ],
+    "n": "Mean per butir = mean total dibagi 5. Kelas: 1,0-2,8 sangat rendah; 2,9-4,6 rendah; 4,7-6,4 sedang; 6,5-8,2 tinggi; 8,3-10 sangat tinggi."
    }
   ],
   "read": [
@@ -691,8 +729,14 @@ const UTS = [
     "Simpangan baku sekitar 4,2 sampai 4,5. Skor terendah 25 dan tertinggi 50, jadi jawaban responden cukup beragam."
    ]
   ],
-  "concl": "Tendensi sentral keempat variabel hampir identik: rata-rata sekitar **40** dan median **40** dengan sebaran yang mirip.",
+  "concl": "Tendensi sentral kelima variabel hampir identik: rata-rata sekitar **40** dan median **40** dengan sebaran yang mirip.",
   "tip": "“Average” pada perintah dosen sama dengan mean. Jika ingin rata-rata per butir (bukan total), pakai `Analyze › Descriptive Statistics › Descriptives` pada 25 butirnya.",
+  "rule": "Skala 1-10 dibagi 5 kelas dengan lebar (10 − 1) / 5 = 1,8: 1,0-2,8 sangat rendah; 2,9-4,6 rendah; 4,7-6,4 sedang; 6,5-8,2 tinggi; 8,3-10 sangat tinggi. Rata-rata per butir = rata-rata total ÷ 5.",
+  "interp": [
+     "Responden terdiri atas 166 laki-laki (47,4%) dan 184 perempuan (52,6%). Frekuensi belanja online 1-2 kali sebesar 30,0%, 3-5 kali 40,0%, dan lebih dari 5 kali 30,0%. Usia rata-rata 26,02 tahun (rentang 17 sampai 43).",
+     "Rata-rata per butir kelima variabel berada di 7,91 sampai 8,00, masuk kategori **tinggi**. Artinya responden rata-rata setuju terhadap pernyataan di semua variabel, dan tidak ada variabel yang menonjol dibanding yang lain.",
+     "Mean (39,5 sampai 40,0) hampir sama dengan median dan simpangan baku 4,2 sampai 4,5 tergolong sedang, jadi jawaban responden terpusat di sekitar nilai tinggi dengan sebaran yang wajar."
+  ],
   "uts": 2
  },
  {
@@ -841,6 +885,18 @@ const UTS = [
     ]
    },
    {
+    "t": "Rasio z skewness dan kurtosis (nilai dibagi Std. Error)",
+    "h": ["", "z Skewness", "z Kurtosis", "Dalam ±1,96?"],
+    "r": [
+     ["TotalCE", "-2,04", "-0,40", "Skewness sedikit di luar"],
+     ["TotalFOMO", "-0,33", "-1,06", "Ya"],
+     ["TotalPP", "-1,38", "-0,75", "Ya"],
+     ["TotalSAT", "-2,16", "-0,10", "Skewness sedikit di luar"],
+     ["TotalRI", "0,76", "-0,93", "Ya"]
+    ],
+    "n": "SPSS tidak menampilkan kolom ini; hitung sendiri: skewness (atau kurtosis) dibagi Std. Error-nya (,130 untuk skewness; ,260 untuk kurtosis)."
+   },
+   {
     "t": "Histogram TotalRI (sebaran asli data latihan)",
     "chart": [
      0,
@@ -870,7 +926,7 @@ const UTS = [
      "46-47",
      "48-50"
     ],
-    "n": "Sumbu mendatar: rentang skor total. Batang tertinggi di tengah dan menurun di kedua sisi."
+    "n": "Sumbu mendatar: rentang skor total. Banyak responden per rentang: 0, 2, 11, 23, 27, 57, 49, 71, 46, 30, 18, 16 (jumlah 350). Puncak di 40-41, lalu melandai ke kedua sisi."
    }
   ],
   "read": [
@@ -884,7 +940,7 @@ const UTS = [
    ],
    [
     "Histogram",
-    "Batang tertinggi berada di tengah dan menurun ke kedua sisi, bentuk lonceng yang cukup simetris."
+    "Puncak tertinggi ada di rentang 40-41 dan batang melandai ke kedua sisi. Bentuknya mirip lonceng dan cukup simetris, walau ada sedikit gerigi (57, 49, 71) karena jumlah rentangnya banyak."
    ],
    [
     "Mengapa berbeda",
@@ -893,6 +949,13 @@ const UTS = [
   ],
   "concl": "Data **tidak normal secara uji formal**, tetapi bentuknya **mendekati normal**. Uji t dan ANOVA bersifat robust terhadap penyimpangan sekecil ini, sehingga analisis parametrik dapat dilanjutkan dengan catatan di laporan.",
   "tip": "Di laporan tulis kedua temuannya: uji formal menolak normalitas, namun skewness, kurtosis, dan histogram mendukung kenormalan. Menyembunyikan salah satunya akan melemahkan argumenmu.",
+  "rule": "Uji formal: sig > 0,05 berarti H0 diterima (data normal). Skewness dan kurtosis dibagi Std. Error; |z| < 1,96 dianggap normal pada taraf 5%. Pada sampel besar banyak peneliti cukup memakai batas skewness dan kurtosis antara −2 dan +2 (George & Mallery) bersama histogram.",
+  "interp": [
+     "Kolmogorov-Smirnov dan Shapiro-Wilk menolak normalitas pada kelima variabel (sig ,000 sampai ,021). Itu belum berarti datanya buruk: dengan N = 350 kedua uji ini menolak penyimpangan yang sangat kecil.",
+     "Skewness negatif pada CE, FOMO, PP, dan SAT berarti ekor sedikit memanjang ke nilai rendah, sedangkan mayoritas responden berskor tinggi. TotalRI justru sedikit miring ke kanan (,099). Semua skewness dan kurtosis berada di antara −2 dan +2.",
+     "Jika dibagi Std. Error, z skewness CE (−2,04) dan SAT (−2,16) sedikit melewati 1,96, sedangkan tiga variabel lain tidak. Jadi kemiringan CE dan SAT memang ada tetapi ringan, dan tidak mengubah keputusan memakai uji parametrik.",
+     "Untuk laporan, tulis: “Data mendekati distribusi normal (skewness dan kurtosis dalam rentang ±2, histogram berbentuk lonceng); analisis parametrik dilanjutkan dengan catatan kemiringan ringan pada CE dan SAT.”"
+  ],
   "uts": 3
  },
  {
@@ -1133,7 +1196,7 @@ const UTS = [
    ],
    [
     "Bandingkan dengan r tabel",
-    "Semua r hitung jauh lebih besar dari r tabel (,105). Aturan: butir valid jika r hitung memenuhi r tabel."
+    "Semua r hitung jauh lebih besar dari r tabel (,105). Aturan: butir valid jika r hitung lebih besar dari r tabel."
    ],
    [
     "Kategori Guilford",
@@ -1142,6 +1205,11 @@ const UTS = [
   ],
   "concl": "Seluruh **25 butir valid**, tidak ada yang perlu dibuang.",
   "tip": "Korelasi butir dengan total cenderung tinggi karena butir itu sendiri ikut membentuk total. Pembandingnya yang lebih ketat adalah Corrected Item-Total Correlation di analisis reliabilitas.",
+  "rule": "Butir valid jika sig < 0,05 dan r hitung > r tabel. r tabel = 0,105 (df = N − 2 = 348, taraf 5%). Ukuran lain yang sering dipakai: r ≥ 0,30. Kekuatan hubungan (Guilford): 0,60-0,80 tinggi; 0,80-1,00 sangat tinggi.",
+  "interp": [
+     "Seluruh butir punya r hitung antara ,775 (SAT3) dan ,890 (RI2), jauh di atas r tabel 0,105 dengan sig 0,000. Setiap butir bergerak searah dengan skor total variabelnya, jadi butir-butir itu benar mengukur konstruk yang sama.",
+     "Tidak ada butir yang digugurkan, sehingga 25 butir dipakai utuh pada analisis berikutnya. Untuk laporan, tulis: “Seluruh butir valid (r hitung ,775 sampai ,890 > r tabel ,105; p < 0,05).”"
+  ],
   "uts": 4
  },
  {
@@ -1251,6 +1319,17 @@ const UTS = [
     ]
    },
    {
+    "t": "Item-Total Statistics keempat variabel lain (ringkasan)",
+    "h": ["Variabel", "Corrected Item-Total (terendah - tertinggi)", "Alpha if Item Deleted (terendah - tertinggi)", "Butir paling lemah"],
+    "r": [
+     ["FOMO", ",742 - ,779", ",878 - ,886", "FOMO4 (,742)"],
+     ["PP", ",704 - ,793", ",862 - ,882", "PP2 (,704)"],
+     ["SAT", ",651 - ,745", ",841 - ,863", "SAT3 (,651)"],
+     ["RI", ",769 - ,827", ",909 - ,920", "RI3 (,769)"]
+    ],
+    "n": "Untuk CE lihat tabel di atas (Corrected Item-Total ,674 - ,747; Alpha if Item Deleted ,848 - ,865). Pada keempat variabel ini juga tidak ada butir yang jika dibuang membuat alpha naik di atas alpha awalnya."
+   },
+   {
     "t": "Ringkasan alpha kelima variabel (hasil lima kali running)",
     "h": [
      "Variabel",
@@ -1312,6 +1391,12 @@ const UTS = [
   ],
   "concl": "Kelima variabel **reliabel**. Instrumen konsisten untuk dipakai pada analisis berikutnya.",
   "tip": "Selalu baca kolom Alpha if Item Deleted: bila ada butir yang jika dibuang membuat alpha naik, butir itu patut dicurigai dan boleh dipertimbangkan untuk dibuang.",
+  "rule": "Variabel reliabel jika Cronbach's alpha > 0,70 (Nunnally, 1994). Periksa juga Corrected Item-Total Correlation (sebaiknya ≥ 0,30) dan Alpha if Item Deleted (tidak boleh lebih besar dari alpha awal).",
+  "interp": [
+     "Alpha kelima variabel (,876 sampai ,928) jauh di atas 0,70. RI paling konsisten (,928), SAT paling rendah tetapi tetap baik (,876).",
+     "Tidak ada butir yang jika dibuang menaikkan alpha, dan Corrected Item-Total terendah (,651 pada SAT3) masih jauh di atas 0,30. Jadi kelima instrumen konsisten dan layak dipakai tanpa membuang butir.",
+     "Alpha FOMO (,904) dan RI (,928) sudah di atas 0,90. Itu masih wajar, tetapi alpha yang terlalu tinggi kadang menandakan butir-butirnya mirip satu sama lain. Untuk laporan, tulis: “Seluruh variabel reliabel (Cronbach's alpha ,876 sampai ,928 > 0,70).”"
+  ],
   "uts": 5
  },
  {
@@ -1690,6 +1775,12 @@ const UTS = [
   ],
   "concl": "**Validitas konstruk terpenuhi**: kelima variabel membentuk lima faktor yang jelas dan setiap butir berada pada faktor yang semestinya.",
   "tip": "Eigenvalue komponen kelima (1,006) hanya tipis di atas 1. Jika dosen meminta jumlah faktor ditetapkan sesuai model, pilih Extraction › Fixed number of factors = 5. Perlu diingat, PCA + Varimax ini bersifat eksploratori; CFA sejati memakai SEM (AMOS atau SmartPLS).",
+  "rule": "Data layak dianalisis faktor jika KMO > 0,50 dan Bartlett sig < 0,05. Jumlah faktor = jumlah komponen dengan eigenvalue > 1. Butir valid jika loading ≥ 0,40 pada faktornya dan tidak ≥ 0,40 pada faktor lain.",
+  "interp": [
+     "KMO ,934 (kategori luar biasa menurut Kaiser) dan Bartlett sig 0,000 menunjukkan korelasi antar butir cukup kuat untuk difaktorkan.",
+     "Lima faktor menjelaskan 71,7% variasi (di atas batas umum 60%), dan pengelompokan butirnya persis sama dengan lima variabel yang dirancang: butir CE bersama CE, FOMO bersama FOMO, dan seterusnya. Itu bukti validitas konstruk.",
+     "Loading utama ,65 sampai ,86 dan cross-loading tertinggi hanya ,38 (di bawah 0,40), jadi tidak ada butir yang ambigu. Butir FOMO paling dekat dengan faktor CE (cross-loading ,34 sampai ,38), jadi kedua konstruk sedikit tumpang tindih tetapi masih terpisah. Setelah rotasi, faktor RI menjelaskan variasi terbesar (15,9%) dan FOMO terkecil (12,7%)."
+  ],
   "uts": 6
  },
  {
@@ -1814,6 +1905,11 @@ const UTS = [
   ],
   "concl": "**Tidak ada perbedaan signifikan** Repurchase Intention antara laki-laki dan perempuan.",
   "tip": "Hasil tidak signifikan bukan kegagalan analisis. Itu temuan: gender tidak membedakan niat beli ulang, sehingga aman diperlakukan sebagai variabel kontrol.",
+  "rule": "Langkah 1, Levene: sig > 0,05 berarti varians sama, pakai baris Equal variances assumed. Langkah 2, uji-t: sig (2-tailed) < 0,05 berarti rata-rata berbeda. Ukuran efek Cohen's d: 0,2 kecil; 0,5 sedang; 0,8 besar.",
+  "interp": [
+     "Rata-rata niat beli ulang laki-laki (39,69) dan perempuan (39,42) hanya berselisih 0,27 poin pada rentang total 5 sampai 50. Dengan sig ,580 (> 0,05), selisih sekecil itu bisa muncul karena kebetulan sampel. Cohen's d = 0,06, jauh di bawah 0,2, sehingga selisihnya juga tidak bermakna secara praktis.",
+     "Untuk laporan, tulis: “Tidak terdapat perbedaan signifikan Repurchase Intention antara laki-laki dan perempuan, t(348) = 0,554; p = 0,580.” Gender tidak membedakan niat beli ulang, jadi tidak perlu dipisah pada analisis berikutnya."
+  ],
   "uts": 7
  },
  {
@@ -2086,7 +2182,7 @@ const UTS = [
    ],
    [
     "R Squared",
-    "Adjusted R Squared ,159: frekuensi belanja menjelaskan sekitar 15,9% variasi niat beli ulang."
+    "R Squared ,164 (Adjusted ,159): frekuensi belanja menjelaskan sekitar 16,4% variasi niat beli ulang."
    ],
    [
     "Post hoc (Tukey)",
@@ -2099,6 +2195,11 @@ const UTS = [
   ],
   "concl": "Repurchase Intention **berbeda signifikan menurut frekuensi belanja**; makin sering berbelanja, makin tinggi niat beli ulangnya.",
   "tip": "ANOVA hanya menjawab apakah ada yang berbeda. Pasangan mana yang berbeda baru terjawab di tabel Tukey, jadi jangan berhenti di tabel F.",
+  "rule": "Levene sig > 0,05 berarti varians homogen (asumsi terpenuhi). F dengan sig < 0,05 berarti minimal ada satu pasang kelompok yang berbeda. Lanjutkan ke Tukey: sig < 0,05 pada sebuah pasangan berarti pasangan itu berbeda. Ukuran efek eta squared: 0,01 kecil; 0,06 sedang; 0,14 besar (Cohen).",
+  "interp": [
+     "Rata-rata niat beli ulang naik dari 37,41 (1-2 kali) ke 39,24 (3-5 kali) dan 42,09 (lebih dari 5 kali). Uji F (34,057; sig 0,000) menunjukkan kenaikan itu bukan kebetulan, dan Tukey memastikan ketiga pasangan berbeda: selisih terkecil 1,83 (1-2 vs 3-5 kali), terbesar 4,68 (1-2 vs lebih dari 5 kali).",
+     "Eta squared = 1169,407 / 7126,769 = ,164 (kategori besar), artinya frekuensi belanja menjelaskan sekitar 16,4% variasi niat beli ulang. Untuk laporan, tulis: “Terdapat perbedaan signifikan Repurchase Intention menurut frekuensi belanja, F(2, 347) = 34,057; p < 0,001; η² = ,164.”"
+  ],
   "uts": 8
  },
  {
@@ -2218,10 +2319,10 @@ const UTS = [
     "r": [
      [
       "Corrected Model",
-      "1738,960ᵃ",
+      "1800,336ᵃ",
       "3",
-      "579,653",
-      "37,654",
+      "600,112",
+      "38,983",
       ",000"
      ],
      [
@@ -2266,7 +2367,7 @@ const UTS = [
      ],
      [
       "Corrected Total",
-      "7065,393",
+      "7126,769",
       "349",
       "",
       "",
@@ -2411,6 +2512,12 @@ const UTS = [
   ],
   "concl": "Perbedaan Repurchase Intention menurut frekuensi belanja **tetap signifikan setelah Usia dikontrol**.",
   "tip": "Jika interaksi Frekuensi * Usia signifikan, ANCOVA tidak tepat karena lereng tiap kelompok berbeda. Selalu cek asumsi ini sebelum membaca hasil utamanya.",
+  "rule": "Cek dulu interaksi Frekuensi * Usia: sig > 0,05 berarti lereng sejajar dan ANCOVA boleh dilanjutkan. Lalu baca efek Frekuensi: sig < 0,05 berarti rata-rata terkoreksi berbeda. Ukuran efek partial eta squared: 0,01 kecil; 0,06 sedang; 0,14 besar.",
+  "interp": [
+     "Asumsi kesejajaran lereng terpenuhi (sig ,458), jadi hasil ANCOVA bisa dipercaya. Usia memengaruhi niat beli ulang (F = 40,985; partial η² = ,106), dan korelasinya positif (r = ,31): makin tua responden, makin tinggi niat beli ulangnya.",
+     "Setelah Usia dikendalikan, efek Frekuensi tetap signifikan (F = 35,988; partial η² = ,172). Rata-rata terkoreksi (37,52; 39,19; 42,05) nyaris sama dengan rata-rata asli di ANOVA (37,41; 39,24; 42,09) karena rata-rata usia ketiga kelompok mirip (25,57; 26,25; 26,15 tahun). Jadi perbedaan antar kelompok bukan akibat perbedaan usia.",
+     "Untuk laporan, tulis: “Setelah mengendalikan Usia, terdapat perbedaan signifikan Repurchase Intention antar kelompok frekuensi, F(2, 346) = 35,988; p < 0,001; partial η² = ,172.”"
+  ],
   "uts": 9
  },
  {
@@ -2440,6 +2547,10 @@ const UTS = [
    [
     "Atur Options",
     "Klik **Options**, centang **Descriptive statistics** dan **Homogeneity tests** (ini memunculkan Box's M dan Levene). Continue."
+   ],
+   [
+    "Minta post hoc",
+    "Klik **Post Hoc**, pindahkan Frekuensi ke Post Hoc Tests for, centang **Tukey**. Continue. Ini perlu untuk tahu pasangan kelompok mana yang berbeda pada tiap variabel."
    ],
    [
     "Jalankan",
@@ -2624,6 +2735,26 @@ const UTS = [
      ]
     ],
     "n": "a. R Squared = ,164 (Adjusted R Squared = ,159); c. R Squared = ,044 (Adjusted R Squared = ,039)"
+   },
+   {
+    "t": "Descriptive Statistics (rata-rata kedua outcome per kelompok)",
+    "h": ["Frekuensi", "N", "Mean TotalRI", "Mean TotalSAT", "SD TotalSAT"],
+    "r": [
+     ["1-2 kali", "105", "37,410", "39,200", "4,115"],
+     ["3-5 kali", "140", "39,243", "39,629", "4,345"],
+     ["Lebih dari 5 kali", "105", "42,086", "41,324", "3,779"],
+     ["Total", "350", "39,546", "40,009", "4,195"]
+    ]
+   },
+   {
+    "t": "Multiple Comparisons Tukey HSD: TotalSAT (hanya satu arah pasangan)",
+    "h": ["(I) Frekuensi", "(J) Frekuensi", "Mean Difference (I-J)", "Std. Error", "Sig.", "95% CI Lower", "95% CI Upper"],
+    "r": [
+     ["1-2 kali", "3-5 kali", "-,429", ",531", "{{,699}}", "-1,679", ",821"],
+     ["1-2 kali", "Lebih dari 5 kali", "{{-2,124*}}", ",568", ",001", "-3,460", "-,788"],
+     ["3-5 kali", "Lebih dari 5 kali", "{{-1,695*}}", ",531", ",004", "-2,945", "-,445"]
+    ],
+    "n": "*. Signifikan pada 0,05. Untuk TotalRI hasil Tukey sama dengan langkah ANOVA (ketiga pasangan berbeda)."
    }
   ],
   "read": [
@@ -2646,10 +2777,20 @@ const UTS = [
    [
     "Between-Subjects (TotalSAT)",
     "F = 7,994, sig 0,000: juga berbeda signifikan, tetapi pengaruhnya lebih kecil (Adjusted R Squared ,039 dibanding ,159 untuk TotalRI)."
+   ],
+   [
+    "Post hoc Tukey (TotalSAT)",
+    "Hanya kelompok lebih dari 5 kali yang berbeda dari dua kelompok lain (sig ,001 dan ,004). Pasangan 1-2 kali dengan 3-5 kali tidak berbeda (sig ,699)."
    ]
   ],
-  "concl": "Kelompok frekuensi belanja **berbeda signifikan pada kedua outcome sekaligus** (Repurchase Intention dan Customer Satisfaction).",
-  "tip": "Baca MANOVA berurutan: asumsi, uji multivariat, baru uji univariat. Uji univariat hanya bermakna bila uji multivariatnya signifikan. Bila ingin tahu pasangan kelompok yang beda, tambahkan Post Hoc seperti pada ANOVA.",
+  "concl": "Kelompok frekuensi belanja **berbeda signifikan pada kedua outcome sekaligus** (Repurchase Intention dan Customer Satisfaction). Pada Repurchase Intention ketiga kelompok saling berbeda, sedangkan pada Customer Satisfaction perbedaan hanya muncul pada kelompok lebih dari 5 kali.",
+  "tip": "Baca MANOVA berurutan: asumsi, uji multivariat, baru uji univariat. Uji univariat hanya bermakna bila uji multivariatnya signifikan. Post hoc dibaca per variabel dependen, jadi satu kelompok bisa berbeda pada RI tetapi tidak pada SAT.",
+  "rule": "Urutan baca: (1) Box's M sig > 0,05 berarti matriks kovarians homogen; (2) Multivariate Tests sig < 0,05 berarti kelompok berbeda pada gabungan variabel dependen (laporkan Wilks' Lambda, atau Pillai's Trace bila Box's M signifikan); (3) Levene tiap variabel sig > 0,05; (4) Between-Subjects Effects untuk tahu variabel mana yang berbeda; (5) post hoc untuk pasangan kelompok.",
+  "interp": [
+     "Asumsi terpenuhi (Box's M sig ,640; Levene ,462 dan ,386). Wilks' Lambda ,833 (F = 16,519; sig 0,000; partial η² sekitar ,087) menunjukkan kelompok frekuensi berbeda pada gabungan RI dan SAT.",
+     "Secara terpisah, frekuensi sangat memengaruhi RI (partial η² = ,164) tetapi jauh lebih kecil pada SAT (,044). Post hoc Tukey pada SAT: kelompok lebih dari 5 kali lebih puas (41,32) dibanding 1-2 kali (39,20) dan 3-5 kali (39,63), sedangkan 1-2 vs 3-5 kali tidak berbeda (sig ,699). Jadi perbedaan pada SAT hanya dipicu kelompok lebih dari 5 kali.",
+     "Untuk laporan, tulis: “Frekuensi belanja berpengaruh signifikan secara simultan terhadap Repurchase Intention dan Customer Satisfaction, Wilks' Λ = ,833; F(4, 692) = 16,519; p < 0,001.”"
+  ],
   "uts": 10
  }
 ];
@@ -2736,6 +2877,7 @@ function outHTML(t){
   const d = doneT.includes(t.id);
   return `<h3>Output SPSS</h3>${t.out.map(outTable).join("")}
   <h3>Pembahasan: cara membaca</h3><ol class="read">${t.read.map(r=>`<li><b>${fmt(r[0])}</b>${fmt(r[1])}</li>`).join("")}</ol>
+  ${t.interp?`<div class="callout interp"><span class="lb">Interpretasi</span>${t.interp.map(x=>`<p>${fmt(x)}</p>`).join("")}</div>`:""}
   <div class="callout"><span class="lb">Kesimpulan</span>${fmt(t.concl)}</div>
   ${t.tip?`<div class="callout tip"><span class="lb">Catatan</span>${fmt(t.tip)}</div>`:""}
   <button class="btn ${d?"on":"pri"}" data-a="mark-tut" data-id="${t.id}">${d?"&#10003; Tutorial selesai (klik untuk batal)":"Tandai tutorial selesai"}</button>`;
@@ -2787,6 +2929,7 @@ function tutorial(id){
   let b = hd + `
   <h2>${esc(t.t)}</h2>
   <div class="callout goal"><span class="lb">Yang ingin dijawab</span>${fmt(t.goal)}${t.hyp?`<br><span class="mute">${fmt(t.hyp)}</span>`:""}</div>
+  ${t.rule?`<div class="callout rule"><span class="lb">Aturan keputusan</span>${fmt(t.rule)}</div>`:""}
   ${t.diagram?diagram():""}<h3>Menu SPSS</h3>${path(t.path)}<span class="file">${esc(t.file)}</span>${t.uts?` <a class="btn" href="${esc(t.file)}" download>&#8595; unduh data latihan</a>`:""}
   <h3>Langkah pengerjaan</h3><p class="hint">Centang tiap langkah sambil kamu praktik.</p>
   <ol class="steps">${t.steps.map((s,k)=>`<li><label><input type="checkbox" data-step="${k}" data-id="${id}" ${sd.includes(k)?"checked":""}><span class="n" aria-hidden="true"></span><span class="tx"><b>${fmt(s[0])}</b><small>${fmt(s[1])}</small></span></label></li>`).join("")}</ol>
