@@ -10,8 +10,8 @@
 .c1{--c:var(--c1);--t:var(--t1)}.c2{--c:var(--c2);--t:var(--t2)}.c3{--c:var(--c3);--t:var(--t3)}.c4{--c:var(--c4);--t:var(--t4)}
 .c5{--c:var(--c5);--t:var(--t5)}.c6{--c:var(--c6);--t:var(--t6)}.c7{--c:var(--c7);--t:var(--t7)}
 *{box-sizing:border-box}
-html{scroll-padding-top:76px}
-body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.7 var(--body)}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;overflow-wrap:break-word;-webkit-tap-highlight-color:transparent;background:var(--bg);color:var(--ink);font:18px/1.7 var(--body)}
 .skip{position:absolute;left:-999px;top:8px;background:var(--panel);padding:8px 14px;z-index:20}
 .skip:focus{left:8px}
 a{color:var(--t)}
@@ -68,7 +68,7 @@ ul,ol{padding-left:1.3em}
 .room.shaft .rt2{writing-mode:vertical-rl;transform:rotate(180deg);align-self:center;flex:1;justify-content:center;gap:6px;text-align:left}
 .room.shaft .wins{flex-direction:column}
 .legend{max-width:70ch;color:var(--mute);margin:18px 0 26px}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px}
 .tiles a{display:grid;gap:4px;background:var(--panel);border:2px solid var(--ink);padding:14px 16px;text-decoration:none;color:var(--ink);border-radius:2px 16px 2px 16px}
 .tiles a:hover{background:#fff}
 .tiles b{font:700 1.1rem var(--head)}
@@ -99,7 +99,7 @@ ul,ol{padding-left:1.3em}
 .kind{font-size:.85rem;color:#fff;background:var(--t);padding:1px 9px;border-radius:999px;font-family:var(--head);white-space:nowrap}
 
 /* cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
 .cards a{display:grid;gap:4px;background:#fff;border:1px solid var(--line);border-left:8px solid var(--c);padding:12px 16px;text-decoration:none;color:var(--ink);border-radius:2px 14px 2px 14px}
 .cards a:hover{background:var(--panel);border-color:var(--c)}
 .cards b{font:700 1.05rem var(--head)}
@@ -175,7 +175,7 @@ dl.kv dd{margin:0}
 @media(max-width:700px){.vs,.vp{grid-template-columns:1fr}.vp button,.vp button:first-child{clip-path:none;margin:0 0 4px}}
 
 /* etika */
-.stp5{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:12px 0}
+.stp5{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:14px;margin:12px 0}
 .stp5>div{background:#fff;border:1px solid var(--line);padding:6px 14px;border-top:4px solid var(--c4)}
 .stp5 ul{padding-left:1.1em;margin:.3em 0}
 .chip{display:inline-block;padding:1px 12px;border-radius:999px;font:600 .88rem var(--head);white-space:nowrap}
@@ -256,4 +256,101 @@ footer{text-align:center;color:var(--mute);font-size:.9rem;padding:0 16px 34px;m
  .bn{font-size:3rem}
  .chead{gap:12px}
 }
+
+/* ===== tampilan HP ===== */
+button,.btn,.tm,.opt,nav a{touch-action:manipulation}
+@media(max-width:760px){
+ body{font-size:17px;line-height:1.65}
+ main{padding:16px 10px 36px}
+ /* header ringkas: satu baris merek, satu baris menu yang bisa digeser */
+ header{padding:8px 12px 6px}
+ .wrap{gap:4px;flex-direction:column;align-items:stretch;flex-wrap:nowrap}
+ .brand{font-size:1.15rem;gap:8px}
+ nav{flex-wrap:nowrap;overflow-x:auto;gap:4px;margin:0 -12px;padding:0 12px 2px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12px,#000 calc(100% - 20px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 12px,#000 calc(100% - 20px),transparent)}
+ nav::-webkit-scrollbar{display:none}
+ nav a{flex:none;font-size:.95rem;padding:7px 13px;min-height:36px;display:inline-flex;align-items:center}
+ html{scroll-padding-top:92px}
+ h1{font-size:clamp(2.3rem,12vw,3rem)}
+ h3{font-size:1.2rem;margin-top:1.4em}
+ /* kartu halaman: pinggir lebih tipis, isi lebih lebar */
+ .page{border-left-width:6px;padding:18px 14px 24px}
+ .lead{font-size:1.07rem}
+ .bn{font-size:2.8rem}
+ .crumb a{display:inline-block;padding:4px 0;margin-right:16px}
+ /* target sentuh minimal ~44px */
+ .btn,.opt{padding:11px 18px;min-height:44px}
+ .goals .btn,.jump .btn{margin:4px 6px 4px 0}
+ .tm{padding:8px 14px;min-height:40px;font-size:1rem}
+ .tiles a,.cards a{padding:14px 16px}
+ .pn{flex-direction:column}
+ .pn a{display:block;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:2px 12px 2px 12px;text-decoration:none}
+ .pn span{display:none}
+ /* gedung */
+ .room{min-height:128px;padding:12px 14px}
+ .room .rn{font-size:2.5rem}
+ .c5.room::after,.c6.room::after{display:none}
+ /* kuis */
+ .qh{font-size:1.3rem;max-width:none}
+ .opts{max-width:none}
+ .opt{padding:13px 14px;line-height:1.4}
+ /* kamus */
+ .kbar input{min-width:0;flex:1 1 100%}
+ .kbar select{width:100%}
+ /* lab: kontrol */
+ input[type=range]{height:34px}
+ .split{gap:16px}
+ .sl{font-size:1rem}
+ .bar{grid-template-columns:1fr 2.4em;gap:2px 10px}
+ .bar span{grid-column:1/-1}
+ dl.kv{grid-template-columns:1fr;gap:0}
+ dl.kv dt{margin-top:.6em}
+ .out{padding:6px 12px 10px}
+ .radar{max-width:100%}
+ .radar .lb{font-size:14px}
+ .vs,.vp{grid-template-columns:1fr}
+ .vp button,.vp button:first-child{clip-path:none;margin:0 0 4px}
+ .vc button{min-height:48px}
+ .mx2 button{min-height:104px;padding:12px 10px;font-size:.95rem}
+ /* paket: teks jaringan diperbesar karena SVG diperkecil layar */
+ .net .nd text{font-size:20px}
+ .net .pkt text{font-size:15px}
+ .net .hit{stroke-width:44}
+ .net .ln{stroke-width:4}
+ .flow{gap:4px}.fb{padding:10px 14px}
+ /* tabel data di lab: lebih rapat, kolom pertama menempel saat digeser */
+ .dt{font-size:.88rem}
+ .dt th,.dt td{padding:7px 7px}
+ .stack td{font-size:.78rem;padding:6px 3px}
+ .stack td:first-child{font-size:.82rem;padding-left:6px}
+ .etx{min-width:560px}
+ .etx td:first-child,.etx th:first-child{position:sticky;left:0;background:#fff;z-index:1;box-shadow:2px 0 0 var(--line)}
+ .tw{margin-left:-2px;-webkit-overflow-scrolling:touch}
+ /* era: label boleh melipat agar tidak terpotong */
+ .tl button{white-space:normal;line-height:1.2;padding:8px 10px;min-height:44px;border-radius:2px 12px 12px 2px}
+ .tl button span{font-size:.82rem}
+ /* tabel perbandingan -> kartu per baris */
+ .jump{flex-wrap:nowrap;overflow-x:auto;margin:10px -4px 4px;padding:2px 4px 8px;scrollbar-width:none;gap:0}
+ .jump::-webkit-scrollbar{display:none}
+ .jump .btn{flex:none;white-space:nowrap;font-size:.9rem;min-height:40px;padding:8px 14px}
+ .bt .tw{overflow:visible;margin-left:0}
+ .bt .dt,.bt .dt tbody{display:block}
+ .bt .dt thead{display:none}
+ .bt .dt tr{display:block;background:#fff;border:1px solid var(--line);border-left:5px solid var(--c);border-radius:2px 12px 2px 12px;margin:0 0 10px;padding:4px 12px 8px}
+ .bt .dt td{display:block;border:0;padding:5px 0 0}
+ .bt .dt td:first-child{font:700 1.05rem var(--head);padding-top:6px;color:var(--ink)}
+ .bt .dt td:not(:first-child)::before{content:attr(data-l);display:block;font:700 .72rem var(--head);letter-spacing:.04em;text-transform:uppercase;color:var(--t)}
+ .bt .dt td:not(:first-child):empty{display:none}
+ .qz td:not(:first-child){padding:5px 8px 6px;margin-top:6px;border-radius:6px}
+ .qz td:not(:first-child)::before{color:var(--ink)}
+}
+@media(max-width:380px){
+ .bldg{gap:5px}
+ .room .rt2 b{font-size:1rem}
+ .wins i{width:20px}
+}
+/* HP landscape: header tidak ikut menempel agar layar tidak sempit */
+@media(max-height:500px) and (max-width:900px){header{position:static}html{scroll-padding-top:12px}}
+/* hover hanya untuk perangkat dengan kursor */
+@media(hover:none){.room:hover{outline:none}.tiles a:hover{background:var(--panel)}.cards a:hover{background:#fff;border-color:var(--line)}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
