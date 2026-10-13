@@ -154,8 +154,8 @@ const QS=[
 [6,"Kebijakan dan prosedur untuk mengelola pemakaian data di organisasi disebut...",["Data cleansing","Data governance","Data mining","Normalization"],1,"Data governance."],
 [7,"Prinsip bahwa pesan dipecah menjadi paket yang menempuh rute berbeda disebut...",["Circuit switching","Packet switching","Multiplexing","Roaming"],1,"Packet switching, lalu paket dirakit kembali di tujuan."],
 [7,"Sistem yang menerjemahkan nama domain menjadi alamat IP adalah...",["DNS","VPN","NFC","RSS"],0,"Domain Name System."],
-[7,"Jaringan yang menjangkau area geografis luas, bahkan antarbenua, adalah...",["LAN","PAN","WAN","CAN"],2,"WAN."],
+[7,"Jaringan yang menjangkau area geografis luas, bahkan antarbenua, adalah...",["LAN","PAN","WAN","CAN"],2,"WAN (wide area network) mencakup jarak antarkota, antarnegara, bahkan antarbenua. Internet adalah contoh WAN terbesar."],
 [7,"Standar Wi-Fi untuk jaringan area lokal adalah...",["802.15","802.11","802.16","802.3"],1,"Wi-Fi menggunakan 802.11."],
-[7,"Teknologi yang membaca tag kecil untuk melacak pergerakan barang adalah...",["NFC","RFID","VoIP","WSN"],1,"RFID."],
+[7,"Teknologi yang membaca tag kecil untuk melacak pergerakan barang adalah...",["NFC","RFID","VoIP","WSN"],1,"RFID memakai tag kecil berisi data dan pembaca yang menangkap sinyal radionya, sehingga pergerakan barang bisa dilacak. NFC jangkauannya hanya beberapa sentimeter."],
 [7,"VPN dipakai perusahaan terutama untuk...",["Mempercepat Wi-Fi","Menjadi alternatif murah jaringan privat melalui Internet","Mengganti DNS","Menyimpan data"],1,"VPN membuat koneksi aman di atas Internet publik."]
 ];
