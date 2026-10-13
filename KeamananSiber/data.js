@@ -27,15 +27,17 @@ const MOD = [
       "Di Indonesia: ±944 ribu akun bocor pada kuartal III 2025 (setara 7 akun per menit, Surfshark); dugaan 128 juta data registrasi SIM (2025); 4,7 juta data ASN dari BKN (2024). Ini bukan cerita &ldquo;kalau&rdquo;, tapi &ldquo;kapan&rdquo;."
     ],
     k: [
-      ["PDNS 2, Surabaya, 20 Juni 2024", [["282", "instansi terganggu"], ["Rp131 M", "tebusan diminta (±8 juta USD)"], ["0", "backup, data tak bisa direstore"]],
+      ["PDNS 2, Surabaya, 20 Juni 2024", [["282", "instansi terganggu"], ["Rp131 M", "tebusan diminta (±8 juta USD)"], ["0", "backup menurut slide, data tak bisa direstore"]],
         "Ransomware varian Brain Cipher (pengembangan LockBit 3.0) melumpuhkan layanan publik berhari-hari. Pelajarannya: keamanan sering gagal bukan karena serangan yang canggih, tetapi karena keputusan tata kelola dan anggaran yang buruk."],
       ["Kebocoran data Tokopedia, Mei 2020", [["91 juta", "akun pengguna terdampak"]],
         "Nama, email, tanggal lahir, dan nomor telepon bocor lalu diperjualbelikan di dark web. Dari satu insiden, ketiga dimensi dampak muncul sekaligus: krisis kepercayaan, sorotan media nasional, dan biaya pemulihan serta komunikasi krisis."]
     ],
     h: ["pdp"],
+    tg: "Kelompok 3–4 orang memilih satu bisnis (marketplace, fintech, ojek online, streaming, klinik online). Jawab: (1) data apa yang dipegang, (2) apa yang terjadi pada pelanggan bila data bocor, (3) apa yang terjadi pada bisnis dilihat dari kepercayaan, reputasi, finansial. Tugas kecil: cari satu berita insiden siber terbaru dan siap menyebut satu dampak bisnisnya.",
     jb: [
       "Jangan menjawab &ldquo;itu urusan tim IT&rdquo;. Jawaban yang diharapkan: keamanan adalah keputusan bisnis.",
       "Akar masalah PDNS adalah tata kelola dan anggaran (tanpa backup), bukan kecanggihan serangan.",
+      "Catatan penyusun: slide menulis &ldquo;0 backup&rdquo;. Laporan BSSN yang dikutip media menyebut hanya ±2% data PDNS yang punya backup, jadi lebih tepat &ldquo;nyaris tanpa backup&rdquo;. Untuk ujian, ikuti slide; intinya sama: data tak bisa dipulihkan.",
       "Kalau diminta dampak finansial, jangan berhenti di uang tebusan: sebut pemulihan, penjualan hilang, sanksi, dan mitra yang kabur.",
       "Tokopedia adalah contoh sektor swasta; PDNS contoh sektor publik. Keduanya dipakai sebagai benang merah tiga dimensi dampak."
     ],
@@ -54,10 +56,12 @@ const MOD = [
     ],
     k: [],
     h: [],
+    tg: "Kelompok 3–4 orang memilih satu berita insiden siber lalu membedahnya: (1) apa asetnya, (2) apa ancaman dan kerentanannya, (3) apa jenis serangannya, (4) pilar CIA mana yang dilanggar.",
     jb: [
       "Ancaman ≠ kerentanan. Ancaman = pihak atau hal yang bisa membahayakan (peretas, malware, orang dalam). Kerentanan = celah (kata sandi lemah, software usang).",
       "Di slide, ransomware dipetakan ke Availability dan phishing ke Confidentiality. Pakai pemetaan ini saat menjawab.",
       "Risiko selalu dua faktor: kemungkinan DAN dampak. Jangan hanya menyebut salah satunya.",
+      "Catatan dosen (slide): kosakata risiko ini dipakai lagi di blok manajemen risiko (Pertemuan 10).",
       "Gunakan urutan baku saat membedah kasus: aset → ancaman → kerentanan → jenis serangan → pilar CIA."
     ],
     lab: ["cia"]
@@ -67,14 +71,16 @@ const MOD = [
     tag: ["Enkripsi", "MFA", "HTTPS · PCI DSS"],
     r: "Cara bisnis melindungi diri. Enkripsi, autentikasi, dan keamanan transaksi adalah pertahanan dasar yang perlu dipahami dan diputuskan oleh orang bisnis, bukan hanya teknisi.",
     p: [
-      "<b>Enkripsi</b> mengacak data sehingga hanya pemegang kunci yang bisa membacanya. Dipakai saat disimpan (<i>at rest</i>) dan saat dikirim (<i>in transit</i>). HTTPS dan ikon gembok = data terenkripsi saat dikirim; kini menjadi standar minimum kepercayaan.",
+      "<b>Enkripsi</b> mengacak data sehingga hanya pemegang kunci yang bisa membacanya. Dipakai saat disimpan (<i>at rest</i>) dan saat dikirim (<i>in transit</i>). HTTPS dan ikon gembok = data terenkripsi saat dikirim; kini menjadi standar minimum kepercayaan. Catatan penyusun: gembok hanya berarti koneksinya terenkripsi, bukan berarti situsnya asli atau jujur; situs phishing pun bisa ber-HTTPS.",
       "<b>Autentikasi</b> punya tiga jenis faktor: <b>yang kamu tahu</b> (password, PIN; paling lemah bila sendirian), <b>yang kamu miliki</b> (OTP, authenticator, ponsel, kunci keamanan), <b>yang melekat padamu</b> (sidik jari, wajah).",
       "<b>MFA</b> menggabungkan dua faktor berbeda. Kontrol paling murah dengan dampak terbesar melawan pembobolan akun.",
       "Keamanan transaksi e-commerce: (1) HTTPS menyeluruh di seluruh alur checkout, (2) payment gateway tepercaya dan hindari menyimpan data kartu sendiri, (3) tokenisasi dan kepatuhan PCI DSS, (4) sinyal kepercayaan yang terlihat (gembok, label secure checkout, logo pembayaran resmi).",
+      "Catatan dosen (slide): kata sandi lemah adalah kerentanan #1, dan enkripsi dapat dibayangkan seperti brankas: datanya ada, tetapi tak terbaca tanpa kunci.",
       "Pemetaan ke CIA: enkripsi, kontrol akses, MFA → Kerahasiaan. MFA, tanda tangan digital, validasi data → Integritas. Backup, redundansi sistem, mitigasi DDoS → Ketersediaan."
     ],
     k: [],
     h: [],
+    tg: "Aktivitas: audit sebuah checkout (HTTPS, payment gateway, tokenisasi dan PCI DSS, sinyal kepercayaan). Tugas kecil: temukan satu contoh sinyal kepercayaan (atau ketiadaannya) pada situs yang kamu gunakan.",
     jb: [
       "MFA = dua faktor yang BERBEDA jenis. Password + PIN sama-sama &ldquo;yang kamu tahu&rdquo;, jadi bukan MFA.",
       "Bedakan at rest (data tersimpan) dan in transit (data dikirim). HTTPS melindungi yang in transit.",
@@ -96,6 +102,7 @@ const MOD = [
     ],
     k: [],
     h: [],
+    tg: "Kelompok 3–4 orang memilih satu dilema digital, lalu: (1) siapa saja yang terdampak (pemangku kepentingan), (2) apa kata tiga lensa etika, (3) apakah hukum sudah mengaturnya atau ini wilayah abu-abu, (4) apa keputusanmu dan alasannya. Tugas kecil: temukan satu contoh dark pattern di aplikasi yang kamu pakai dan jelaskan mengapa bermasalah secara etis.",
     jb: [
       "Tidak ada jawaban benar tunggal. Yang dinilai adalah argumentasi. Selalu tulis alasan, bukan hanya putusan.",
       "Hafalkan pertanyaan kunci tiap lensa, itu yang paling mudah dipakai menjawab kasus.",
@@ -121,6 +128,7 @@ const MOD = [
         "Kamu mengelola Aplikasi A, dompet digital dengan ribuan pengguna. Email masuk dari orang tak dikenal: ia menemukan bahwa dengan mengubah satu angka di URL ia bisa melihat riwayat transaksi pengguna lain, mengaku tidak menyimpan atau menyebarkan data, bersedia menjelaskan, dan bertanya apakah ada bug bounty. Kamu belum punya program bug bounty. Apa yang kamu lakukan?"]
     ],
     h: ["ite", "std"],
+    tg: "Kelompok: rancang Kebijakan Responsible Disclosure (1 halaman + presentasi singkat) dengan konteks kasus App A. Isi: cara dan saluran melapor, komitmen perusahaan (tak menuntut pelapor beritikad baik, tenggat perbaikan), larangan bagi pelapor (akses atau salin data pengguna, publikasi dini), imbalan atau pengakuan, rujukan etis dan hukum (tiga lensa, UU ITE, UU PDP). Dinilai dari keseimbangan hak kedua pihak, kesadaran etis dan hukum, kejelasan aturan.",
     jb: [
       "White vs grey vs black: tanyakan dua hal, ada izin atau tidak, dan apa niatnya. Keahlian teknis bukan pembeda.",
       "Pelapor di kasus App A sudah melihat data orang lain tanpa izin, jadi secara definisi bergerak di area grey hat walau niatnya baik.",
@@ -145,6 +153,7 @@ const MOD = [
     ],
     k: [],
     h: ["pdp"],
+    tg: "Kelompok 5–6 orang, dokumen satu halaman: untuk satu bisnis digital (klinik daring, e-commerce, dll.) tentukan data yang wajib dikumpulkan beserta alasannya, data berlebihan yang sebaiknya tidak dikumpulkan, rancangan pernyataan persetujuan yang jujur dan jelas, serta rujukan ke prinsip minimalisasi data dan UU PDP. Dinilai dari ketepatan membedakan wajib dan berlebihan, kejujuran persetujuan, kesadaran etis dan hukum.",
     jb: [
       "Definisi privasi yang dipakai: kendali atas informasi diri, bukan sekadar menyembunyikan.",
       "Keputusan minimalisasi data harus diambil SEBELUM sebaris data pun dikumpulkan.",
@@ -168,6 +177,7 @@ const MOD = [
     ],
     k: [],
     h: ["cipta", "merek"],
+    tg: "Kelompok, laporan ringkas + presentasi singkat: untuk satu bisnis digital pilihan, susun audit kekayaan intelektual yang memuat daftar aset (merek, logo, kode, konten, basis data), rencana perlindungan (pendaftaran, lisensi, syarat dan ketentuan), pemeriksaan pelanggaran (aset pihak lain yang dipakai tanpa lisensi), dan analisis satu persoalan yang belum diatur, ditimbang secara etis.",
     jb: [
       "Nama dan logo = merek dagang, BUKAN hak cipta. Kode, desain, konten = hak cipta.",
       "Ide tidak dilindungi. Itu sebabnya banyak aplikasi pesan antar makanan bisa berdiri secara sah.",
@@ -193,7 +203,7 @@ const PLAY = [
 // Peta hukum dan rujukan. Hanya yang disebut di slide; detail pasal lain belum dibahas.
 const HK = [
   { id: "ite", n: "UU ITE", f: "UU No. 19 Tahun 2016 (perubahan atas UU No. 11 Tahun 2008) tentang Informasi dan Transaksi Elektronik", p: "P5",
-    k: ["<b>Pasal 30</b>: akses tanpa izin melanggar hukum. Menurut slide, grey hat pun bisa dipidana, walau niatnya baik.", "Dipakai di kasus laporan celah (App A) untuk menunjukkan bahwa &ldquo;etis&rdquo; tidak selalu sama dengan &ldquo;legal&rdquo;."],
+    k: ["<b>Pasal 30</b>: akses tanpa izin melanggar hukum. Menurut slide, grey hat pun bisa dipidana, walau niatnya baik.", "Catatan penyusun: UU 19/2016 sudah diubah lagi lewat UU No. 1 Tahun 2024 (di luar slide). Cek nomor pasal pada versi terbaru sebelum mengutipnya di tulisan resmi.", "Dipakai di kasus laporan celah (App A) untuk menunjukkan bahwa &ldquo;etis&rdquo; tidak selalu sama dengan &ldquo;legal&rdquo;."],
     u: "Soal peretas, ethical hacking, responsible disclosure." },
   { id: "pdp", n: "UU PDP", f: "UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi", p: "P1, P6",
     k: ["Denda dapat mencapai <b>2% dari pendapatan tahunan</b> (slide P1).", "Empat prinsip di P6 adalah pratinjau UU PDP: minimalisasi data, persetujuan yang bermakna, transparansi, sesuai tujuan.", "Pendalaman isi UU dijadwalkan di Pertemuan 9 (belum ada di materi 1–7)."],
@@ -206,6 +216,7 @@ const HK = [
     u: "Soal nama dan logo aplikasi, brand, sengketa domain." }
 ];
 const STD = [
+  ["UU Paten dan UU Rahasia Dagang (di luar slide)", "Dasar hukum paten (UU 13/2016) dan rahasia dagang (UU 30/2000). Catatan penyusun dari pengetahuan umum, belum dibahas di slide; verifikasi sebelum dikutip (P7).", "peraturan.go.id"],
   ["PCI DSS", "Standar keamanan data kartu pembayaran (P3).", "pcisecuritystandards.org"],
   ["NIST SP 800-63B", "Pedoman identitas digital: autentikasi dan pengelolaan authenticator (P3).", "pages.nist.gov/800-63-4"],
   ["ISO/IEC 29147:2018", "Standar pengungkapan kerentanan (vulnerability disclosure) (P5).", "iso.org"],
