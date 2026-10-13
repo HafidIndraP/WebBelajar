@@ -44,13 +44,13 @@ function filtK(){const t=(E('#kq').value||'').toLowerCase().trim(),b=+E('#kb').v
  E('#kc').textContent=tot+' istilah ditampilkan.'}
 
 /* ---------- Tabel perbandingan ---------- */
-const banding=()=>`<section class="page"><h2>Tabel perbandingan</h2><p class="lead">Konsep yang mirip paling sering tertukar saat ujian. Bandingkan berdampingan, lalu aktifkan mode uji untuk menutup isinya dan menebak.</p><div class="jump">${BD.map(t=>`<button class="btn ghost" data-act="jump" data-v="${t.id}">${t.t}</button>`).join('')}</div>${BD.map(t=>`<div class="bt c${t.b}" id="bt-${t.id}"><h3>${t.t} <small>Bab ${t.b}</small></h3><p class="note">${t.q}</p><div class="tw"><table class="dt"><thead><tr>${t.h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${t.r.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div><button class="btn ghost" data-act="qz" data-v="${t.id}">Mode uji: tutup isi</button></div>`).join('')}</section>`;
+const banding=()=>`<section class="page"><h2>Tabel perbandingan</h2><p class="lead">Konsep yang mirip paling sering tertukar saat ujian. Bandingkan berdampingan, lalu aktifkan mode uji untuk menutup isinya dan menebak.</p><div class="jump">${BD.map(t=>`<button class="btn ghost" data-act="jump" data-v="${t.id}">${t.t}</button>`).join('')}</div>${BD.map(t=>`<div class="bt c${t.b}" id="bt-${t.id}"><h3>${t.t} <small>Bab ${t.b}</small></h3><p class="note">${t.q}</p><div class="tw"><table class="dt"><thead><tr>${t.h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${t.r.map(r=>`<tr>${r.map((x,j)=>`<td data-l="${t.h[j]}">${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div><button class="btn ghost" data-act="qz" data-v="${t.id}">Mode uji: tutup isi</button></div>`).join('')}</section>`;
 
 /* ---------- Latihan ---------- */
-let Q={on:false};
-function qBuild(f){const pool=QS.filter(q=>!f||q[0]==f);return shuffle(pool).slice(0,10).map(q=>({b:q[0],q:q[1],o:shuffle(q[2].map((t,i)=>({t,ok:i==q[3]}))),x:q[4]}))}
+let Q={on:false},QN=10;
+function qBuild(f){const pool=QS.filter(q=>!f||q[0]==f);return shuffle(pool).slice(0,QN||pool.length).map(q=>({b:q[0],q:q[1],o:shuffle(q[2].map((t,i)=>({t,ok:i==q[3]}))),x:q[4]}))}
 const quiz=()=>{
- if(!Q.on)return `<section class="page"><h2>Latihan soal</h2><p class="lead">Pilih cakupan. Tiap sesi paling banyak 10 soal, urutan soal dan pilihan diacak.</p><p><button class="btn" data-act="qs" data-v="0">Campuran semua bab</button></p><div class="cards">${CH.map(c=>`<a class="c${c.n}" href="#/latihan" data-act="qs" data-v="${c.n}"><b>Bab ${c.n}: ${c.s}</b><span>${QS.filter(q=>q[0]==c.n).length} soal</span></a>`).join('')}</div></section>`;
+ if(!Q.on)return `<section class="page"><h2>Latihan soal</h2><p class="lead">Pilih panjang sesi dan cakupan. Urutan soal dan pilihan jawaban selalu diacak. Total ${QS.length} soal.</p><p class="note">Panjang sesi</p><p>${[[10,'10 soal'],[20,'20 soal'],[0,'Semua soal']].map(a=>`<button class="btn ghost ${QN==a[0]?'on':''}" data-act="qlen" data-v="${a[0]}">${a[1]}</button>`).join('')}</p><p class="note">Cakupan</p><p><button class="btn" data-act="qs" data-v="0">Campuran semua bab</button></p><div class="cards">${CH.map(c=>`<a class="c${c.n}" href="#/latihan" data-act="qs" data-v="${c.n}"><b>Bab ${c.n}: ${c.s}</b><span>${QS.filter(q=>q[0]==c.n).length} soal</span></a>`).join('')}</div></section>`;
  if(Q.i>=Q.set.length){const w=Q.set.filter(x=>x.pick!=null&&!x.o[x.pick].ok);
   return `<section class="page"><h2>Selesai</h2><p class="lead">Skormu ${Q.s} dari ${Q.set.length}.</p><p>${Q.s==Q.set.length?'Sempurna. Coba bab lain atau buka tabel perbandingan.':Q.s>=Q.set.length*0.7?'Bagus. Tinjau soal yang salah di bawah ini.':'Buka lagi bab yang masih kabur, lalu ulangi latihan.'}</p>${w.length?`<h3>Yang perlu ditinjau</h3>${w.map(x=>`<div class="rv"><p><b>${x.q}</b></p><p class="ex">${x.x} <a href="#/bab/${x.b}">Buka Bab ${x.b}</a></p></div>`).join('')}`:''}<p><button class="btn" data-act="qs" data-v="${Q.f}">Ulangi dengan soal baru</button><button class="btn ghost" data-act="qm">Pilih cakupan lain</button></p></section>`}
  const x=Q.set[Q.i];
@@ -63,8 +63,9 @@ const ACT={
  jump(v){const el=document.getElementById('bt-'+v);if(el)el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})},
  qz(v,t){const w=document.getElementById('bt-'+v);const on=w.classList.toggle('qz');EA('td',w).forEach(td=>td.classList.remove('rv'));t.textContent=on?'Mode uji aktif: klik sel untuk membuka':'Mode uji: tutup isi';t.classList.toggle('on',on)},
  qs(v){Q={on:true,f:+v,set:qBuild(+v),i:0,s:0};render(true)},
- qp(v){const x=Q.set[Q.i];if(x.pick!=null)return;x.pick=+v;if(x.o[x.pick].ok)Q.s++;render(true)},
+ qp(v){const x=Q.set[Q.i];if(x.pick!=null)return;x.pick=+v;if(x.o[x.pick].ok)Q.s++;render(true);const nb=E('[data-act="qn"]');if(nb)nb.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})},
  qn(){Q.i++;render(true)},
+ qlen(v){QN=+v;render(true)},
  qm(){Q={on:false};render(true)}};
 M.addEventListener('click',e=>{
  const td=e.target.closest('.qz td');if(td&&!e.target.closest('[data-act]')){td.classList.toggle('rv');return}
@@ -83,6 +84,7 @@ function render(keep){
  if(r=='kamus')filtK();
  if(r=='bab'&&CH[+a-1])document.title=`Bab ${a}: ${CH[+a-1].s} | IT di Perusahaan`;else document.title=(TITLE[r||'']||'Gedung')+' | IT di Perusahaan';
  EA('nav a').forEach(e=>e.classList.toggle('on',e.dataset.r==(r=='bab'?'':r||'')));
+ const na=E('nav a.on'),nv=E('nav');if(na&&nv&&nv.scrollWidth>nv.clientWidth)nv.scrollLeft=na.offsetLeft-(nv.clientWidth-na.offsetWidth)/2;
  if(keep===true)scrollTo(0,sy)}
 addEventListener('hashchange',()=>{render();scrollTo(0,0);M.focus({preventScroll:true})});
 render();
