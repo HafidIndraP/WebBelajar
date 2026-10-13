@@ -33,7 +33,6 @@ const MOD = [
         "Nama, email, tanggal lahir, dan nomor telepon bocor lalu diperjualbelikan di dark web. Dari satu insiden, ketiga dimensi dampak muncul sekaligus: krisis kepercayaan, sorotan media nasional, dan biaya pemulihan serta komunikasi krisis."]
     ],
     h: ["pdp"],
-    tg: "Kelompok 3–4 orang memilih satu bisnis (marketplace, fintech, ojek online, streaming, klinik online). Jawab: (1) data apa yang dipegang, (2) apa yang terjadi pada pelanggan bila data bocor, (3) apa yang terjadi pada bisnis dilihat dari kepercayaan, reputasi, finansial. Tugas kecil: cari satu berita insiden siber terbaru dan siap menyebut satu dampak bisnisnya.",
     jb: [
       "Jangan menjawab &ldquo;itu urusan tim IT&rdquo;. Jawaban yang diharapkan: keamanan adalah keputusan bisnis.",
       "Akar masalah PDNS adalah tata kelola dan anggaran (tanpa backup), bukan kecanggihan serangan.",
@@ -56,7 +55,6 @@ const MOD = [
     ],
     k: [],
     h: [],
-    tg: "Kelompok 3–4 orang memilih satu berita insiden siber lalu membedahnya: (1) apa asetnya, (2) apa ancaman dan kerentanannya, (3) apa jenis serangannya, (4) pilar CIA mana yang dilanggar.",
     jb: [
       "Ancaman ≠ kerentanan. Ancaman = pihak atau hal yang bisa membahayakan (peretas, malware, orang dalam). Kerentanan = celah (kata sandi lemah, software usang).",
       "Di slide, ransomware dipetakan ke Availability dan phishing ke Confidentiality. Pakai pemetaan ini saat menjawab.",
@@ -80,7 +78,6 @@ const MOD = [
     ],
     k: [],
     h: [],
-    tg: "Aktivitas: audit sebuah checkout (HTTPS, payment gateway, tokenisasi dan PCI DSS, sinyal kepercayaan). Tugas kecil: temukan satu contoh sinyal kepercayaan (atau ketiadaannya) pada situs yang kamu gunakan.",
     jb: [
       "MFA = dua faktor yang BERBEDA jenis. Password + PIN sama-sama &ldquo;yang kamu tahu&rdquo;, jadi bukan MFA.",
       "Bedakan at rest (data tersimpan) dan in transit (data dikirim). HTTPS melindungi yang in transit.",
@@ -102,7 +99,6 @@ const MOD = [
     ],
     k: [],
     h: [],
-    tg: "Kelompok 3–4 orang memilih satu dilema digital, lalu: (1) siapa saja yang terdampak (pemangku kepentingan), (2) apa kata tiga lensa etika, (3) apakah hukum sudah mengaturnya atau ini wilayah abu-abu, (4) apa keputusanmu dan alasannya. Tugas kecil: temukan satu contoh dark pattern di aplikasi yang kamu pakai dan jelaskan mengapa bermasalah secara etis.",
     jb: [
       "Tidak ada jawaban benar tunggal. Yang dinilai adalah argumentasi. Selalu tulis alasan, bukan hanya putusan.",
       "Hafalkan pertanyaan kunci tiap lensa, itu yang paling mudah dipakai menjawab kasus.",
@@ -128,7 +124,6 @@ const MOD = [
         "Kamu mengelola Aplikasi A, dompet digital dengan ribuan pengguna. Email masuk dari orang tak dikenal: ia menemukan bahwa dengan mengubah satu angka di URL ia bisa melihat riwayat transaksi pengguna lain, mengaku tidak menyimpan atau menyebarkan data, bersedia menjelaskan, dan bertanya apakah ada bug bounty. Kamu belum punya program bug bounty. Apa yang kamu lakukan?"]
     ],
     h: ["ite", "std"],
-    tg: "Kelompok: rancang Kebijakan Responsible Disclosure (1 halaman + presentasi singkat) dengan konteks kasus App A. Isi: cara dan saluran melapor, komitmen perusahaan (tak menuntut pelapor beritikad baik, tenggat perbaikan), larangan bagi pelapor (akses atau salin data pengguna, publikasi dini), imbalan atau pengakuan, rujukan etis dan hukum (tiga lensa, UU ITE, UU PDP). Dinilai dari keseimbangan hak kedua pihak, kesadaran etis dan hukum, kejelasan aturan.",
     jb: [
       "White vs grey vs black: tanyakan dua hal, ada izin atau tidak, dan apa niatnya. Keahlian teknis bukan pembeda.",
       "Pelapor di kasus App A sudah melihat data orang lain tanpa izin, jadi secara definisi bergerak di area grey hat walau niatnya baik.",
@@ -153,7 +148,6 @@ const MOD = [
     ],
     k: [],
     h: ["pdp"],
-    tg: "Kelompok 5–6 orang, dokumen satu halaman: untuk satu bisnis digital (klinik daring, e-commerce, dll.) tentukan data yang wajib dikumpulkan beserta alasannya, data berlebihan yang sebaiknya tidak dikumpulkan, rancangan pernyataan persetujuan yang jujur dan jelas, serta rujukan ke prinsip minimalisasi data dan UU PDP. Dinilai dari ketepatan membedakan wajib dan berlebihan, kejujuran persetujuan, kesadaran etis dan hukum.",
     jb: [
       "Definisi privasi yang dipakai: kendali atas informasi diri, bukan sekadar menyembunyikan.",
       "Keputusan minimalisasi data harus diambil SEBELUM sebaris data pun dikumpulkan.",
@@ -177,7 +171,6 @@ const MOD = [
     ],
     k: [],
     h: ["cipta", "merek"],
-    tg: "Kelompok, laporan ringkas + presentasi singkat: untuk satu bisnis digital pilihan, susun audit kekayaan intelektual yang memuat daftar aset (merek, logo, kode, konten, basis data), rencana perlindungan (pendaftaran, lisensi, syarat dan ketentuan), pemeriksaan pelanggaran (aset pihak lain yang dipakai tanpa lisensi), dan analisis satu persoalan yang belum diatur, ditimbang secara etis.",
     jb: [
       "Nama dan logo = merek dagang, BUKAN hak cipta. Kode, desain, konten = hak cipta.",
       "Ide tidak dilindungi. Itu sebabnya banyak aplikasi pesan antar makanan bisa berdiri secara sah.",
